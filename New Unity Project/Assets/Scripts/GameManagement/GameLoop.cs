@@ -1,23 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class FuselageRotationScript : MonoBehaviour
+public class GameLoop : MonoBehaviour
 {
-    private Rigidbody _rigidbody;
+    public float timeToRelase = 5;
 
-    public float rotSpeed = 1;
+    public UnityEvent relaseEvent;
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        _rigidbody = gameObject.GetComponent<Rigidbody>();
+        StartCoroutine(relaseTimer());
     }
 
+    public IEnumerator relaseTimer()
+    {
+        yield return new WaitForSeconds(timeToRelase);
+        relaseEvent.Invoke();
+    }
+    
     // Update is called once per frame
     void Update()
     {
-        _rigidbody.AddRelativeTorque(0, -Input.GetAxisRaw("YRotation") * rotSpeed,0,ForceMode.Force);
+        
     }
 }

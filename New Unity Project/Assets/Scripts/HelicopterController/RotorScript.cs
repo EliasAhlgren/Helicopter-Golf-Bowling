@@ -7,6 +7,8 @@ namespace HelicopterController
     /// </summary>
     public class RotorScript : MonoBehaviour
     {
+        public bool isPlayerControlled = true;
+        
         public Transform physicalRotor;
         
         public string inputAxis;
@@ -31,11 +33,20 @@ namespace HelicopterController
             _rigidbody = gameObject.GetComponent<Rigidbody>();
         }
         
+        public void Relase()
+        {
+            isPlayerControlled = !isPlayerControlled;
+        }
+        
         // Update is called once per frame
         void FixedUpdate()
         {
-            YMovement();
-            RotationMovement();
+            if (isPlayerControlled)
+            {
+                YMovement();
+                RotationMovement();
+            }
+            
         }
 
         void YMovement()

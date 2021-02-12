@@ -8,14 +8,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/FuselageRotationScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/GameLoop.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageRotationScript.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/HelicopterMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/RotorScript.cs" />
         <option value="$PROJECT_DIR$/Assets/FuselageRotationScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageRotationScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/RotorScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameLoop.cs" />
       </list>
     </option>
   </component>
@@ -64,6 +67,7 @@
       <workItem from="1612952097457" duration="8379000" />
       <workItem from="1613037110887" duration="2630000" />
       <workItem from="1613054898946" duration="948000" />
+      <workItem from="1613122746570" duration="1386000" />
     </task>
     <servers />
   </component>
