@@ -1,0 +1,10 @@
+1. Monista testMaterial
+
+3. Lisää objektiin jossa materiaalia käytetään AwesomeToonHelper skripti
+
+4. Lisää AwesomeToonHelper material kohtaan objektin materiaali
+
+5. tarvitessa lisää tekstuuri Texture2D kohtaan tai leiki materiaalin asetuksilla.
+
+
+Jos objektiin haluaa outlinen niin lisää Outline skripti objektiin, aseta outlinen väri mustaksi ja aseta outline moodi "Only Visible"
