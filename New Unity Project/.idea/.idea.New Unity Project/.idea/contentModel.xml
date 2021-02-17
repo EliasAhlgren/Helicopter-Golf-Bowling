@@ -19,8 +19,20 @@
           </e>
           <e p="SimpleCameraController.cs" t="Include" />
         </e>
-        <e p="Shader" t="Include">
-          <e p="CustomLighting.hlsl" t="Include" />
+        <e p="Shaders" t="Include">
+          <e p="AwesomeToonHelper.cs" t="Include" />
+          <e p="QuickOutline" t="Include">
+            <e p="Resources" t="Include">
+              <e p="Shaders" t="Include">
+                <e p="OutlineFill.shader" t="Include" />
+                <e p="OutlineMask.shader" t="Include" />
+              </e>
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="Outline.cs" t="Include" />
+            </e>
+          </e>
+          <e p="SetupInfo.txt" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">

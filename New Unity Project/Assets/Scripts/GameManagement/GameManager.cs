@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public UnityEvent resetEvent;
 
     public UnityEvent deathEvent;
+
+    public UnityEvent startEvent;
     
     public TextMeshProUGUI tmp;
     
@@ -35,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetFromPos(Vector3 pos, GameObject thisObject)
     {
-        StopAllCoroutines();
+        StartCoroutine(relaseTimer(0));
         thisObject.transform.eulerAngles = Vector3.zero;
         thisObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         thisObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
@@ -78,9 +80,11 @@ public class GameManager : MonoBehaviour
             tmp.text = "Press any key";
             if (Input.anyKeyDown)
             {
+                startEvent.Invoke();
                 waitingForInput = false;
                 timer = timeToRelase;
                 StartCoroutine(relaseTimer(timeToRelase));
+                
             }
         }
         

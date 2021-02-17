@@ -28,11 +28,16 @@ public class FuselageController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        helicopterHealth -= other.relativeVelocity.magnitude * collisionDamageMultiplier;
+        
+        Debug.Log(isPlayerControlled);
         
         if (!isPlayerControlled)
         {
             gameManager.ResetFromPos(transform.position, gameObject);
+        }
+        else
+        {
+            helicopterHealth -= other.relativeVelocity.magnitude * collisionDamageMultiplier;
         }
     }
 

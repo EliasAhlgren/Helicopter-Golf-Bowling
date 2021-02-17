@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: b7d6ee3d36bf23a4fa6065065fee7251,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -869,7 +869,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423164264}
-  m_LocalRotation: {x: -0.70090926, y: 0.000002133629, z: 0.0000020967113, w: 0.71325046}
+  m_LocalRotation: {x: -0.70090926, y: -0.0000021336336, z: -0.000002096716, w: 0.71325046}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -957,7 +957,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 434997646}
-  m_LocalRotation: {x: 0.7009096, y: -0.000002133628, z: -0.0000020967125, w: -0.7132501}
+  m_LocalRotation: {x: 0.7009096, y: 0.0000021336325, z: 0.000002096717, w: -0.7132501}
   m_LocalPosition: {x: -55.178654, y: -17.204756, z: -0.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5389,6 +5389,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 20535240841338408, guid: 3402573a338d139448114b36f63f40ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 499e95f2cb49a724e998556b9104a80a, type: 2}
     - target: {fileID: 77987832350401134, guid: 3402573a338d139448114b36f63f40ee,
         type: 3}
       propertyPath: m_RootOrder
@@ -5444,6 +5449,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 376593994292371271, guid: 3402573a338d139448114b36f63f40ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 499e95f2cb49a724e998556b9104a80a, type: 2}
+    - target: {fileID: 437864614469670993, guid: 3402573a338d139448114b36f63f40ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 499e95f2cb49a724e998556b9104a80a, type: 2}
     - target: {fileID: 747246972959471828, guid: 3402573a338d139448114b36f63f40ee,
         type: 3}
       propertyPath: m_Name
@@ -5454,10 +5469,35 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Helicopter
       objectReference: {fileID: 0}
+    - target: {fileID: 2267110049898860483, guid: 3402573a338d139448114b36f63f40ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 499e95f2cb49a724e998556b9104a80a, type: 2}
     - target: {fileID: 2549347892455851546, guid: 3402573a338d139448114b36f63f40ee,
         type: 3}
       propertyPath: collisionDamageMultiplier
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2791138412661257160, guid: 3402573a338d139448114b36f63f40ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 499e95f2cb49a724e998556b9104a80a, type: 2}
+    - target: {fileID: 4244845571514279457, guid: 3402573a338d139448114b36f63f40ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 499e95f2cb49a724e998556b9104a80a, type: 2}
+    - target: {fileID: 5105600170329687762, guid: 3402573a338d139448114b36f63f40ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 499e95f2cb49a724e998556b9104a80a, type: 2}
+    - target: {fileID: 5221652897443211092, guid: 3402573a338d139448114b36f63f40ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 499e95f2cb49a724e998556b9104a80a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3402573a338d139448114b36f63f40ee, type: 3}
