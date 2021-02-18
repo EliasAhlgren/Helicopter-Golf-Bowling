@@ -37,14 +37,12 @@ public class GameManager : MonoBehaviour
 
     public void ResetFromPos(Vector3 pos, GameObject thisObject)
     {
-        StartCoroutine(relaseTimer(0));
-        thisObject.transform.eulerAngles = Vector3.zero;
+        thisObject.transform.eulerAngles = Vector3.zero + Vector3.up * thisObject.transform.eulerAngles.y;
         thisObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         thisObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         GameObject.Find("rotorMain").GetComponent<RotorController>().yVelocity = 0;
-        relaseEvent.Invoke();
-        timer = timeToRelase;
-        StartCoroutine(relaseTimer(timeToRelase));
+        GameObject.Find("rotorMain").GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GameObject.Find("rotorMain").GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         resetEvent.Invoke();
         waitingForInput = true;
     }
@@ -57,9 +55,18 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator HelicopterDestroyed()
     {
+        //TODO kehitä parempi tapa resettaa joka ei nollaa scorea
         deathEvent.Invoke();
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void StartFlight()
+    {
+        startEvent.Invoke();
+        waitingForInput = false;
+        timer = timeToRelase;
+        StartCoroutine(relaseTimer(timeToRelase));
     }
     
     // Update is called once per frame
@@ -80,11 +87,7 @@ public class GameManager : MonoBehaviour
             tmp.text = "Press any key";
             if (Input.anyKeyDown)
             {
-                startEvent.Invoke();
-                waitingForInput = false;
-                timer = timeToRelase;
-                StartCoroutine(relaseTimer(timeToRelase));
-                
+                StartFlight();
             }
         }
         

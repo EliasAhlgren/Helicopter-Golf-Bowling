@@ -9,7 +9,9 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="GameManagement" t="Include">
+            <e p="CustomTrack.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
+            <e p="MultiplayerManager.cs" t="Include" />
             <e p="ScoreManager.cs" t="Include" />
             <e p="TargetScript.cs" t="Include" />
           </e>

@@ -19,19 +19,26 @@ public class FuselageController : MonoBehaviour
 
     public float framesOnGround;
     
+    
+    
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = Camera.main.GetComponent<GameManager>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _rigidbody = gameObject.GetComponent<Rigidbody>();
     }
 
+    public void ResetHealth()
+    {
+        helicopterHealth = 100f;
+    }
+    
     private void OnCollisionEnter(Collision other)
     {
         
         Debug.Log(isPlayerControlled);
         
-        if (!isPlayerControlled)
+        if (!isPlayerControlled && !gameManager.waitingForInput)
         {
             gameManager.ResetFromPos(transform.position, gameObject);
         }
@@ -64,10 +71,21 @@ public class FuselageController : MonoBehaviour
     {
         isPlayerControlled = !isPlayerControlled;
     }
+
+    void MouseRot()
+    {
+        Vector3 mouseFaceRot = new Vector3(0, Camera.main.transform.eulerAngles.y - 90f,0f);
+                    transform.eulerAngles = mouseFaceRot;
+    }
     
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.waitingForInput)
+        {
+            //MouseRot();
+        }
+        
         if (helicopterHealth <= 0)
         {
             StartCoroutine(gameManager.HelicopterDestroyed());

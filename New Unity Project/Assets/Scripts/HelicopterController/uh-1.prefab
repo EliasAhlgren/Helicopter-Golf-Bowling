@@ -1038,7 +1038,7 @@ GameObject:
   - component: {fileID: 77987832350401134}
   m_Layer: 0
   m_Name: uh-1
-  m_TagString: Untagged
+  m_TagString: Helicopter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5023,7 +5023,7 @@ GameObject:
   - component: {fileID: 7510904588985149969}
   m_Layer: 0
   m_Name: rotortail1
-  m_TagString: Untagged
+  m_TagString: Helicopter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5184,11 +5184,10 @@ GameObject:
   - component: {fileID: 2549347891866612854}
   - component: {fileID: 2549347891866612855}
   - component: {fileID: 2549347891866612852}
-  - component: {fileID: 2549347891866612853}
   - component: {fileID: 2549347891866612849}
   m_Layer: 0
   m_Name: rotorMain
-  m_TagString: Untagged
+  m_TagString: Helicopter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5249,7 +5248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7602c459412ca4aa07861e44629ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerControlled: 1
+  isPlayerControlled: 0
   physicalRotor: {fileID: 3882889883484110904}
   inputAxis: CollectiveThrottle
   yThrust: 89
@@ -5315,20 +5314,7 @@ MonoBehaviour:
   yDeceleration: 6
   yDecelartionInFilight: 1
   xzRotationPower: 3.7
---- !u!138 &2549347891866612853
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2549347891866612859}
-  m_ConnectedBody: {fileID: 2549347892455851550}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1.1
+  slider: {fileID: 0}
 --- !u!65 &2549347891866612849
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5399,9 +5385,12 @@ GameObject:
   - component: {fileID: 2549347892455851550}
   - component: {fileID: 2549347892455851547}
   - component: {fileID: 2549347892455851546}
+  - component: {fileID: 1273382781}
+  - component: {fileID: 1273382783}
+  - component: {fileID: 1273382778}
   m_Layer: 0
   m_Name: fuseFront
-  m_TagString: Untagged
+  m_TagString: Helicopter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5478,8 +5467,182 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97b21f62d8c76ad4db305d988ff7ed4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerControlled: 1
+  isPlayerControlled: 0
   rotSpeed: 0.7
+  gameManager: {fileID: 0}
+  helicopterHealth: 100
+  collisionDamageMultiplier: 3
+  framesOnGround: 0
+--- !u!138 &1273382781
+FixedJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2549347892455851551}
+  m_ConnectedBody: {fileID: 2549347891866612854}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!82 &1273382783
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2549347892455851551}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 175
+  DopplerLevel: 0
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.002
+      value: 1
+      inSlope: -500.20065
+      outSlope: -500.20065
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.004
+      value: 0.50320435
+      inSlope: -8.858381
+      outSlope: -8.858381
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.6035697
+    - serializedVersion: 3
+      time: 0.04059659
+      value: 0.2526703
+      inSlope: -3.2133381
+      outSlope: -3.2133381
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.12668693
+      value: 0.08470154
+      inSlope: -0.4884772
+      outSlope: -0.4884772
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.29730555
+      value: 0.039886475
+      inSlope: -0.030529825
+      outSlope: -0.030529825
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5489568
+      value: 0.023147583
+      inSlope: -0.0076324563
+      outSlope: -0.0076324563
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.002
+      inSlope: -0.002000801
+      outSlope: -0.002000801
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1273382778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2549347892455851551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04f20be3a55afb41a936cd541e01287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Track1: {fileID: 0}
+  clipLoaded: 0
+  playingClip: 0
 --- !u!1 &2549347893007592099
 GameObject:
   m_ObjectHideFlags: 0
@@ -5492,7 +5655,7 @@ GameObject:
   - component: {fileID: 2549347893007592125}
   m_Layer: 0
   m_Name: Point Light
-  m_TagString: Untagged
+  m_TagString: Helicopter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5585,7 +5748,7 @@ GameObject:
   - component: {fileID: 2549347893603376964}
   m_Layer: 0
   m_Name: fuseTail
-  m_TagString: Untagged
+  m_TagString: Helicopter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14208,7 +14371,7 @@ GameObject:
   - component: {fileID: 2791138412661257160}
   m_Layer: 0
   m_Name: fuselage
-  m_TagString: Untagged
+  m_TagString: Helicopter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14548,7 +14711,7 @@ GameObject:
   - component: {fileID: 7836675376396871267}
   m_Layer: 0
   m_Name: skid
-  m_TagString: Untagged
+  m_TagString: Helicopter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

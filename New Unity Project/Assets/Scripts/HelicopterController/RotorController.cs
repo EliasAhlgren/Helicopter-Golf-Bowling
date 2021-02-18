@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace HelicopterController
 {
@@ -28,6 +29,8 @@ namespace HelicopterController
         public float yDecelartionInFilight;
         
         public float xzRotationPower = 5;
+
+        public Slider slider;
         
         // Start is called before the first frame update
         void Start()
@@ -44,6 +47,8 @@ namespace HelicopterController
         // Update is called once per frame
         void FixedUpdate()
         {
+            slider.value = yVelocity;
+            
             Vector3 newRot = physicalRotor.transform.localEulerAngles;
             newRot.y += yVelocity * Time.deltaTime * 50;
             physicalRotor.transform.localEulerAngles = newRot;

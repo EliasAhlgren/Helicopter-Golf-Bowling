@@ -16,9 +16,11 @@ public class TargetScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Helicopter"))
+        if (other.gameObject.CompareTag("Helicopter") || other.gameObject.CompareTag("Pin"))
         {
+            Debug.Log("Crash");
             _scoreManager.playerScores[_scoreManager.currentPlayer] += targetScore * _scoreManager.scoreMultiplier;
+            targetScore = 0;
         }
     }
 }

@@ -17,9 +17,11 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameLoop.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/RotorController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/TargetScript.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/ScoreManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/ScoreManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/CustomTrack.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oFOjHGAWa6P96tjH0zciEaimoh" />
@@ -71,7 +73,8 @@
       <workItem from="1613122746570" duration="1386000" />
       <workItem from="1613404888161" duration="2620000" />
       <workItem from="1613473061506" duration="16249000" />
-      <workItem from="1613547805129" duration="3233000" />
+      <workItem from="1613547805129" duration="17988000" />
+      <workItem from="1613581348008" duration="1407000" />
     </task>
     <servers />
   </component>
