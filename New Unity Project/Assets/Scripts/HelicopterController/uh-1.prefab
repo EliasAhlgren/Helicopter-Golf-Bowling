@@ -6745,6 +6745,7 @@ MonoBehaviour:
   yDeceleration: 6
   yDecelartionInFilight: 1
   xzRotationPower: 3.7
+  slider: {fileID: 0}
 --- !u!138 &2549347891866612853
 FixedJoint:
   m_ObjectHideFlags: 0

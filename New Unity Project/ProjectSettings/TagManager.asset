@@ -7,6 +7,8 @@ TagManager:
   - Helicopter
   - Pin
   - GameManager
+  - ScoreManager
+  - Enviroment
   layers:
   - Default
   - TransparentFX

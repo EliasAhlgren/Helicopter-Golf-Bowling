@@ -9,6 +9,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/17AD9609-AE06-4F2C-9315-931FF97ADCF1/ec/cd2f9a26/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -16,12 +17,12 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/RotorScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameLoop.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/RotorController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/TargetScript.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/ScoreManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/CustomTrack.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/TargetScript.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oFOjHGAWa6P96tjH0zciEaimoh" />
@@ -75,6 +76,8 @@
       <workItem from="1613473061506" duration="16249000" />
       <workItem from="1613547805129" duration="17988000" />
       <workItem from="1613581348008" duration="1407000" />
+      <workItem from="1613637093182" duration="14237000" />
+      <workItem from="1613733377793" duration="1562000" />
     </task>
     <servers />
   </component>

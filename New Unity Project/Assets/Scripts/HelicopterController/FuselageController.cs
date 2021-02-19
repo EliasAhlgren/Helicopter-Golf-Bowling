@@ -36,13 +36,13 @@ public class FuselageController : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         
-        Debug.Log(isPlayerControlled);
         
-        if (!isPlayerControlled && !gameManager.waitingForInput)
+        if (!isPlayerControlled && !gameManager.waitingForInput && other.gameObject.CompareTag("Enviroment") && !gameManager.hasInvincibility)
         {
+            
             gameManager.ResetFromPos(transform.position, gameObject);
         }
-        else
+        else if (gameManager.hasInvincibility)
         {
             helicopterHealth -= other.relativeVelocity.magnitude * collisionDamageMultiplier;
         }
@@ -60,7 +60,7 @@ public class FuselageController : MonoBehaviour
             framesOnGround++;
             if (framesOnGround > 200)
             { 
-                StartCoroutine(gameManager.HelicopterDestroyed());
+                StartCoroutine(gameManager.HelicopterDestroyed(3f));
             }
         }
         
@@ -88,7 +88,7 @@ public class FuselageController : MonoBehaviour
         
         if (helicopterHealth <= 0)
         {
-            StartCoroutine(gameManager.HelicopterDestroyed());
+            StartCoroutine(gameManager.HelicopterDestroyed(3));
         }
         
         if (isPlayerControlled)
