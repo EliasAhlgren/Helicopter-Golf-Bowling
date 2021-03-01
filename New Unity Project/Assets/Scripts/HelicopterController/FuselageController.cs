@@ -24,8 +24,14 @@ public class FuselageController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _rigidbody = gameObject.GetComponent<Rigidbody>();
+
+        gameManager.startingPos = transform.position;
+        gameManager.startingRot = transform.rotation;
+
     }
 
     public void ResetHealth()

@@ -12,13 +12,16 @@ public class TargetScript : MonoBehaviour
     
     private ScoreManager _scoreManager;
 
+    private GameManager _gameManager;
+    
     public float targetScore = 10f;
 
     public bool hasFallen;
     
     private void Start()
     {
-        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().startEvent.AddListener(ResetTransform);
+        _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        _gameManager.startEvent.AddListener(ResetTransform);
         _ogPos = transform.position;
         _ogRot = transform.rotation;
         _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
@@ -29,17 +32,18 @@ public class TargetScript : MonoBehaviour
         gameObject.GetComponent<Collider>().enabled = false;
         var gb = Instantiate(gameObject, _ogPos, _ogRot);
         gb.GetComponent<Collider>().enabled = true;
+        
         Destroy(gameObject);
     }
 
     public IEnumerator waitBeforeReset()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.1f);
         
         Debug.Log("Ending Round");
         
-        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().hasInvincibility = true;
-        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().HelicopterDestroyed(0.1f);
+        
+        _gameManager.HelicopterDestroyed(0.1f);
         
         foreach (var VARIABLE in GameObject.FindGameObjectsWithTag("Pin"))
         {
@@ -51,12 +55,14 @@ public class TargetScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Helicopter"))
         {
-            if (!hasFallen)
+            if (!hasFallen && _gameManager.isReseting == false)
             {
                  Debug.Log("Adding score");
                  _scoreManager.playerScores[_scoreManager.currentPlayer] += targetScore * _scoreManager.scoreMultiplier;
                  hasFallen = true;
-                 StartCoroutine(waitBeforeReset());
+                 _gameManager.hasInvincibility = true;
+                 _gameManager.StartCoroutine(_gameManager.Strike(2f));
+                 //StartCoroutine(waitBeforeReset());
                  //targetScore = 0;
             }
            
