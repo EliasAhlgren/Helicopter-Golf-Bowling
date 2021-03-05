@@ -29,14 +29,16 @@ namespace HelicopterController
         public float yDecelartionInFilight;
         
         public float xzRotationPower = 5;
-
-        public Slider slider;
+        Slider slider;
+        NetworkPlayer networkPlayer;
         
         // Start is called before the first frame update
         void Start()
         //dwdwdwde
         {
             _rigidbody = gameObject.GetComponent<Rigidbody>();
+            networkPlayer = transform.root.GetComponent<NetworkPlayer>();
+            slider = GameObject.Find("Slider").GetComponent<Slider>();
         }
         
         public void Relase()
@@ -69,13 +71,13 @@ namespace HelicopterController
         void YMovement()
         {
             
-            if ( Input.GetAxis(inputAxis) == 0 && yVelocity > 1)
+            if ( networkPlayer.yMovement == 0 && yVelocity > 1)
             {
                 
             }
             else if (yVelocity < maxYVelocity && yVelocity > -20)
             {
-                yVelocity += Time.deltaTime * yThrust * Input.GetAxis(inputAxis);
+                yVelocity += Time.deltaTime * yThrust * networkPlayer.yMovement;
             }
             else if (yVelocity > maxYVelocity)
             {
@@ -92,9 +94,9 @@ namespace HelicopterController
         {
             
             
-            Vector3 rotation = new Vector3(0, 0f, xzRotationPower * -Input.GetAxisRaw("Vertical") * rotationCurve.Evaluate(transform.rotation.eulerAngles.x));
+            Vector3 rotation = new Vector3(0, 0f, xzRotationPower * -networkPlayer.zRotation * rotationCurve.Evaluate(transform.rotation.eulerAngles.x));
             
-            _rigidbody.AddRelativeForce(0,0,-Input.GetAxis("Horizontal"), ForceMode.Force);
+            _rigidbody.AddRelativeForce(0,0,-networkPlayer.xRotation, ForceMode.Force);
             
             _rigidbody.AddRelativeTorque(rotation, ForceMode.Force);
             

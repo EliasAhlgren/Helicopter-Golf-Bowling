@@ -7,16 +7,35 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Editor" t="Include">
+          <e p="MLAPI" t="Include">
+            <e p="MLAPIEditor.cs" t="Include" />
+            <e p="MLAPIProfiler.cs" t="Include" />
+            <e p="NetworkedAnimatorEditor.cs" t="Include" />
+            <e p="NetworkedBehaviourEditor.cs" t="Include" />
+            <e p="NetworkedObjectEditor.cs" t="Include" />
+            <e p="NetworkingManagerEditor.cs" t="Include" />
+            <e p="PostProcessScene.cs" t="Include" />
+            <e p="TrackedObjectEditor.cs" t="Include" />
+          </e>
+        </e>
+        <e p="MLAPI" t="Include">
+          <e p="Lib" t="Include">
+            <e p="MLAPI.xml" t="Include" />
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="GameManagement" t="Include">
             <e p="CustomTrack.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
             <e p="MultiplayerManager.cs" t="Include" />
+            <e p="NetManagerHud.cs" t="Include" />
             <e p="ScoreManager.cs" t="Include" />
             <e p="TargetScript.cs" t="Include" />
           </e>
           <e p="HelicopterController" t="Include">
             <e p="FuselageController.cs" t="Include" />
+            <e p="NetworkPlayer.cs" t="Include" />
             <e p="RotorController.cs" t="Include" />
           </e>
           <e p="SimpleCameraController.cs" t="Include" />

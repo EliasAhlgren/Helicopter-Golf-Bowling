@@ -13,7 +13,8 @@ public class ScoreManager : MonoBehaviour
     
     public float scoreMultiplier;
     public int par;
-    
+
+    public GameObject playerTestObject;
     
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,11 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Instantiate(playerTestObject);
+        }
+        
         for (int i = 0; i < playerScores.Length; i++)
         {
             scoresUguis[i].text = "Player " + (i + 1) + ": " + playerScores[i];

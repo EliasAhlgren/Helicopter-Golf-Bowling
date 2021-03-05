@@ -50,16 +50,17 @@ public class TargetScript : MonoBehaviour
             VARIABLE.GetComponent<TargetScript>().StopAllCoroutines();
         }
     }
-    
+    //
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Helicopter"))
         {
             if (!hasFallen && _gameManager.isReseting == false)
             {
-                 Debug.Log("Adding score");
+                 Debug.Log("Adding score " + other.gameObject);
                  _scoreManager.playerScores[_scoreManager.currentPlayer] += targetScore * _scoreManager.scoreMultiplier;
                  hasFallen = true;
+                 GameObject.Find("fuseFront").GetComponent<FuselageController>().helicopterHealth = 100f;
                  _gameManager.hasInvincibility = true;
                  _gameManager.StartCoroutine(_gameManager.Strike(2f));
                  //StartCoroutine(waitBeforeReset());

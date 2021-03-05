@@ -8,24 +8,31 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/17AD9609-AE06-4F2C-9315-931FF97ADCF1/0b/5fe8ee94/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/NetManagerHud.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/17AD9609-AE06-4F2C-9315-931FF97ADCF1/ec/cd2f9a26/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/17AD9609-AE06-4F2C-9315-931FF97ADCF1/db/2882d1c1/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/26BACF2A-B3E7-4E5B-9AB6-134973DBE886/d8/b28671af/Int32.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.recorder@2.5.4/Runtime/RecorderBindings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/e4/a2ebe8c6/NetworkingManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageRotationScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/RotorScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameLoop.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/RotorController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/ScoreManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/CustomTrack.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/TargetScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/NetManagerHud.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/TargetScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/NetManagerHud.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/ScoreManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/RotorController.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oFOjHGAWa6P96tjH0zciEaimoh" />
@@ -53,10 +60,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="4516">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="4516" />
+      <option name="pid" />
       <option name="selectedOptions">
         <list />
       </option>
@@ -82,7 +89,10 @@
       <workItem from="1613581348008" duration="1407000" />
       <workItem from="1613637093182" duration="14237000" />
       <workItem from="1613733377793" duration="1562000" />
-      <workItem from="1614587493095" duration="15157000" />
+      <workItem from="1614587493095" duration="15821000" />
+      <workItem from="1614679061105" duration="12031000" />
+      <workItem from="1614761568883" duration="6261000" />
+      <workItem from="1614879969742" duration="1217000" />
     </task>
     <servers />
   </component>

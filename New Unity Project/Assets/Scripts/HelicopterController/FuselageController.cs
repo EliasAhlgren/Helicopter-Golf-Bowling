@@ -10,21 +10,21 @@ public class FuselageController : MonoBehaviour
     private Rigidbody _rigidbody;
 
     public float rotSpeed = 1;
-
-    public GameManager gameManager;
+    
+    GameManager gameManager;
 
     public float helicopterHealth = 100f;
 
     public float collisionDamageMultiplier = 2;
 
     public float framesOnGround;
-    
-    
+
+    private NetworkPlayer _networkPlayer;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        _networkPlayer = transform.root.GetComponent<NetworkPlayer>();
         
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _rigidbody = gameObject.GetComponent<Rigidbody>();
@@ -66,6 +66,7 @@ public class FuselageController : MonoBehaviour
             framesOnGround++;
             if (framesOnGround > 200)
             { 
+                Debug.Log("No movement");
                 StartCoroutine(gameManager.HelicopterDestroyed(3f));
             }
         }
@@ -85,21 +86,22 @@ public class FuselageController : MonoBehaviour
     }
     
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (gameManager.waitingForInput)
         {
             //MouseRot();
         }
         
-        if (helicopterHealth <= 0)
+        if (helicopterHealth <= 0 && !gameManager.hasInvincibility)
         {
+            Debug.Log("Low hp destroyed");
             StartCoroutine(gameManager.HelicopterDestroyed(3));
         }
         
         if (isPlayerControlled)
         {
-             _rigidbody.AddRelativeTorque(0, -Input.GetAxisRaw("YRotation") * rotSpeed,0,ForceMode.Force);
+             _rigidbody.AddRelativeTorque(0, -_networkPlayer.yRotation * rotSpeed,0,ForceMode.Force);
         }
        
     }

@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        tmp = GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>();
         //timer = timeToRelase;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     {
 
         isReseting = true;
-        StopCoroutine(relaseTimer(0));
+        StopCoroutine(relaseTimer(timeToRelase));
         deathEvent.Invoke();
         if (GameObject.Find("MiddleText"))
         {
@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         var Blayer = GameObject.Find("fuseFront");
         hasInvincibility = false;
+        GameObject.Find("rotorMain").transform.position = Vector3.zero;
+        GameObject.Find("fuseTail").transform.position = Vector3.zero;
         Blayer.transform.position = startingPos;
         Blayer.transform.rotation = startingRot;   
         Blayer.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -105,7 +107,9 @@ public class GameManager : MonoBehaviour
     {
         if (!hasBeenDestroyed)
         {
+            Debug.Log("Destruction");
             hasBeenDestroyed = true;
+            StopCoroutine(relaseTimer(timeToRelase));
             deathEvent.Invoke();
             yield return new WaitForSeconds(delay);
             var Blayer = GameObject.Find("fuseFront");
@@ -121,6 +125,8 @@ public class GameManager : MonoBehaviour
             {
                 GameObject.Find("MiddleText").SetActive(false);
             }
+            Blayer.GetComponent<FuselageController>().ResetHealth();
+            
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         
