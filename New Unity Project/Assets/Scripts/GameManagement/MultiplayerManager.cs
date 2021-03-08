@@ -49,6 +49,8 @@ namespace GameManagement
         {
             GameObject jeff = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
             jeff.GetComponent<NetworkedObject>().SpawnWithOwnership(obj);
+            _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+            _gameManager.isOfflineGame = isOfflineGame;
         }
 
         public void StartClient()
@@ -56,8 +58,7 @@ namespace GameManagement
             
             NetworkingManager.Singleton.StartClient();
             
-            _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-            _gameManager.isOfflineGame = isOfflineGame;
+            
             
         }
         
