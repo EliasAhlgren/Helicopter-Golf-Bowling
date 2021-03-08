@@ -1,7 +1,6 @@
 ﻿using System;
 using MLAPI;
 using System.Net;
-using Packages.Rider.Editor;
 using UnityEngine;
 
 public class NetManagerHud : MonoBehaviour
