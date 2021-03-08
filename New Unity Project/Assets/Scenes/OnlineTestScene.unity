@@ -121,6 +121,48 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!21 &513282973
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of heligopter_base
+  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_2422F13A:
+        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_AEA6ECFF:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_ACF99242: 1.2
+    - Vector1_BBED81AC: 67
+    - Vector1_EF8936D0: 0.85
+    m_Colors:
+    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
+    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
+    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
+    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
+    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!114 &560375397 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5641060760310788453, guid: 13b017fe6e25639448212c433b44a627,
@@ -133,6 +175,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!21 &671876613
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of heligopter_base
+  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_2422F13A:
+        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_AEA6ECFF:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_ACF99242: 1.2
+    - Vector1_BBED81AC: 67
+    - Vector1_EF8936D0: 0.85
+    m_Colors:
+    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
+    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
+    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
+    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
+    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!114 &690466261 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5641060760103594177, guid: 13b017fe6e25639448212c433b44a627,
@@ -145,6 +229,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!21 &731148501
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of heligopter_base
+  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_2422F13A:
+        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_AEA6ECFF:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_ACF99242: 1.2
+    - Vector1_BBED81AC: 67
+    - Vector1_EF8936D0: 0.85
+    m_Colors:
+    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
+    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
+    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
+    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
+    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &812739187
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +363,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!21 &839929540
+--- !u!21 &892603264
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -343,6 +469,48 @@ Material:
     - _L3_color: {r: 0, g: 0, b: 0, a: 1}
     - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+--- !u!21 &933301819
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of heligopter_base
+  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_2422F13A:
+        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_AEA6ECFF:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_ACF99242: 1.2
+    - Vector1_BBED81AC: 67
+    - Vector1_EF8936D0: 0.85
+    m_Colors:
+    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
+    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
+    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
+    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
+    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &1003847220
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +562,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 65442894e90491048b0b341ce6500499, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -431,8 +599,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003847220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.548775, y: -54.98102, z: 36.734264}
-  m_LocalScale: {x: 44.28796, y: 44.28796, z: 44.28796}
+  m_LocalPosition: {x: -25.549, y: -19, z: 36.734}
+  m_LocalScale: {x: 242.48807, y: 242.48807, z: 242.48807}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -611,6 +779,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!21 &1137667419
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of heligopter_base
+  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_2422F13A:
+        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_AEA6ECFF:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_ACF99242: 1.2
+    - Vector1_BBED81AC: 67
+    - Vector1_EF8936D0: 0.85
+    m_Colors:
+    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
+    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
+    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
+    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
+    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &1207399300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -680,132 +890,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1a257b4c8a516a44a090e092b634f47, type: 3}
---- !u!21 &1267774484
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of heligopter_base
-  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_2422F13A:
-        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_AEA6ECFF:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_ACF99242: 1.2
-    - Vector1_BBED81AC: 67
-    - Vector1_EF8936D0: 0.85
-    m_Colors:
-    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
-    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
-    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
-    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
-    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1439975479
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of heligopter_base
-  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_2422F13A:
-        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_AEA6ECFF:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_ACF99242: 1.2
-    - Vector1_BBED81AC: 67
-    - Vector1_EF8936D0: 0.85
-    m_Colors:
-    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
-    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
-    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
-    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
-    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1445347824
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of heligopter_base
-  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_2422F13A:
-        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_AEA6ECFF:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_ACF99242: 1.2
-    - Vector1_BBED81AC: 67
-    - Vector1_EF8936D0: 0.85
-    m_Colors:
-    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
-    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
-    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
-    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
-    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!114 &1564236403 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5641060761223246977, guid: 13b017fe6e25639448212c433b44a627,
@@ -824,7 +908,49 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1082070530}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1705647661
+--- !u!21 &1705691116
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of heligopter_base
+  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_2422F13A:
+        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_AEA6ECFF:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_ACF99242: 1.2
+    - Vector1_BBED81AC: 67
+    - Vector1_EF8936D0: 0.85
+    m_Colors:
+    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
+    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
+    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
+    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
+    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
+--- !u!21 &1819777682
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -930,132 +1056,6 @@ Material:
     - _L3_color: {r: 0, g: 0, b: 0, a: 1}
     - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
---- !u!21 &1776441579
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of heligopter_base
-  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_2422F13A:
-        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_AEA6ECFF:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_ACF99242: 1.2
-    - Vector1_BBED81AC: 67
-    - Vector1_EF8936D0: 0.85
-    m_Colors:
-    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
-    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
-    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
-    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
-    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1798855140
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of heligopter_base
-  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_2422F13A:
-        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_AEA6ECFF:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_ACF99242: 1.2
-    - Vector1_BBED81AC: 67
-    - Vector1_EF8936D0: 0.85
-    m_Colors:
-    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
-    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
-    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
-    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
-    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &1863851423
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of heligopter_base
-  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_2422F13A:
-        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_AEA6ECFF:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_ACF99242: 1.2
-    - Vector1_BBED81AC: 67
-    - Vector1_EF8936D0: 0.85
-    m_Colors:
-    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
-    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
-    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
-    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
-    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!114 &2036575362 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5641060761379575348, guid: 13b017fe6e25639448212c433b44a627,
@@ -1196,9 +1196,9 @@ MonoBehaviour:
     NetworkedPrefabs:
     - Prefab: {fileID: 7216597336714954244, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
-      PlayerPrefab: 0
+      PlayerPrefab: 1
     PlayerPrefabHash:
-      Value: 0
+      Value: 1897319656204293034
     CreatePlayerPrefab: 1
     ReceiveTickrate: 64
     MaxReceiveEventsPerTickRate: 500
@@ -1236,7 +1236,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 839929540}
+      objectReference: {fileID: 1819777682}
     - target: {fileID: 2258209030635294151, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
       propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1286,12 +1286,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1445347824}
+      objectReference: {fileID: 731148501}
     - target: {fileID: 4799320510880070735, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1863851423}
+      objectReference: {fileID: 1705691116}
     - target: {fileID: 6827114217369069789, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -1376,12 +1376,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1776441579}
+      objectReference: {fileID: 1137667419}
     - target: {fileID: 6998434617594745024, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1267774484}
+      objectReference: {fileID: 671876613}
     - target: {fileID: 7216597336714954244, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
       propertyPath: m_Name
@@ -1451,16 +1451,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1798855140}
+      objectReference: {fileID: 513282973}
     - target: {fileID: 8885854534340902980, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1439975479}
+      objectReference: {fileID: 933301819}
     - target: {fileID: 9158608377484937943, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1705647661}
+      objectReference: {fileID: 892603264}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aba0f0a156f81c409122d3057bded23, type: 3}

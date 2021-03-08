@@ -20,6 +20,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/RotorController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/NetManagerHud.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
       </list>
     </option>
@@ -90,7 +91,7 @@
       <workItem from="1614679061105" duration="12031000" />
       <workItem from="1614761568883" duration="6261000" />
       <workItem from="1614879969742" duration="1217000" />
-      <workItem from="1615190478221" duration="10120000" />
+      <workItem from="1615190478221" duration="14161000" />
     </task>
     <servers />
   </component>

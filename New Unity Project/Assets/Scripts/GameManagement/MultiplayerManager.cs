@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using MLAPI;
+using MLAPI.Messaging;
+using MLAPI.Spawning;
 using MLAPI.Transports.UNET;
 
 namespace GameManagement
@@ -35,10 +37,10 @@ namespace GameManagement
             
             
             NetworkingManager.Singleton.OnClientConnectedCallback += ClientConnected;
-            NetworkingManager.Singleton.StartHost(createPlayerObject: false);
+            NetworkingManager.Singleton.StartHost(Vector3.zero,Quaternion.identity,true, SpawnManager.GetPrefabHashFromIndex(0));
 
-            GameObject teuvo = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-            teuvo.GetComponent<NetworkedObject>().SpawnWithOwnership(NetworkingManager.Singleton.ServerClientId);
+            //GameObject teuvo = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+            //teuvo.GetComponent<NetworkedObject>().SpawnWithOwnership(NetworkingManager.Singleton.ServerClientId);
             
             _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
             _gameManager.isOfflineGame = isOfflineGame;
@@ -49,12 +51,24 @@ namespace GameManagement
         private void ClientConnected(ulong obj)
         {
             Debug.Log("Client connected");
-            GameObject jeff = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-            jeff.GetComponent<NetworkedObject>().SpawnWithOwnership(obj);
+            //GameObject jeff = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+            //jeff.GetComponent<NetworkedObject>().SpawnWithOwnership(obj);
             _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
             _gameManager.isOfflineGame = isOfflineGame;
+            SetPlayerPositions(NetworkingManager.Singleton.ConnectedClientsList[0].PlayerObject.transform.position, NetworkingManager.Singleton.ConnectedClientsList[0].PlayerObject.transform.rotation);
+            
         }
 
+        [ClientRPC]
+        public void SetPlayerPositions(Vector3 pos, Quaternion rot)
+        {
+            if (!isHost)
+            {
+                NetworkingManager.Singleton.ConnectedClientsList[0].PlayerObject.transform.position = pos;
+                NetworkingManager.Singleton.ConnectedClientsList[0].PlayerObject.transform.rotation = rot;
+            }
+        }
+        
         public void StartClient()
         {
             NetworkingManager.Singleton.StartClient();

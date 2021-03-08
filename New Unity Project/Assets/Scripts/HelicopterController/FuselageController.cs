@@ -63,7 +63,7 @@ public class FuselageController : MonoBehaviour
     {
         if (!gameManager.waitingForInput)
         {
-            framesOnGround++;
+            //framesOnGround++;
             if (framesOnGround > 200)
             { 
                 Debug.Log("No movement");
