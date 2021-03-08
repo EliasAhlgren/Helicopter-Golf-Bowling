@@ -47,6 +47,7 @@ namespace GameManagement
 
         private void ClientConnected(ulong obj)
         {
+            Debug.Log("Client connected");
             GameObject jeff = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
             jeff.GetComponent<NetworkedObject>().SpawnWithOwnership(obj);
             _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
@@ -55,10 +56,7 @@ namespace GameManagement
 
         public void StartClient()
         {
-            
             NetworkingManager.Singleton.StartClient();
-            
-            
             
         }
         
