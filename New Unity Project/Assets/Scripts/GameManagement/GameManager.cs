@@ -12,6 +12,8 @@ using Object = UnityEngine.Object;
 
 public class GameManager : MonoBehaviour
 {
+    public bool isOfflineGame;
+    
     public float timeToRelase = 5;
 
     public UnityEvent relaseEvent;
@@ -22,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent startEvent;
     
-    public TextMeshProUGUI tmp;
+    TextMeshProUGUI tmp;
     
     public float timer;
 
@@ -30,11 +32,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]private bool hasBeenDestroyed = false;
 
-    public bool hasInvincibility;
-    public bool isReseting;
+    [HideInInspector] public bool hasInvincibility;
+    [HideInInspector] public bool isReseting;
 
-    public Vector3 startingPos;
-    public Quaternion startingRot;
+    [HideInInspector] public Vector3 startingPos;
+    [HideInInspector] public Quaternion startingRot;
+    
     
     private void Awake()
     {
@@ -70,37 +73,42 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator Strike(float delay)
     {
+        if (true)
+        {
+            isReseting = true;
+            StopCoroutine(relaseTimer(timeToRelase));
+            deathEvent.Invoke();
+            if (GameObject.Find("MiddleText"))
+            {
+                GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Strike";
+            }
 
-        isReseting = true;
-        StopCoroutine(relaseTimer(timeToRelase));
-        deathEvent.Invoke();
-        if (GameObject.Find("MiddleText"))
-        {
-            GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Strike";
-        }
-        yield return new WaitForSeconds(delay);
-        var Blayer = GameObject.Find("fuseFront");
-        hasInvincibility = false;
-        GameObject.Find("rotorMain").transform.position = Vector3.zero;
-        GameObject.Find("fuseTail").transform.position = Vector3.zero;
-        Blayer.transform.position = startingPos;
-        Blayer.transform.rotation = startingRot;   
-        Blayer.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        Blayer.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        GameObject.Find("rotorMain").GetComponent<RotorController>().yVelocity = 0;
-        GameObject.Find("rotorMain").GetComponent<Rigidbody>().velocity = Vector3.zero;
-        GameObject.Find("rotorMain").GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        if (GameObject.Find("MiddleText"))
-        {
-            GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Vehicle Destroyed";
-            GameObject.Find("MiddleText").SetActive(false);
-        }
-        foreach (var VARIABLE in GameObject.FindGameObjectsWithTag("Pin"))
-        {
-            VARIABLE.GetComponent<TargetScript>().ResetTransform();
-        }
+            yield return new WaitForSeconds(delay);
+            var Blayer = GameObject.Find("fuseFront");
+            hasInvincibility = false;
+            GameObject.Find("rotorMain").transform.position = Vector3.zero;
+            GameObject.Find("fuseTail").transform.position = Vector3.zero;
+            Blayer.transform.position = startingPos;
+            Blayer.transform.rotation = startingRot;
+            Blayer.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            Blayer.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            GameObject.Find("rotorMain").GetComponent<RotorController>().yVelocity = 0;
+            GameObject.Find("rotorMain").GetComponent<Rigidbody>().velocity = Vector3.zero;
+            GameObject.Find("rotorMain").GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            if (GameObject.Find("MiddleText"))
+            {
+                GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Vehicle Destroyed";
+                GameObject.Find("MiddleText").SetActive(false);
+            }
 
-        isReseting = false;
+            foreach (var VARIABLE in GameObject.FindGameObjectsWithTag("Pin"))
+            {
+                VARIABLE.GetComponent<TargetScript>().ResetTransform();
+            }
+
+            isReseting = false;
+        }
+        
     }
     
     public IEnumerator HelicopterDestroyed(float delay)
@@ -126,6 +134,11 @@ public class GameManager : MonoBehaviour
                 GameObject.Find("MiddleText").SetActive(false);
             }
             Blayer.GetComponent<FuselageController>().ResetHealth();
+
+            if (!isOfflineGame)
+            {
+                
+            }
             
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

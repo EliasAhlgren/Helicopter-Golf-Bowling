@@ -22,7 +22,7 @@ namespace HelicopterController
         public AnimationCurve heightCurve;
         public AnimationCurve rotationCurve;
         
-        public float yVelocity;
+        public float yVelocity; 
         public float maxYVelocity = 50;
         public float yDeceleration = 5;
 
