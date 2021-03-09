@@ -1,4 +1,5 @@
 ﻿using System;
+using Cinemachine;
 using UnityEngine;
 using MLAPI;
 using MLAPI.Messaging;
@@ -38,12 +39,14 @@ namespace GameManagement
             
             NetworkingManager.Singleton.OnClientConnectedCallback += ClientConnected;
             NetworkingManager.Singleton.StartHost(Vector3.zero,Quaternion.identity,true, SpawnManager.GetPrefabHashFromIndex(0));
-
+            
             //GameObject teuvo = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
             //teuvo.GetComponent<NetworkedObject>().SpawnWithOwnership(NetworkingManager.Singleton.ServerClientId);
             
             _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
             _gameManager.isOfflineGame = isOfflineGame;
+            _gameManager.transform.root.gameObject.GetComponentInChildren<Camera>().enabled = true;
+            _gameManager.transform.root.name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
             
             isHost = true;
         }
@@ -51,21 +54,19 @@ namespace GameManagement
         private void ClientConnected(ulong obj)
         {
             Debug.Log("Client connected");
-            //GameObject jeff = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-            //jeff.GetComponent<NetworkedObject>().SpawnWithOwnership(obj);
-            _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-            _gameManager.isOfflineGame = isOfflineGame;
-            SetPlayerPositions(NetworkingManager.Singleton.ConnectedClientsList[0].PlayerObject.transform.position, NetworkingManager.Singleton.ConnectedClientsList[0].PlayerObject.transform.rotation);
-            
+
+            GameObject jeff = GameObject.Find("Player(Clone)");
+            jeff.name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
+            SetPlayerPositions(jeff, NetworkingManager.Singleton.ConnectedClientsList[0].PlayerObject.transform.position, NetworkingManager.Singleton.ConnectedClientsList[0].PlayerObject.transform.rotation);
         }
 
         [ClientRPC]
-        public void SetPlayerPositions(Vector3 pos, Quaternion rot)
+        public void SetPlayerPositions(GameObject obj, Vector3 pos, Quaternion rot)
         {
+            Debug.Log("Hello");
             if (!isHost)
             {
-                NetworkingManager.Singleton.ConnectedClientsList[0].PlayerObject.transform.position = pos;
-                NetworkingManager.Singleton.ConnectedClientsList[0].PlayerObject.transform.rotation = rot;
+                obj.GetComponentInChildren<Camera>().enabled = true;
             }
         }
         
