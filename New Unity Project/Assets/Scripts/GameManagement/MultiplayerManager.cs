@@ -61,7 +61,7 @@ namespace GameManagement
         private void ClientConnected(ulong obj)
         {
             UnetTransport unetTransport = gameObject.GetComponent<UnetTransport>();
-            Debug.Log("Connected to: " + unetTransport.ConnectAddress + " rtt " unetTransport.GetCurrentRtt(unetTransport.ServerClientId));
+            Debug.Log("Connected to: " + unetTransport.ConnectAddress + " rtt " + unetTransport.GetCurrentRtt(unetTransport.ServerClientId));
             
             Debug.Log("Client connected");
 
