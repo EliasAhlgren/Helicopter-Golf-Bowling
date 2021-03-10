@@ -60,6 +60,9 @@ namespace GameManagement
 
         private void ClientConnected(ulong obj)
         {
+            UnetTransport unetTransport = gameObject.GetComponent<UnetTransport>();
+            Debug.Log("Connected to: " + unetTransport.ConnectAddress + " rtt " unetTransport.GetCurrentRtt(unetTransport.ServerClientId));
+            
             Debug.Log("Client connected");
 
             GameObject jeff = GameObject.Find("Player(Clone)");
@@ -110,6 +113,8 @@ namespace GameManagement
                 helicopters[0].GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone(helicopters[0].GetComponent<NetworkPlayer>().SetCamera);
                 
                 helicopters[currentPlayer].GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera" ,ids);
+                
+                
                 
             }
             
