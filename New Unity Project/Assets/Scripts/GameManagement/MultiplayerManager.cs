@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using MLAPI;
 using MLAPI.Messaging;
 using MLAPI.Spawning;
 using MLAPI.Transports.UNET;
+
 
 namespace GameManagement
 {
@@ -27,6 +29,8 @@ namespace GameManagement
         public bool isHost;
 
         public GameObject playerPrefab;
+
+        public List<GameObject> helicopters;
         
         private void Awake()
         {
@@ -35,6 +39,7 @@ namespace GameManagement
 
         public void StartHost()
         {
+
             
             
             NetworkingManager.Singleton.OnClientConnectedCallback += ClientConnected;
@@ -46,7 +51,8 @@ namespace GameManagement
             _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
             _gameManager.isOfflineGame = isOfflineGame;
             _gameManager.transform.root.gameObject.GetComponentInChildren<Camera>().enabled = true;
-            _gameManager.transform.root.name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
+            helicopters.Add(_gameManager.transform.root.gameObject); 
+            helicopters[0].name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
             
             isHost = true;
         }
@@ -57,18 +63,16 @@ namespace GameManagement
 
             GameObject jeff = GameObject.Find("Player(Clone)");
             jeff.name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
-            SetPlayerPositions(jeff, NetworkingManager.Singleton.ConnectedClientsList[0].PlayerObject.transform.position, NetworkingManager.Singleton.ConnectedClientsList[0].PlayerObject.transform.rotation);
-        }
-
-        [ClientRPC]
-        public void SetPlayerPositions(GameObject obj, Vector3 pos, Quaternion rot)
-        {
-            Debug.Log("Hello");
-            if (!isHost)
+            helicopters.Add(jeff);
+            List<ulong> ids = new  List<ulong>();
+            ids.Add(jeff.GetComponent<NetworkedObject>().OwnerClientId);
+            if (isHost)
             {
-                obj.GetComponentInChildren<Camera>().enabled = true;
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera",ids, jeff);
             }
         }
+
+        
         
         public void StartClient()
         {

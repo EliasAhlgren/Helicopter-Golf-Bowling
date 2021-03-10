@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using MLAPI;
 using UnityEngine;
+using MLAPI.Messaging;
+using MLAPI.Spawning;
 
 
-
-public class NetworkPlayer : MonoBehaviour
+public class NetworkPlayer : NetworkedBehaviour
 {
      
     public float yMovement;
@@ -22,6 +24,17 @@ public class NetworkPlayer : MonoBehaviour
         
     }
 
+    [ClientRPC]
+    public void SetCamera(GameObject obj)
+    {
+        
+        if (!IsHost)
+        {
+            Debug.Log("Hello");
+            SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<Camera>().enabled = true;
+        }
+    }
+    
     // Update is called once per frame
     void FixedUpdate()
     {
