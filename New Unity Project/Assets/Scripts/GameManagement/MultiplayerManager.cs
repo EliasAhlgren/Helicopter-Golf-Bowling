@@ -31,6 +31,10 @@ namespace GameManagement
         public GameObject playerPrefab;
 
         public List<GameObject> helicopters;
+
+        public int serverCapacity;
+        
+        public Camera lookAtCamera;
         
         private void Awake()
         {
@@ -39,9 +43,6 @@ namespace GameManagement
 
         public void StartHost()
         {
-
-            
-            
             NetworkingManager.Singleton.OnClientConnectedCallback += ClientConnected;
             NetworkingManager.Singleton.StartHost(Vector3.zero,Quaternion.identity,true, SpawnManager.GetPrefabHashFromIndex(0));
             
@@ -50,7 +51,7 @@ namespace GameManagement
             
             _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
             _gameManager.isOfflineGame = isOfflineGame;
-            _gameManager.transform.root.gameObject.GetComponentInChildren<Camera>().enabled = true;
+            //_gameManager.transform.root.gameObject.GetComponentInChildren<Camera>().enabled = true;
             helicopters.Add(_gameManager.transform.root.gameObject); 
             helicopters[0].name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
             
@@ -68,7 +69,7 @@ namespace GameManagement
             ids.Add(jeff.GetComponent<NetworkedObject>().OwnerClientId);
             if (isHost)
             {
-                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera",ids, jeff);
+                //SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera",ids, jeff);
             }
         }
 
@@ -83,7 +84,9 @@ namespace GameManagement
         
         private void Start()
         {
-            
+
+            lookAtCamera = GameObject.Find("CineCamera").GetComponent<Camera>();
+            lookAtCamera.enabled = true;
             
             //Destroy(GameObject.FindGameObjectsWithTag("ScoreManager")[1]);
             if (isOfflineGame)
@@ -99,6 +102,17 @@ namespace GameManagement
 
         private void Update()
         {
+            if (isHost && NetworkingManager.Singleton.ConnectedClientsList.Count > 1)
+            {
+                List<ulong> ids = new List<ulong>(0);
+                ids.Add(helicopters[currentPlayer].GetComponent<NetworkedBehaviour>().OwnerClientId);
+
+                helicopters[0].GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone(helicopters[0].GetComponent<NetworkPlayer>().SetCamera);
+                
+                helicopters[currentPlayer].GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera" ,ids);
+                
+            }
+            
             if (Input.GetKeyDown(KeyCode.H) && isAtStartup)
             {
                 StartHost();

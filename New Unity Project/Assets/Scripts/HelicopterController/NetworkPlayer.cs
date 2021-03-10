@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using MLAPI;
 using UnityEngine;
 using MLAPI.Messaging;
@@ -25,14 +26,19 @@ public class NetworkPlayer : NetworkedBehaviour
     }
 
     [ClientRPC]
-    public void SetCamera(GameObject obj)
+    public void SetCamera()
     {
-        
-        if (!IsHost)
-        {
             Debug.Log("Hello");
             SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<Camera>().enabled = true;
-        }
+        
+    }
+
+    
+    
+    [ClientRPC]
+    public void SetTarget(Transform transform)
+    {
+        GameObject.Find("CineCamera").GetComponentInChildren<CinemachineVirtualCamera>().LookAt = transform;
     }
     
     // Update is called once per frame
