@@ -26,11 +26,12 @@ public class NetworkPlayer : NetworkedBehaviour
     }
 
     [ClientRPC]
-    public void SetCamera()
+    public void SetCamera(Vector3 pos)
     {
-            Debug.Log("Hello");
-            SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<Camera>().enabled = true;
-            SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
+        transform.Find("fuseFront").position = pos;
+        Debug.Log("Hello");
+        SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<Camera>().enabled = true;
+        SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
     }
 
     // Update is called once per frame
