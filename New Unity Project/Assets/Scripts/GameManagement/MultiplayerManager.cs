@@ -36,6 +36,8 @@ namespace GameManagement
         public int serverCapacity;
         
         public Camera lookAtCamera;
+
+        public Vector3 spawnPosition; 
         
         private void Awake()
         {
@@ -44,8 +46,10 @@ namespace GameManagement
 
         public void StartHost()
         {
+            spawnPosition = Vector3.zero;
+            
             NetworkingManager.Singleton.OnClientConnectedCallback += ClientConnected;
-            NetworkingManager.Singleton.StartHost(Vector3.zero,Quaternion.identity,true, SpawnManager.GetPrefabHashFromIndex(0));
+            NetworkingManager.Singleton.StartHost(spawnPosition,Quaternion.identity,true, SpawnManager.GetPrefabHashFromIndex(0));
             
             //GameObject teuvo = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
             //teuvo.GetComponent<NetworkedObject>().SpawnWithOwnership(NetworkingManager.Singleton.ServerClientId);
@@ -58,6 +62,7 @@ namespace GameManagement
             
             isHost = true;
             //GameObject.Find("CineCamera").GetComponent<NetworkedTransform>().enabled = true;
+            spawnPosition += Vector3.left;
         }
 
         private void ClientConnected(ulong obj)
@@ -76,8 +81,9 @@ namespace GameManagement
             if (isHost)
             {
                 //jeff.GetComponentInChildren<Camera>().enabled = false;
-                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera",ids, jeff);
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera",ids, spawnPosition);
             }
+            spawnPosition += Vector3.left;
         }
 
         
