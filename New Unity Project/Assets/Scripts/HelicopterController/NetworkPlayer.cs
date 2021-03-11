@@ -28,7 +28,7 @@ public class NetworkPlayer : NetworkedBehaviour
     [ClientRPC]
     public void SetCamera(Vector3 pos)
     {
-        transform.Find("fuseFront").position = pos;
+        transform.position = pos;
         Debug.Log("Hello");
         SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<Camera>().enabled = true;
         SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
