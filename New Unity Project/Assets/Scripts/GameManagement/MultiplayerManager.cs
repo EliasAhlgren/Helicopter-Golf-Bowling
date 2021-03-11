@@ -4,6 +4,7 @@ using Cinemachine;
 using UnityEngine;
 using MLAPI;
 using MLAPI.Messaging;
+using MLAPI.Prototyping;
 using MLAPI.Spawning;
 using MLAPI.Transports.UNET;
 
@@ -56,6 +57,7 @@ namespace GameManagement
             helicopters[0].name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
             
             isHost = true;
+            //GameObject.Find("CineCamera").GetComponent<NetworkedTransform>().enabled = true;
         }
 
         private void ClientConnected(ulong obj)
@@ -65,14 +67,16 @@ namespace GameManagement
             
             Debug.Log("Client connected");
 
-            GameObject jeff = GameObject.Find("Player(Clone)");
+            //GameObject jeff = GameObject.Find("Player(Clone)");
+            GameObject jeff = SpawnManager.SpawnedObjects[obj].gameObject;
             jeff.name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
             helicopters.Add(jeff);
             List<ulong> ids = new  List<ulong>();
             ids.Add(jeff.GetComponent<NetworkedObject>().OwnerClientId);
             if (isHost)
             {
-                //SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera",ids, jeff);
+                //jeff.GetComponentInChildren<Camera>().enabled = false;
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera",ids, jeff);
             }
         }
 
@@ -107,12 +111,12 @@ namespace GameManagement
         {
             if (isHost && NetworkingManager.Singleton.ConnectedClientsList.Count > 1)
             {
-                List<ulong> ids = new List<ulong>(0);
-                ids.Add(helicopters[currentPlayer].GetComponent<NetworkedBehaviour>().OwnerClientId);
+                //List<ulong> ids = new List<ulong>(0);
+                //ids.Add(helicopters[currentPlayer].GetComponent<NetworkedBehaviour>().OwnerClientId);
 
-                helicopters[0].GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone(helicopters[0].GetComponent<NetworkPlayer>().SetCamera);
+                //helicopters[0].GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone(helicopters[0].GetComponent<NetworkPlayer>().SetCamera);
                 
-                helicopters[currentPlayer].GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera" ,ids);
+                //helicopters[currentPlayer].GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera" ,ids);
                 
                 
                 
@@ -140,7 +144,7 @@ namespace GameManagement
         public void NextPlayerTurn()
         {
             
-            
+
             if (currentPlayer + 1 <= playerCount)
             {
                 currentPlayer++;
@@ -160,6 +164,12 @@ namespace GameManagement
             else
             {
                // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+
+            if (!isOfflineGame && isHost)
+            {
+               // lookAtCamera.GetComponentInChildren<CinemachineVirtualCamera>().LookAt =
+                //    helicopters[currentPlayer].transform;
             }
             
         }

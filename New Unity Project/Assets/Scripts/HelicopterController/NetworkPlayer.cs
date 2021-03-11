@@ -30,17 +30,9 @@ public class NetworkPlayer : NetworkedBehaviour
     {
             Debug.Log("Hello");
             SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<Camera>().enabled = true;
-        
+            SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<CinemachineVirtualCamera>().enabled = true;
     }
 
-    
-    
-    [ClientRPC]
-    public void SetTarget(Transform transform)
-    {
-        GameObject.Find("CineCamera").GetComponentInChildren<CinemachineVirtualCamera>().LookAt = transform;
-    }
-    
     // Update is called once per frame
     void FixedUpdate()
     {
