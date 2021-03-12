@@ -37,6 +37,11 @@ public class NetworkPlayer : NetworkedBehaviour
     [ClientRPC]
     public void SetCurrentPlayerCamera(ulong jyrki)
     {
+        foreach (var VARIABLE in SpawnManager.SpawnedObjects)
+        {
+            Debug.Log("Object: " + VARIABLE);
+        }
+        
         Debug.Log("Setting gameras :DDDD: " + SpawnManager.SpawnedObjects[jyrki]);
         
         foreach (var VARIABLE in SpawnManager.SpawnedObjects)
