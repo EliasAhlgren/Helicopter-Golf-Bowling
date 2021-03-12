@@ -84,7 +84,7 @@ namespace GameManagement
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera",ids, spawnPosition);
                 if (helicopters.Count == serverCapacity)
                 {
-                    StartGame();
+                    //StartGame();
                 }
             }
             spawnPosition += Vector3.left;
@@ -123,6 +123,11 @@ namespace GameManagement
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                StartGame();
+            }
+            
             if (isHost && NetworkingManager.Singleton.ConnectedClientsList.Count > 1)
             {
                 //List<ulong> ids = new List<ulong>(0);
