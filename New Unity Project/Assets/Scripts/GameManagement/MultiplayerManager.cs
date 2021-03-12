@@ -82,11 +82,19 @@ namespace GameManagement
             {
                 //jeff.GetComponentInChildren<Camera>().enabled = false;
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera",ids, spawnPosition);
+                if (helicopters.Count == serverCapacity)
+                {
+                    StartGame();
+                }
             }
             spawnPosition += Vector3.left;
         }
 
         
+        void StartGame()
+        {
+            SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", NetworkingManager.Singleton.LocalClientId);
+        }
         
         public void StartClient()
         {

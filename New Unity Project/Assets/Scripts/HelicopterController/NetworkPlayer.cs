@@ -34,6 +34,27 @@ public class NetworkPlayer : NetworkedBehaviour
         SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
     }
 
+    [ClientRPC]
+    public void SetCurrentPlayerCamera(ulong jyrki)
+    {
+        Debug.Log("Setting gameras :DDDD");
+        
+        foreach (var VARIABLE in SpawnManager.SpawnedObjects)
+        {
+            if (VARIABLE.Value != SpawnManager.GetPlayerObject(jyrki))
+            {
+                VARIABLE.Value.GetComponentInChildren<Camera>().enabled = false;
+                VARIABLE.Value.GetComponent<CinemachineFreeLook>().enabled = false;
+            }
+            else
+            {
+                VARIABLE.Value.GetComponentInChildren<Camera>().enabled = false;
+                VARIABLE.Value.GetComponent<CinemachineFreeLook>().enabled = false;
+            }
+        }
+        
+    }
+    
     // Update is called once per frame
     void FixedUpdate()
     {
