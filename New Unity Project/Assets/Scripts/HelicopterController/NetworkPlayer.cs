@@ -46,7 +46,7 @@ public class NetworkPlayer : NetworkedBehaviour
         
         foreach (var VARIABLE in SpawnManager.SpawnedObjects)
         {
-            if (VARIABLE.Value != SpawnManager.GetPlayerObject(jyrki))
+            if (VARIABLE.Value != SpawnManager.GetPlayerObject(jyrki - 1))
             {
                 VARIABLE.Value.GetComponentInChildren<Camera>().enabled = false;
                 VARIABLE.Value.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
