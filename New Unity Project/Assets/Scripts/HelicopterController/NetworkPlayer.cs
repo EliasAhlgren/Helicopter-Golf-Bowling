@@ -49,12 +49,12 @@ public class NetworkPlayer : NetworkedBehaviour
             if (VARIABLE.Value != SpawnManager.GetPlayerObject(jyrki))
             {
                 VARIABLE.Value.GetComponentInChildren<Camera>().enabled = false;
-                VARIABLE.Value.GetComponent<CinemachineFreeLook>().enabled = false;
+                VARIABLE.Value.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
             }
             else
             {
                 VARIABLE.Value.GetComponentInChildren<Camera>().enabled = false;
-                VARIABLE.Value.GetComponent<CinemachineFreeLook>().enabled = false;
+                VARIABLE.Value.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
             }
         }
         
