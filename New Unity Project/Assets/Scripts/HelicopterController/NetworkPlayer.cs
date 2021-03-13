@@ -44,17 +44,20 @@ public class NetworkPlayer : NetworkedBehaviour
         }
         */
         
-        Debug.Log("Setting gameras to  " + SpawnManager.GetPlayerObject(jyrki - 1));
+        
+        Debug.Log("Setting gameras to  " + SpawnManager.GetPlayerObject(jyrki));
         
         foreach (var VARIABLE in SpawnManager.SpawnedObjects)
         {
-            if (VARIABLE.Value != SpawnManager.GetPlayerObject(jyrki - 1))
+            if (VARIABLE.Value != SpawnManager.GetPlayerObject(jyrki))
             {
+                Debug.Log("Not found "+ VARIABLE.Value);
                 VARIABLE.Value.GetComponentInChildren<Camera>().enabled = false;
                 VARIABLE.Value.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
             }
             else
             {
+                Debug.Log("found "+ VARIABLE.Value);
                 VARIABLE.Value.GetComponentInChildren<Camera>().enabled = false;
                 VARIABLE.Value.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
             }
