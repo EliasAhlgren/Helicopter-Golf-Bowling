@@ -58,8 +58,8 @@ public class NetworkPlayer : NetworkedBehaviour
             else
             {
                 Debug.Log("found "+ VARIABLE);
-                VARIABLE.GetComponentInChildren<Camera>().enabled = false;
-                VARIABLE.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
+                VARIABLE.GetComponentInChildren<Camera>().enabled = true;
+                VARIABLE.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
             }
         }
         
