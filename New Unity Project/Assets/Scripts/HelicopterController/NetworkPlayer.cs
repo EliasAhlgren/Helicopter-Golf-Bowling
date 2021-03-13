@@ -35,7 +35,7 @@ public class NetworkPlayer : NetworkedBehaviour
     }
 
     [ClientRPC]
-    public void SetCurrentPlayerCamera(ulong jyrki)
+    public void SetCurrentPlayerCamera(NetworkedObject jyrki)
     {
         /*
         foreach (var VARIABLE in SpawnManager.SpawnedObjects)
@@ -45,21 +45,21 @@ public class NetworkPlayer : NetworkedBehaviour
         */
         
         
-        Debug.Log("Setting gameras to  " + SpawnManager.GetPlayerObject(jyrki));
+        Debug.Log("Setting gameras to  " + jyrki);
         
-        foreach (var VARIABLE in SpawnManager.SpawnedObjects)
+        foreach (var VARIABLE in SpawnManager.SpawnedObjectsList)
         {
-            if (VARIABLE.Value != SpawnManager.GetPlayerObject(jyrki))
+            if (VARIABLE != jyrki)
             {
-                Debug.Log("Not found "+ VARIABLE.Value);
-                VARIABLE.Value.GetComponentInChildren<Camera>().enabled = false;
-                VARIABLE.Value.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
+                Debug.Log("Not found "+ VARIABLE);
+                VARIABLE.GetComponentInChildren<Camera>().enabled = false;
+                VARIABLE.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
             }
             else
             {
-                Debug.Log("found "+ VARIABLE.Value);
-                VARIABLE.Value.GetComponentInChildren<Camera>().enabled = false;
-                VARIABLE.Value.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
+                Debug.Log("found "+ VARIABLE);
+                VARIABLE.GetComponentInChildren<Camera>().enabled = false;
+                VARIABLE.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
             }
         }
         

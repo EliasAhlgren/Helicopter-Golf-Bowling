@@ -94,7 +94,7 @@ namespace GameManagement
         void StartGame()
         {
             Debug.Log(NetworkingManager.Singleton.LocalClientId + " le number");
-            SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", NetworkingManager.Singleton.LocalClientId + 1);
+            SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", SpawnManager.GetLocalPlayerObject());
         }
         
         public void StartClient()
