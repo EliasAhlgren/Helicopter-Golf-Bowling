@@ -177,7 +177,7 @@ namespace GameManagement
                 _scoreManager.currentPlayer++;
                 helicopters[currentPlayer].transform.position = Vector3.zero;
                 helicopters[currentPlayer].GetComponent<Rigidbody>().isKinematic = false;
-                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", helicopters[currentPlayer]);
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", helicopters[currentPlayer].GetComponent<NetworkedObject>());
                 for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
                 {
                     if (i == currentPlayer)
