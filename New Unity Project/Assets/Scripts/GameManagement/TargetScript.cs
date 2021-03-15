@@ -2,17 +2,18 @@
 
 using System;
 using System.Collections;
+using GameManagement;
 using TMPro;
 using UnityEngine;
 
 public class TargetScript : MonoBehaviour
 {
-    private Vector3 _ogPos;
+    [SerializeField] private Vector3 _ogPos;
     private Quaternion _ogRot;
     
-    private ScoreManager _scoreManager;
+    [SerializeField] private ScoreManager _scoreManager;
 
-    private GameManager _gameManager;
+    [SerializeField] private GameManager _gameManager;
     
     public float targetScore = 10f;
 
@@ -20,8 +21,6 @@ public class TargetScript : MonoBehaviour
     
     private void Start()
     {
-        _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        _gameManager.startEvent.AddListener(ResetTransform);
         _ogPos = transform.position;
         _ogRot = transform.rotation;
         _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
@@ -53,8 +52,14 @@ public class TargetScript : MonoBehaviour
     //
     private void OnCollisionEnter(Collision other)
     {
+        
         if (other.gameObject.CompareTag("Helicopter"))
         {
+            MultiplayerManager mp = GameObject.FindWithTag("ScoreManager").GetComponent<MultiplayerManager>();
+            _gameManager = mp.helicopters[mp.currentPlayer].GetComponentInChildren<GameManager>();
+            _gameManager.startEvent.AddListener(ResetTransform);
+            _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
+            
             if (!hasFallen && _gameManager.isReseting == false)
             {
                  Debug.Log("Adding score " + other.gameObject);

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 36118efa4708ad04a8e57cff6120b418,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -146,7 +147,7 @@ PrefabInstance:
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 75.64803
+      value: 38.697155
       objectReference: {fileID: 0}
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
@@ -190,14 +191,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a92a73b26b57ab4c8a63dd375dda6d9, type: 3}
---- !u!21 &139625874
+--- !u!21 &153290340
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of heligopter
+  m_Name: Instance of heligopter_base
   m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
     type: 3}
   m_ShaderKeywords: 
@@ -211,91 +212,27 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_2422F13A:
-        m_Texture: {fileID: 2800000, guid: df810a0ba37bd0e49bf3e9c1704b3464, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_30427970:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_AEA6ECFF:
         m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _BumpMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _EmissionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _OcclusionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SpecGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_16B7B748: 0.7
-    - Vector1_3D5F6EFD: 2.8
-    - Vector1_47DC3D0B: 0.1
-    - Vector1_ACF99242: 31.9
-    - Vector1_BBED81AC: 1
-    - Vector1_EF8936D0: -13.9
-    - _AlphaClip: 0
-    - _Blend: 0
-    - _BumpScale: 1
-    - _Cull: 2
-    - _Cutoff: 0.5
-    - _DstBlend: 0
-    - _EnvironmentReflections: 1
-    - _GlossMapScale: 0
-    - _Glossiness: 0
-    - _GlossyReflections: 0
-    - _Metallic: 0.334
-    - _OcclusionStrength: 1
-    - _QueueOffset: 0
-    - _ReceiveShadows: 1
-    - _Smoothness: 0.167
-    - _SmoothnessTextureChannel: 0
-    - _SpecularHighlights: 1
-    - _SrcBlend: 1
-    - _Surface: 0
-    - _WorkflowMode: 1
-    - _ZWrite: 1
+    - Vector1_ACF99242: 1.2
+    - Vector1_BBED81AC: 67
+    - Vector1_EF8936D0: 0.85
     m_Colors:
-    - Color_11B7D999: {r: 0.22970808, g: 0.30378255, b: 0.5471698, a: 0}
-    - Color_4D02C71E: {r: 1, g: 1, b: 1, a: 0}
-    - Color_5E733FA5: {r: 1.5157166, g: 1.5157166, b: 1.5157166, a: 0}
+    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
     - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
-    - Color_806D1BA9: {r: 1, g: 1, b: 1, a: 0}
-    - Color_86B1218C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_AC0EDBE0: {r: 1, g: 1, b: 1, a: 0}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
     - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
     - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
     - _L2_color: {r: 0, g: 0, b: 0, a: 1}
     - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
     - _L3_color: {r: 0, g: 0, b: 0, a: 1}
     - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
-    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
 --- !u!1001 &394532986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -321,7 +258,7 @@ PrefabInstance:
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 71.65551
+      value: 34.70463
       objectReference: {fileID: 0}
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
@@ -365,48 +302,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a92a73b26b57ab4c8a63dd375dda6d9, type: 3}
---- !u!21 &413853159
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of heligopter_base
-  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_2422F13A:
-        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_AEA6ECFF:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_ACF99242: 1.2
-    - Vector1_BBED81AC: 67
-    - Vector1_EF8936D0: 0.85
-    m_Colors:
-    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
-    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
-    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
-    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
-    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &534184493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -432,7 +327,7 @@ PrefabInstance:
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 68.94457
+      value: 31.993694
       objectReference: {fileID: 0}
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
@@ -501,7 +396,7 @@ PrefabInstance:
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 74.792625
+      value: 37.841747
       objectReference: {fileID: 0}
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
@@ -557,112 +452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &568198405
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of heligopter
-  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_2422F13A:
-        m_Texture: {fileID: 2800000, guid: df810a0ba37bd0e49bf3e9c1704b3464, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_30427970:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_AEA6ECFF:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _BumpMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _EmissionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _OcclusionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SpecGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_16B7B748: 0.7
-    - Vector1_3D5F6EFD: 2.8
-    - Vector1_47DC3D0B: 0.1
-    - Vector1_ACF99242: 31.9
-    - Vector1_BBED81AC: 1
-    - Vector1_EF8936D0: -13.9
-    - _AlphaClip: 0
-    - _Blend: 0
-    - _BumpScale: 1
-    - _Cull: 2
-    - _Cutoff: 0.5
-    - _DstBlend: 0
-    - _EnvironmentReflections: 1
-    - _GlossMapScale: 0
-    - _Glossiness: 0
-    - _GlossyReflections: 0
-    - _Metallic: 0.334
-    - _OcclusionStrength: 1
-    - _QueueOffset: 0
-    - _ReceiveShadows: 1
-    - _Smoothness: 0.167
-    - _SmoothnessTextureChannel: 0
-    - _SpecularHighlights: 1
-    - _SrcBlend: 1
-    - _Surface: 0
-    - _WorkflowMode: 1
-    - _ZWrite: 1
-    m_Colors:
-    - Color_11B7D999: {r: 0.22970808, g: 0.30378255, b: 0.5471698, a: 0}
-    - Color_4D02C71E: {r: 1, g: 1, b: 1, a: 0}
-    - Color_5E733FA5: {r: 1.5157166, g: 1.5157166, b: 1.5157166, a: 0}
-    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
-    - Color_806D1BA9: {r: 1, g: 1, b: 1, a: 0}
-    - Color_86B1218C: {r: 1, g: 1, b: 1, a: 0}
-    - Color_AC0EDBE0: {r: 1, g: 1, b: 1, a: 0}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
-    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
-    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
-    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
-    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
 --- !u!114 &690466261 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5641060760103594177, guid: 13b017fe6e25639448212c433b44a627,
@@ -700,7 +489,7 @@ PrefabInstance:
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 66.16332
+      value: 29.212444
       objectReference: {fileID: 0}
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
@@ -744,48 +533,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a92a73b26b57ab4c8a63dd375dda6d9, type: 3}
---- !u!21 &778039361
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of heligopter_base
-  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_2422F13A:
-        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_AEA6ECFF:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_ACF99242: 1.2
-    - Vector1_BBED81AC: 67
-    - Vector1_EF8936D0: 0.85
-    m_Colors:
-    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
-    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
-    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
-    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
-    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &812739187
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,12 +619,54 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812739187}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: -36.95088}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!21 &848904214
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of heligopter_base
+  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_2422F13A:
+        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_AEA6ECFF:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_ACF99242: 1.2
+    - Vector1_BBED81AC: 67
+    - Vector1_EF8936D0: 0.85
+    m_Colors:
+    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
+    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
+    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
+    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
+    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1 &1003847220
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,7 +786,7 @@ PrefabInstance:
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 72.1
+      value: 35.14912
       objectReference: {fileID: 0}
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
@@ -1041,48 +830,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a92a73b26b57ab4c8a63dd375dda6d9, type: 3}
---- !u!21 &1020126356
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Instance of heligopter_base
-  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
-    type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - Texture2D_2422F13A:
-        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_AEA6ECFF:
-        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_ACF99242: 1.2
-    - Vector1_BBED81AC: 67
-    - Vector1_EF8936D0: 0.85
-    m_Colors:
-    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
-    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
-    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
-    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
-    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
-    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
-    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &1082070530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1282,7 +1029,7 @@ PrefabInstance:
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 72.695244
+      value: 35.744366
       objectReference: {fileID: 0}
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
@@ -1395,7 +1142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1a257b4c8a516a44a090e092b634f47, type: 3}
---- !u!21 &1252891891
+--- !u!21 &1330980276
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1462,7 +1209,7 @@ PrefabInstance:
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 74.91366
+      value: 37.96278
       objectReference: {fileID: 0}
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
@@ -1506,6 +1253,112 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a92a73b26b57ab4c8a63dd375dda6d9, type: 3}
+--- !u!21 &1338720975
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of heligopter
+  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_2422F13A:
+        m_Texture: {fileID: 2800000, guid: df810a0ba37bd0e49bf3e9c1704b3464, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_30427970:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_AEA6ECFF:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_16B7B748: 0.7
+    - Vector1_3D5F6EFD: 2.8
+    - Vector1_47DC3D0B: 0.1
+    - Vector1_ACF99242: 31.9
+    - Vector1_BBED81AC: 1
+    - Vector1_EF8936D0: -13.9
+    - _AlphaClip: 0
+    - _Blend: 0
+    - _BumpScale: 1
+    - _Cull: 2
+    - _Cutoff: 0.5
+    - _DstBlend: 0
+    - _EnvironmentReflections: 1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
+    - _Metallic: 0.334
+    - _OcclusionStrength: 1
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Smoothness: 0.167
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _WorkflowMode: 1
+    - _ZWrite: 1
+    m_Colors:
+    - Color_11B7D999: {r: 0.22970808, g: 0.30378255, b: 0.5471698, a: 0}
+    - Color_4D02C71E: {r: 1, g: 1, b: 1, a: 0}
+    - Color_5E733FA5: {r: 1.5157166, g: 1.5157166, b: 1.5157166, a: 0}
+    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
+    - Color_806D1BA9: {r: 1, g: 1, b: 1, a: 0}
+    - Color_86B1218C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_AC0EDBE0: {r: 1, g: 1, b: 1, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
+    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
+    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
+    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
 --- !u!1 &1402409043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1642,7 +1495,7 @@ PrefabInstance:
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 69.75088
+      value: 32.8
       objectReference: {fileID: 0}
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
@@ -1686,6 +1539,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a92a73b26b57ab4c8a63dd375dda6d9, type: 3}
+--- !u!21 &1713123442
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of heligopter_base
+  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_2422F13A:
+        m_Texture: {fileID: 2800000, guid: b8e5e45fb8994784295a3c6123e2ccba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_AEA6ECFF:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_ACF99242: 1.2
+    - Vector1_BBED81AC: 67
+    - Vector1_EF8936D0: 0.85
+    m_Colors:
+    - Color_5E733FA5: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
+    - Color_806D1BA9: {r: 2.4622889, g: 2.4622889, b: 2.4622889, a: 0}
+    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
+    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
+    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
+    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
 --- !u!1001 &1958493833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1711,7 +1606,7 @@ PrefabInstance:
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 74.89571
+      value: 37.944836
       objectReference: {fileID: 0}
     - target: {fileID: 7435586685583386240, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
         type: 3}
@@ -1755,19 +1650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a92a73b26b57ab4c8a63dd375dda6d9, type: 3}
---- !u!114 &2036575362 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5641060761379575348, guid: 13b017fe6e25639448212c433b44a627,
-    type: 3}
-  m_PrefabInstance: {fileID: 1082070530}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!21 &2062892888
+--- !u!21 &1996758819
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1809,7 +1692,125 @@ Material:
     - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
     - _L3_color: {r: 0, g: 0, b: 0, a: 1}
     - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
---- !u!21 &2066296328
+--- !u!114 &2036575362 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5641060761379575348, guid: 13b017fe6e25639448212c433b44a627,
+    type: 3}
+  m_PrefabInstance: {fileID: 1082070530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!21 &2060051668
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Instance of heligopter
+  m_Shader: {fileID: -6465566751694194690, guid: 78e167d6b5a59c447846a5d973e5737e,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_2422F13A:
+        m_Texture: {fileID: 2800000, guid: df810a0ba37bd0e49bf3e9c1704b3464, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_30427970:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_AEA6ECFF:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 9a7c29d608016424bae3dd8f646552a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_16B7B748: 0.7
+    - Vector1_3D5F6EFD: 2.8
+    - Vector1_47DC3D0B: 0.1
+    - Vector1_ACF99242: 31.9
+    - Vector1_BBED81AC: 1
+    - Vector1_EF8936D0: -13.9
+    - _AlphaClip: 0
+    - _Blend: 0
+    - _BumpScale: 1
+    - _Cull: 2
+    - _Cutoff: 0.5
+    - _DstBlend: 0
+    - _EnvironmentReflections: 1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
+    - _GlossyReflections: 0
+    - _Metallic: 0.334
+    - _OcclusionStrength: 1
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Smoothness: 0.167
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _WorkflowMode: 1
+    - _ZWrite: 1
+    m_Colors:
+    - Color_11B7D999: {r: 0.22970808, g: 0.30378255, b: 0.5471698, a: 0}
+    - Color_4D02C71E: {r: 1, g: 1, b: 1, a: 0}
+    - Color_5E733FA5: {r: 1.5157166, g: 1.5157166, b: 1.5157166, a: 0}
+    - Color_6B51158F: {r: 1, g: 1, b: 1, a: 0}
+    - Color_806D1BA9: {r: 1, g: 1, b: 1, a: 0}
+    - Color_86B1218C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_AC0EDBE0: {r: 1, g: 1, b: 1, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _L1_color: {r: 1, g: 0.95686275, b: 0.8392157, a: 0.99}
+    - _L1_dir: {r: 0.3213938, g: 0.76604444, b: -0.5566705, a: 0}
+    - _L2_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L2_dir: {r: 0, g: 1, b: 0, a: 0}
+    - _L3_color: {r: 0, g: 0, b: 0, a: 1}
+    - _L3_dir: {r: 0, g: 1, b: 0, a: 0}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+--- !u!21 &2060238842
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -1984,9 +1985,6 @@ MonoBehaviour:
     - Prefab: {fileID: 7216597336714954244, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
       PlayerPrefab: 1
-    - Prefab: {fileID: 7435586685583386247, guid: 9a92a73b26b57ab4c8a63dd375dda6d9,
-        type: 3}
-      PlayerPrefab: 1
     PlayerPrefabHash:
       Value: 1897319656204293034
     CreatePlayerPrefab: 1
@@ -2065,22 +2063,22 @@ PrefabInstance:
     - target: {fileID: 7216170480306075905, guid: 3836055cb99ea2a41b09ef9ead7f082a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.997356
+      value: 0.9953283
       objectReference: {fileID: 0}
     - target: {fileID: 7216170480306075905, guid: 3836055cb99ea2a41b09ef9ead7f082a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.072671205
+      value: 0.09654915
       objectReference: {fileID: 0}
     - target: {fileID: 7216170480306075905, guid: 3836055cb99ea2a41b09ef9ead7f082a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00003089953
+      value: 0.000039522998
       objectReference: {fileID: 0}
     - target: {fileID: 7216170480306075905, guid: 3836055cb99ea2a41b09ef9ead7f082a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000023294967
+      value: -0.0000029796136
       objectReference: {fileID: 0}
     - target: {fileID: 7216170480306075905, guid: 3836055cb99ea2a41b09ef9ead7f082a,
         type: 3}
@@ -2117,7 +2115,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 568198405}
+      objectReference: {fileID: 1338720975}
     - target: {fileID: 2258209030635294151, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
       propertyPath: deathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2167,12 +2165,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1252891891}
+      objectReference: {fileID: 1330980276}
     - target: {fileID: 4799320510880070735, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1020126356}
+      objectReference: {fileID: 153290340}
     - target: {fileID: 6827114217369069789, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2317,12 +2315,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2062892888}
+      objectReference: {fileID: 848904214}
     - target: {fileID: 6998434617594745024, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 778039361}
+      objectReference: {fileID: 2060238842}
     - target: {fileID: 7216597336714954244, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
       propertyPath: m_Name
@@ -2392,16 +2390,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 413853159}
+      objectReference: {fileID: 1713123442}
     - target: {fileID: 8885854534340902980, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2066296328}
+      objectReference: {fileID: 1996758819}
     - target: {fileID: 9158608377484937943, guid: 7aba0f0a156f81c409122d3057bded23,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 139625874}
+      objectReference: {fileID: 2060051668}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aba0f0a156f81c409122d3057bded23, type: 3}

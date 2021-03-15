@@ -163,12 +163,21 @@ namespace GameManagement
 
         public void NextPlayerTurn()
         {
-            
+
+            if (!isOfflineGame && isHost)
+            {
+                helicopters[currentPlayer].transform.position = -Vector3.one * 69f;
+                helicopters[currentPlayer].GetComponent<Rigidbody>().isKinematic = true;
+            }
 
             if (currentPlayer + 1 <= playerCount)
             {
+                Debug.Log("Next player");
                 currentPlayer++;
                 _scoreManager.currentPlayer++;
+                helicopters[currentPlayer].transform.position = Vector3.zero;
+                helicopters[currentPlayer].GetComponent<Rigidbody>().isKinematic = false;
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", helicopters[currentPlayer]);
                 for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
                 {
                     if (i == currentPlayer)
