@@ -62,7 +62,7 @@ namespace GameManagement
             
             isHost = true;
             //GameObject.Find("CineCamera").GetComponent<NetworkedTransform>().enabled = true;
-            spawnPosition += Vector3.left;
+            spawnPosition += Vector3.left * 2;
         }
 
         private void ClientConnected(ulong obj)
@@ -87,7 +87,7 @@ namespace GameManagement
                     //StartGame();
                 }
             }
-            spawnPosition += Vector3.left;
+            spawnPosition += Vector3.left * 2;
         }
 
         
