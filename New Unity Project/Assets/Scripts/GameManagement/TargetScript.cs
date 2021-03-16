@@ -53,13 +53,13 @@ public class TargetScript : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         MultiplayerManager mp = GameObject.FindWithTag("ScoreManager").GetComponent<MultiplayerManager>();
-        if (other.gameObject.CompareTag("Helicopter") && mp.isHost)
+        if (other.gameObject.CompareTag("Helicopter"))
         {
             _gameManager = mp.helicopters[mp.currentPlayer].GetComponentInChildren<GameManager>();
             _gameManager.startEvent.AddListener(ResetTransform);
             _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
             
-            if (!hasFallen && _gameManager.isReseting == false)
+            if (!hasFallen && _gameManager.isReseting == false && mp.isHost)
             {
                  Debug.Log("Adding score " + other.gameObject);
                  _scoreManager.playerScores[_scoreManager.currentPlayer] += targetScore * _scoreManager.scoreMultiplier;
@@ -70,7 +70,15 @@ public class TargetScript : MonoBehaviour
                  //StartCoroutine(waitBeforeReset());
                  //targetScore = 0;
             }
-           
+            if (!hasFallen && _gameManager.isReseting == false && !mp.isHost)
+            {
+                Debug.Log("Adding score " + other.gameObject);
+                _scoreManager.playerScores[_scoreManager.currentPlayer] += targetScore * _scoreManager.scoreMultiplier;
+                hasFallen = true;
+                GameObject.Find("fuseFront").GetComponent<FuselageController>().helicopterHealth = 100f;
+                _gameManager.hasInvincibility = true;
+            }
+            
         }
     }
 }
