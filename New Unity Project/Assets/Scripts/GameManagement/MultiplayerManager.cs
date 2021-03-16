@@ -167,7 +167,10 @@ namespace GameManagement
             if (!isOfflineGame && isHost)
             {
                 helicopters[currentPlayer].transform.position = -Vector3.one * 69f;
-                helicopters[currentPlayer].GetComponent<Rigidbody>().isKinematic = true;
+                foreach (var VARIABLE in helicopters[currentPlayer].GetComponentsInChildren<Rigidbody>())
+                {
+                    VARIABLE.isKinematic = true;
+                }
             }
 
             if (currentPlayer + 1 <= playerCount)
@@ -176,7 +179,10 @@ namespace GameManagement
                 currentPlayer++;
                 _scoreManager.currentPlayer++;
                 helicopters[currentPlayer].transform.position = Vector3.zero;
-                helicopters[currentPlayer].GetComponent<Rigidbody>().isKinematic = false;
+                foreach (var VARIABLE in helicopters[currentPlayer].GetComponentsInChildren<Rigidbody>())
+                {
+                    VARIABLE.isKinematic = true;
+                }
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", helicopters[currentPlayer].GetComponent<NetworkedObject>());
                 for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
                 {

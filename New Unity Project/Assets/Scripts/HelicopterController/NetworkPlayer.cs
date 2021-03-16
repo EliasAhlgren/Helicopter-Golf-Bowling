@@ -54,12 +54,14 @@ public class NetworkPlayer : NetworkedBehaviour
                 Debug.Log("Not found "+ VARIABLE);
                 VARIABLE.GetComponentInChildren<Camera>().enabled = false;
                 VARIABLE.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
+                
             }
             else
             {
                 Debug.Log("found "+ VARIABLE);
                 VARIABLE.GetComponentInChildren<Camera>().enabled = true;
                 VARIABLE.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
+                return;
             }
         }
         
