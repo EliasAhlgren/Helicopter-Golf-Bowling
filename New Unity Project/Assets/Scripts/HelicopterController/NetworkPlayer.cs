@@ -37,8 +37,7 @@ public class NetworkPlayer : NetworkedBehaviour
     [ClientRPC]
     void ClientGetNextPlayer(int crntPlayer)
     {
-
-        
+            StartCoroutine(textHomma(crntPlayer));
         
             ScoreManager _scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
             for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
@@ -55,33 +54,49 @@ public class NetworkPlayer : NetworkedBehaviour
         
     }
 
-    IEnumerator textHomma()
+    public IEnumerator textHomma(int crntPlayer)
     {
+        ScoreManager _scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
+        {
+            if (i == crntPlayer)
+            {
+                _scoreManager.scoresUguis[i].color = Color.red;
+            }
+            else
+            {
+                _scoreManager.scoresUguis[i].color = Color.white;
+            }
+        }
+
+        Debug.Log("yea");
         if (GameObject.Find("MiddleText"))
-                {
-                    GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Strike";
-                }
-                if (GameObject.Find("TopText"))
-                {
-                    GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().enabled = false;
-                }
-                if (GameObject.Find("BottomText"))
-                {
-                    GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = false;
-                }
-                
-                yield return new  WaitForSeconds(2);
-                
-                if (GameObject.Find("MiddleText"))
-                {
-                    GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Vehicle Destroyed";
-                    GameObject.Find("MiddleText").SetActive(false);
-                }
-                
-                foreach (var VARIABLE in GameObject.FindGameObjectsWithTag("Pin"))
-                {
-                    VARIABLE.GetComponent<TargetScript>().ResetTransform();
-                }
+        {
+            GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Strike";
+        }
+
+        if (GameObject.Find("TopText"))
+        {
+            GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().enabled = false;
+        }
+
+        if (GameObject.Find("BottomText"))
+        {
+            GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = false;
+        }
+
+        yield return new WaitForSeconds(2);
+
+        if (GameObject.Find("MiddleText"))
+        {
+            GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Vehicle Destroyed";
+            GameObject.Find("MiddleText").SetActive(false);
+        }
+
+        foreach (var VARIABLE in GameObject.FindGameObjectsWithTag("Pin"))
+        {
+            VARIABLE.GetComponent<TargetScript>().ResetTransform();
+        }
                 
     }
     

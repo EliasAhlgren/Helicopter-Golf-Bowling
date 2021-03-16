@@ -70,10 +70,8 @@ public class TargetScript : MonoBehaviour
                  _gameManager.StartCoroutine(_gameManager.Strike(2f));
                  //StartCoroutine(waitBeforeReset());
                  //targetScore = 0;
-                 
-                 
-                 
             }
+
            
             
         }
