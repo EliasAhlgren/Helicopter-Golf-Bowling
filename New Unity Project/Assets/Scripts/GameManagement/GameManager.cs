@@ -145,6 +145,15 @@ public class GameManager : MonoBehaviour
                 GameObject.Find("MiddleText").SetActive(false);
             }
 
+            if (GameObject.Find("TopText"))
+            {
+                GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().enabled = true;
+            }
+            if (GameObject.Find("BottomText"))
+            {
+                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = true;
+            }
+            
             foreach (var VARIABLE in GameObject.FindGameObjectsWithTag("Pin"))
             {
                 VARIABLE.GetComponent<TargetScript>().ResetTransform();
