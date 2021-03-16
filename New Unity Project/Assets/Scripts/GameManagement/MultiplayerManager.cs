@@ -171,6 +171,19 @@ namespace GameManagement
                 {
                     VARIABLE.isKinematic = true;
                 }
+                
+                List<ulong> ids = new List<ulong>();
+
+                foreach (var VARIABLE in NetworkingManager.Singleton.ConnectedClientsList)
+                {
+                    if (VARIABLE.ClientId != SpawnManager.GetLocalPlayerObject().OwnerClientId)
+                    {
+                        ids.Add(VARIABLE.ClientId);
+                    }
+                }
+                
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpc("ClientGetNextPlayer", ids);
+                
             }
 
             if (currentPlayer + 1 <= playerCount)

@@ -162,6 +162,8 @@ public class GameManager : MonoBehaviour
             GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
             
             isReseting = false;
+            
+            
         }
         
     }
