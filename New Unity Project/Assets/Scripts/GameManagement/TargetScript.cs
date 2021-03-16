@@ -55,7 +55,8 @@ public class TargetScript : MonoBehaviour
         MultiplayerManager mp = GameObject.FindWithTag("ScoreManager").GetComponent<MultiplayerManager>();
         if (other.gameObject.CompareTag("Helicopter"))
         {
-            _gameManager = other.gameObject.GetComponentInChildren<GameManager>();
+            _gameManager = other.transform.root.GetComponentInChildren<GameManager>();
+            Debug.Log("Gamemanage: " + _gameManager);
             _gameManager.startEvent.AddListener(ResetTransform);
             _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
             
