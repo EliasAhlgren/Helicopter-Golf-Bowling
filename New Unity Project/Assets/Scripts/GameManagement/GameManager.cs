@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using GameManagement;
 using HelicopterController;
 using TMPro;
 using UnityEngine;
@@ -73,7 +74,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator Strike(float delay)
     {
-        if (true)
+        if (isOfflineGame) //offline game reset
         {
             isReseting = true;
             StopCoroutine(relaseTimer(timeToRelase));
@@ -106,6 +107,51 @@ public class GameManager : MonoBehaviour
                 VARIABLE.GetComponent<TargetScript>().ResetTransform();
             }
 
+            isReseting = false;
+        }
+        else //Online game reset
+        {
+            isReseting = true;
+            StopCoroutine(relaseTimer(timeToRelase));
+            if (GameObject.Find("MiddleText"))
+            {
+                GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Strike";
+            }
+            if (GameObject.Find("TopText"))
+            {
+                GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().enabled = false;
+            }
+            if (GameObject.Find("BottomText"))
+            {
+                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = false;
+            }
+            yield return new WaitForSeconds(delay);
+            var Blayer = GameObject.Find("fuseFront");
+            hasInvincibility = false;
+            GameObject.Find("rotorMain").transform.position = -Vector3.one * 69;
+            GameObject.Find("fuseTail").transform.position = -Vector3.one * 69;
+            Blayer.transform.position = -Vector3.one * 69;
+            Blayer.transform.rotation = startingRot;
+            Blayer.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            Blayer.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            Blayer.GetComponent<Rigidbody>().isKinematic = true;
+            GameObject.Find("rotorMain").GetComponent<RotorController>().yVelocity = 0;
+            GameObject.Find("rotorMain").GetComponent<Rigidbody>().velocity = Vector3.zero;
+            GameObject.Find("rotorMain").GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            GameObject.Find("rotorMain").GetComponent<Rigidbody>().isKinematic = true;
+            if (GameObject.Find("MiddleText"))
+            {
+                GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Vehicle Destroyed";
+                GameObject.Find("MiddleText").SetActive(false);
+            }
+
+            foreach (var VARIABLE in GameObject.FindGameObjectsWithTag("Pin"))
+            {
+                VARIABLE.GetComponent<TargetScript>().ResetTransform();
+            }
+            
+            GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
+            
             isReseting = false;
         }
         

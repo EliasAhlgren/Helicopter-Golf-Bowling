@@ -25,12 +25,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/RotorController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/NetManagerHud.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/TargetScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -108,7 +108,8 @@
       <workItem from="1615536310007" duration="9469000" />
       <workItem from="1615634428921" duration="4702000" />
       <workItem from="1615724273863" duration="1876000" />
-      <workItem from="1615795083542" duration="4609000" />
+      <workItem from="1615795083542" duration="5643000" />
+      <workItem from="1615887380550" duration="1767000" />
     </task>
     <servers />
   </component>
