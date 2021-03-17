@@ -183,7 +183,7 @@ namespace GameManagement
                 helicopters[currentPlayer].transform.position = Vector3.zero;
                 foreach (var VARIABLE in helicopters[currentPlayer].GetComponentsInChildren<Rigidbody>())
                 {
-                    VARIABLE.isKinematic = true;
+                    VARIABLE.isKinematic = false;
                 }
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", helicopters[currentPlayer].GetComponent<NetworkedObject>());
                 for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
