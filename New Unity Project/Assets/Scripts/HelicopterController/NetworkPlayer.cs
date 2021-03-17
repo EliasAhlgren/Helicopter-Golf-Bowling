@@ -33,6 +33,10 @@ public class NetworkPlayer : NetworkedBehaviour
         if (hasConnected)
         {
             GUI.Box (new Rect (Screen.width - 100,0,100,50), SpawnManager.GetLocalPlayerObject().OwnerClientId.ToString());
+            foreach (var VARIABLE in SpawnManager.SpawnedObjectsList)
+            {
+                Debug.Log(VARIABLE + " ID " + VARIABLE.OwnerClientId);
+            }
         }
     }
 
