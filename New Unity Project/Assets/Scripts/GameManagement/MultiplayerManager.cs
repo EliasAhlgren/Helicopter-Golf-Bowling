@@ -179,21 +179,11 @@ namespace GameManagement
             if (currentPlayer + 1 <= playerCount)
             {
                 Debug.Log("Next player");
-                if (isOfflineGame)
-                {
+               
+                
                     currentPlayer++;
-                }
-                else
-                {
-                    if (currentPlayer == 0)
-                    {
-                        currentPlayer += 2;
-                    }
-                    else
-                    {
-                        currentPlayer++;
-                    }
-                }
+                
+               
                 
                 _scoreManager.currentPlayer++;
                 helicopters[currentPlayer].transform.position = Vector3.zero;
