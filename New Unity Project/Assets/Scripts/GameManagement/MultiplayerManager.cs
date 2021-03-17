@@ -62,11 +62,12 @@ namespace GameManagement
             
             isHost = true;
             //GameObject.Find("CineCamera").GetComponent<NetworkedTransform>().enabled = true;
-            spawnPosition += Vector3.left * 10;
+            //spawnPosition += Vector3.left * 10;
         }
 
         private void ClientConnected(ulong obj)
         {
+            spawnPosition += Vector3.forward * 10;
             UnetTransport unetTransport = gameObject.GetComponent<UnetTransport>();
             Debug.Log("Connected to: " + unetTransport.ConnectAddress + " rtt " + unetTransport.GetCurrentRtt(unetTransport.ServerClientId));
             
@@ -87,7 +88,7 @@ namespace GameManagement
                     //StartGame();
                 }
             }
-            spawnPosition += Vector3.left * 10;
+            
         }
 
         
