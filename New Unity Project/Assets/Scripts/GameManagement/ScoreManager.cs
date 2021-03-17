@@ -7,7 +7,7 @@ using MLAPI.NetworkedVar;
 using TMPro;
 using UnityEngine;
 
-public class ScoreManager : NetworkedBehaviour
+public class ScoreManager : MonoBehaviour
 {
     public int currentPlayer;
     

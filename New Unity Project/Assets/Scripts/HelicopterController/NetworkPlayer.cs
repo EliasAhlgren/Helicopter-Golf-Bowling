@@ -58,9 +58,9 @@ public class NetworkPlayer : NetworkedBehaviour
     }
     
     [ClientRPC]
-    void ClientGetNextPlayer(int crntPlayer)
+    void ClientGetNextPlayer(int crntPlayer, int newScore)
     {
-            StartCoroutine(textHomma(crntPlayer));
+            StartCoroutine(textHomma(crntPlayer, newScore));
         
             ScoreManager _scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
             for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
@@ -77,7 +77,7 @@ public class NetworkPlayer : NetworkedBehaviour
         
     }
 
-    public IEnumerator textHomma(int crntPlayer)
+    public IEnumerator textHomma(int crntPlayer, int newScore)
     {
         ScoreManager _scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
         for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)

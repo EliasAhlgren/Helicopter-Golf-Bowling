@@ -95,7 +95,7 @@ namespace GameManagement
         void StartGame()
         {
             Debug.Log(NetworkingManager.Singleton.LocalClientId + " le number");
-            SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", SpawnManager.GetLocalPlayerObject());
+            SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", SpawnManager.GetLocalPlayerObject(), 0);
         }
         
         public void StartClient()
@@ -188,7 +188,7 @@ namespace GameManagement
                 {
                     VARIABLE.isKinematic = false;
                 }
-                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", helicopters[currentPlayer].GetComponent<NetworkedObject>());
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", helicopters[currentPlayer].GetComponent<NetworkedObject>(), _scoreManager.playerScores[currentPlayer - 1]);
                 for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
                 {
                     if (i == currentPlayer)
