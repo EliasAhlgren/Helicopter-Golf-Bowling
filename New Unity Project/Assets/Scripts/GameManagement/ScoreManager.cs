@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameManagement;
+using MLAPI;
+using MLAPI.NetworkedVar;
 using TMPro;
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager : NetworkedBehaviour
 {
     public int currentPlayer;
     
+    [SyncedVar]
     public float[] playerScores;
     public TextMeshProUGUI[] scoresUguis;
     
@@ -15,11 +19,14 @@ public class ScoreManager : MonoBehaviour
     public int par;
 
     public GameObject playerTestObject;
+
+    private bool isOfflineGame;
     
     // Start is called before the first frame update
     void Start()
     {
         scoreMultiplier = par;
+        isOfflineGame = gameObject.GetComponent<MultiplayerManager>().isOfflineGame;
     }
 
     
@@ -27,11 +34,6 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Instantiate(playerTestObject);
-        }
-        
         for (int i = 0; i < playerScores.Length; i++)
         {
             scoresUguis[i].text = "Player " + (i + 1) + ": " + playerScores[i];

@@ -180,10 +180,7 @@ namespace GameManagement
             {
                 Debug.Log("Next player");
                
-                
                     currentPlayer++;
-                
-               
                 
                 _scoreManager.currentPlayer++;
                 helicopters[currentPlayer].transform.position = Vector3.zero;

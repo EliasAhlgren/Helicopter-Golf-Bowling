@@ -122,6 +122,12 @@ public class NetworkPlayer : NetworkedBehaviour
         }
                 
     }
+
+    [ClientRPC]
+    public void GetCurrentScore()
+    {
+        
+    }
     
     [ClientRPC]
     public void SetCurrentPlayerCamera(NetworkedObject jyrki)
