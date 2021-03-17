@@ -33,10 +33,7 @@ public class NetworkPlayer : NetworkedBehaviour
         if (hasConnected)
         {
             GUI.Box (new Rect (Screen.width - 100,0,100,50), SpawnManager.GetLocalPlayerObject().OwnerClientId.ToString());
-            foreach (var VARIABLE in SpawnManager.SpawnedObjectsList)
-            {
-                Debug.Log(VARIABLE + " ID " + VARIABLE.OwnerClientId);
-            }
+            
         }
     }
 
@@ -48,6 +45,10 @@ public class NetworkPlayer : NetworkedBehaviour
         Debug.Log("Hello");
         SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<Camera>().enabled = true;
         SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
+        foreach (var VARIABLE in SpawnManager.SpawnedObjectsList)
+        {
+            Debug.Log(VARIABLE + " ID " + VARIABLE.OwnerClientId);
+        }
     }
 
     [ClientRPC]
