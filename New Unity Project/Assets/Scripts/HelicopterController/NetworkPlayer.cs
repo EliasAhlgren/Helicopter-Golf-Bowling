@@ -85,6 +85,7 @@ public class NetworkPlayer : NetworkedBehaviour
             if (i == crntPlayer)
             {
                 _scoreManager.scoresUguis[i].color = Color.red;
+                _scoreManager.scoresUguis[i].text = newScore.ToString();
             }
             else
             {
