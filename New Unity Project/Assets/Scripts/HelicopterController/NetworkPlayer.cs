@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using MLAPI;
@@ -18,6 +19,8 @@ public class NetworkPlayer : NetworkedBehaviour
     [SerializeField] private string xRotationControl;
     [SerializeField] private string yRotationControl;
     [SerializeField] private string zRotationControl;
+
+    private bool hasConnected;
     
     // Start is called before the first frame update
     void Start()
@@ -25,9 +28,18 @@ public class NetworkPlayer : NetworkedBehaviour
         
     }
 
+    private void OnGUI()
+    {
+        if (hasConnected)
+        {
+            GUI.Box (new Rect (Screen.width - 100,0,100,50), SpawnManager.GetLocalPlayerObject().OwnerClientId.ToString());
+        }
+    }
+
     [ClientRPC]
     public void SetCamera(Vector3 pos)
     {
+        hasConnected = true;
         transform.position = pos;
         Debug.Log("Hello");
         SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<Camera>().enabled = true;
