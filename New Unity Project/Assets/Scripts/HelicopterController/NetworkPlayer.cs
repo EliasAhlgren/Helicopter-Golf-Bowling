@@ -35,6 +35,12 @@ public class NetworkPlayer : NetworkedBehaviour
     }
 
     [ClientRPC]
+    void SetCineCamera()
+    {
+        
+    }
+    
+    [ClientRPC]
     void ClientGetNextPlayer(int crntPlayer)
     {
             StartCoroutine(textHomma(crntPlayer));
