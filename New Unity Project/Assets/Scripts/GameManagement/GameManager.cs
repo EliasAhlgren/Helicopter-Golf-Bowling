@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         if (GameObject.Find("TopText"))
         {
             GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().text = "Control lost!";
-            GameObject.Find("MiddleText").SetActive(false);
+            //GameObject.Find("MiddleText").SetActive(false);
 
         }
         relaseEvent.Invoke();
