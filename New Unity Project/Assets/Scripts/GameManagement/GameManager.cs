@@ -69,9 +69,11 @@ public class GameManager : MonoBehaviour
     public IEnumerator relaseTimer(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        if (GameObject.Find("BottomText"))
+        if (GameObject.Find("TopText"))
         {
-            GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().text = "Control lost!";
+            GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().text = "Control lost!";
+            GameObject.Find("MiddleText").SetActive(false);
+
         }
         relaseEvent.Invoke();
     }
