@@ -6767,6 +6767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d7602c459412ca4aa07861e44629ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   isPlayerControlled: 0
   physicalRotor: {fileID: 3882889883484110904}
   inputAxis: CollectiveThrottle

@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOfflineGame: 0
+  isCurrentPLayer: 0
   timeToRelase: 10
   relaseEvent:
     m_PersistentCalls:
