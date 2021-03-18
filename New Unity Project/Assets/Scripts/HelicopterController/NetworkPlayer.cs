@@ -130,6 +130,8 @@ public class NetworkPlayer : NetworkedBehaviour
     {
         
     }
+
+   
     
     [ClientRPC]
     public void SetCurrentPlayerCamera(NetworkedObject jyrki)
@@ -148,6 +150,7 @@ public class NetworkPlayer : NetworkedBehaviour
         {
             if (VARIABLE != jyrki)
             {
+                VARIABLE.GetComponentInChildren<GameManager>().isCurrentPLayer = false;
                 Debug.Log("Not found "+ VARIABLE);
                 VARIABLE.GetComponentInChildren<Camera>().enabled = false;
                 VARIABLE.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
@@ -155,6 +158,7 @@ public class NetworkPlayer : NetworkedBehaviour
             }
             else
             {
+                VARIABLE.GetComponentInChildren<GameManager>().isCurrentPLayer = true;
                 Debug.Log("found "+ VARIABLE);
                 VARIABLE.GetComponentInChildren<Camera>().enabled = true;
                 VARIABLE.GetComponentInChildren<CinemachineFreeLook>().enabled = true;

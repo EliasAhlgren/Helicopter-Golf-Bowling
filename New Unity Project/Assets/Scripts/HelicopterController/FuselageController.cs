@@ -41,16 +41,18 @@ public class FuselageController : MonoBehaviour
     
     private void OnCollisionEnter(Collision other)
     {
-        
-        
-        if (!isPlayerControlled && !gameManager.waitingForInput && other.gameObject.CompareTag("Enviroment") && !gameManager.hasInvincibility)
+        if (gameManager.isCurrentPLayer)
         {
-            
-            gameManager.ResetFromPos(transform.position, gameObject);
-        }
-        else if (gameManager.hasInvincibility)
-        {
-            helicopterHealth -= other.relativeVelocity.magnitude * collisionDamageMultiplier;
+            if (!isPlayerControlled && !gameManager.waitingForInput && other.gameObject.CompareTag("Enviroment") &&
+                !gameManager.hasInvincibility)
+            {
+
+                gameManager.ResetFromPos(transform.position, gameObject);
+            }
+            else if (gameManager.hasInvincibility)
+            {
+                helicopterHealth -= other.relativeVelocity.magnitude * collisionDamageMultiplier;
+            }
         }
     }
 
@@ -61,16 +63,18 @@ public class FuselageController : MonoBehaviour
 
     private void OnCollisionStay(Collision other)
     {
-        if (!gameManager.waitingForInput)
+        if (gameManager.isCurrentPLayer)
         {
-            //framesOnGround++;
-            if (framesOnGround > 200)
-            { 
-                Debug.Log("No movement");
-                StartCoroutine(gameManager.HelicopterDestroyed(3f));
+            if (!gameManager.waitingForInput)
+            {
+                //framesOnGround++;
+                if (framesOnGround > 200)
+                {
+                    Debug.Log("No movement");
+                    StartCoroutine(gameManager.HelicopterDestroyed(3f));
+                }
             }
         }
-        
     }
 
     
@@ -99,7 +103,7 @@ public class FuselageController : MonoBehaviour
             StartCoroutine(gameManager.HelicopterDestroyed(3));
         }
         
-        if (isPlayerControlled)
+        if (isPlayerControlled && gameManager.isCurrentPLayer)
         {
              _rigidbody.AddRelativeTorque(0, -_networkPlayer.yRotation * rotSpeed,0,ForceMode.Force);
         }

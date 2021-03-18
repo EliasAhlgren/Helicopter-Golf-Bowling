@@ -14,6 +14,8 @@ using Object = UnityEngine.Object;
 public class GameManager : MonoBehaviour
 {
     public bool isOfflineGame;
+
+    public bool isCurrentPLayer;
     
     public float timeToRelase = 5;
 
@@ -245,6 +247,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isOfflineGame)
+        {
+            isCurrentPLayer = true;
+        }
+        
         if (Debug.isDebugBuild && Input.GetKeyDown(KeyCode.R))
         {
             StartCoroutine(HelicopterDestroyed(3));

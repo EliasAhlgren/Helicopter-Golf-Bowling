@@ -9,6 +9,8 @@ namespace HelicopterController
     /// </summary>
     public class RotorController : MonoBehaviour
     {
+        public GameManager gameManager;
+        
         public bool isPlayerControlled = true;
         
         public Transform physicalRotor;
@@ -39,6 +41,7 @@ namespace HelicopterController
             _rigidbody = gameObject.GetComponent<Rigidbody>();
             networkPlayer = transform.root.GetComponent<NetworkPlayer>();
             slider = GameObject.Find("Slider").GetComponent<Slider>();
+            gameManager = transform.root.GetComponentInChildren<GameManager>();
         }
         
         public void Relase()
@@ -49,23 +52,27 @@ namespace HelicopterController
         // Update is called once per frame
         void FixedUpdate()
         {
-            slider.value = yVelocity;
-            
-            Vector3 newRot = physicalRotor.transform.localEulerAngles;
-            newRot.y += yVelocity * Time.deltaTime * 50;
-            physicalRotor.transform.localEulerAngles = newRot;
-            
-            if (isPlayerControlled)
+            if (gameManager.isCurrentPLayer)
             {
-                YMovement();
-                RotationMovement();
+                slider.value = yVelocity;
+
+                Vector3 newRot = physicalRotor.transform.localEulerAngles;
+                newRot.y += yVelocity * Time.deltaTime * 50;
+                physicalRotor.transform.localEulerAngles = newRot;
+
+                if (isPlayerControlled)
+                {
+                    YMovement();
+                    RotationMovement();
+                }
+                else if (yVelocity > 0)
+                {
+                    yVelocity -= Time.deltaTime * yDeceleration * yDecelartionInFilight;
+                }
+
+                _rigidbody.AddRelativeForce(0, yVelocity * heightCurve.Evaluate(transform.position.y), 0,
+                    ForceMode.Force);
             }
-            else if (yVelocity > 0)
-            {
-                yVelocity -= Time.deltaTime * yDeceleration * yDecelartionInFilight;
-            }
-            _rigidbody.AddRelativeForce(0,yVelocity * heightCurve.Evaluate(transform.position.y), 0 ,ForceMode.Force);
-            
         }
 
         void YMovement()
@@ -92,14 +99,16 @@ namespace HelicopterController
 
         private void RotationMovement()
         {
-            
-            
-            Vector3 rotation = new Vector3(0, 0f, xzRotationPower * -networkPlayer.zRotation * rotationCurve.Evaluate(transform.rotation.eulerAngles.x));
-            
-            _rigidbody.AddRelativeForce(0,0,-networkPlayer.xRotation, ForceMode.Force);
-            
-            _rigidbody.AddRelativeTorque(rotation, ForceMode.Force);
-            
+            if (gameManager.isCurrentPLayer)
+            {
+                Vector3 rotation = new Vector3(0, 0f,
+                    xzRotationPower * -networkPlayer.zRotation *
+                    rotationCurve.Evaluate(transform.rotation.eulerAngles.x));
+
+                _rigidbody.AddRelativeForce(0, 0, -networkPlayer.xRotation, ForceMode.Force);
+
+                _rigidbody.AddRelativeTorque(rotation, ForceMode.Force);
+            }
         }
 
     }
