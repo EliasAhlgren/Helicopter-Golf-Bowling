@@ -252,11 +252,7 @@ public class GameManager : MonoBehaviour
             {
                 isCurrentPLayer = true;
             }
-
-            if (Debug.isDebugBuild && Input.GetKeyDown(KeyCode.R))
-            {
-                StartCoroutine(HelicopterDestroyed(3));
-            }
+            
 
             if (!waitingForInput)
             {

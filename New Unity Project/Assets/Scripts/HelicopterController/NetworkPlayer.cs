@@ -177,7 +177,20 @@ public class NetworkPlayer : NetworkedBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                NetworkSceneManager.SwitchScene("OnlineTestScene");
+                if (NetworkingManager.Singleton.ConnectedClientsList.Count > 1)
+                {
+                    foreach (var VARIABLE in NetworkingManager.Singleton.ConnectedClientsList)
+                    {
+                        NetworkingManager.Singleton.DisconnectClient(VARIABLE.ClientId);
+                    }
+                    NetworkingManager.Singleton.StopHost();
+                }
+                else
+                {
+                    NetworkingManager.Singleton.StopHost();
+                }
+                
+                
             }
         }
         
