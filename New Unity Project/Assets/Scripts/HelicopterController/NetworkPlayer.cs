@@ -79,6 +79,7 @@ public class NetworkPlayer : NetworkedBehaviour
 
     public IEnumerator textHomma(int crntPlayer, int newScore)
     {
+        Debug.Log("new score: " + newScore);
         ScoreManager _scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
         for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
         {
