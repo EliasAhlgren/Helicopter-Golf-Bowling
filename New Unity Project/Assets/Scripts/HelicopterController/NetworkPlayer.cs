@@ -181,10 +181,12 @@ public class NetworkPlayer : NetworkedBehaviour
             {
                 if (NetworkingManager.Singleton.ConnectedClientsList.Count > 1)
                 {
-                    foreach (var VARIABLE in NetworkingManager.Singleton.ConnectedClientsList)
+                    for (var index = 0; index < NetworkingManager.Singleton.ConnectedClientsList.Count; index++)
                     {
+                        var VARIABLE = NetworkingManager.Singleton.ConnectedClientsList[index];
                         NetworkingManager.Singleton.DisconnectClient(VARIABLE.ClientId);
                     }
+
                     NetworkingManager.Singleton.StopHost();
                 }
                 else
