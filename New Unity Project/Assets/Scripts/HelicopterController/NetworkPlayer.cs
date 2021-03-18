@@ -39,6 +39,8 @@ public class NetworkPlayer : NetworkedBehaviour
         }
     }
 
+   
+    
     [ClientRPC]
     public void SetCamera(Vector3 pos)
     {
@@ -169,7 +171,7 @@ public class NetworkPlayer : NetworkedBehaviour
         }
         
     }
-    
+
     // Update is called once per frame
     void FixedUpdate()
     {

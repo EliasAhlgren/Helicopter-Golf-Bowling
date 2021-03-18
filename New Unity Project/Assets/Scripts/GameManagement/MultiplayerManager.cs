@@ -65,8 +65,14 @@ namespace GameManagement
             //spawnPosition += Vector3.left * 10;
         }
 
+        void Disconnected(ulong obj)
+        {
+            isAtStartup = false;
+        }
+        
         private void ClientConnected(ulong obj)
         {
+            NetworkingManager.Singleton.OnClientDisconnectCallback += Disconnected;
             spawnPosition += Vector3.forward * 10;
             UnetTransport unetTransport = gameObject.GetComponent<UnetTransport>();
             Debug.Log("Connected to: " + unetTransport.ConnectAddress + " rtt " + unetTransport.GetCurrentRtt(unetTransport.ServerClientId));
