@@ -56,12 +56,15 @@ public class GameManager : MonoBehaviour
 
     public void ResetFromPos(Vector3 pos, GameObject thisObject)
     {
+        Debug.Log(thisObject, " HAS RESETED");
+        
         if (!isOfflineGame)
         {
             if (GameObject.Find("BottomText"))
             {
                 GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = true;
                 GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().text = "Press any key";
+                GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().text = "Player In control";
 
             }
         }
