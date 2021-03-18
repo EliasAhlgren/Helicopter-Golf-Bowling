@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetFromPos(Vector3 pos, GameObject thisObject)
     {
-        Debug.Log(thisObject + " HAS RESETED");
+        Debug.Log(thisObject + " HAS RESETED", thisObject);
         
         if (!isOfflineGame)
         {
