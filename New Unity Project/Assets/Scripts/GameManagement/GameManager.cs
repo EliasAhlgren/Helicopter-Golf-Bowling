@@ -40,7 +40,10 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public Vector3 startingPos;
     [HideInInspector] public Quaternion startingRot;
-    
+
+    public GameObject mainRotor;
+
+    public GameObject mainFuselage;
     
     private void Awake()
     {
@@ -54,6 +57,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         //StartCoroutine(relaseTimer(timeToRelase));
+        
     }
 
     public void ResetFromPos(Vector3 pos, GameObject thisObject)
@@ -73,9 +77,9 @@ public class GameManager : MonoBehaviour
         thisObject.transform.eulerAngles = Vector3.zero + Vector3.up * thisObject.transform.eulerAngles.y;
         thisObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         thisObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        GameObject.Find("rotorMain").GetComponent<RotorController>().yVelocity = 0;
-        GameObject.Find("rotorMain").GetComponent<Rigidbody>().velocity = Vector3.zero;
-        GameObject.Find("rotorMain").GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        mainRotor.GetComponent<RotorController>().yVelocity = 0;
+        mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         resetEvent.Invoke();
         waitingForInput = true;
     }
@@ -108,17 +112,15 @@ public class GameManager : MonoBehaviour
             }
 
             yield return new WaitForSeconds(delay);
-            var Blayer = GameObject.Find("fuseFront");
             hasInvincibility = false;
-            GameObject.Find("rotorMain").transform.position = Vector3.zero;
-            GameObject.Find("fuseTail").transform.position = Vector3.zero;
-            Blayer.transform.position = startingPos;
-            Blayer.transform.rotation = startingRot;
-            Blayer.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            Blayer.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            GameObject.Find("rotorMain").GetComponent<RotorController>().yVelocity = 0;
-            GameObject.Find("rotorMain").GetComponent<Rigidbody>().velocity = Vector3.zero;
-            GameObject.Find("rotorMain").GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            mainRotor.transform.position = Vector3.zero;
+            mainFuselage.transform.position = startingPos;
+            mainFuselage.transform.rotation = startingRot;
+            mainFuselage.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            mainFuselage.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            mainRotor.GetComponent<RotorController>().yVelocity = 0;
+            mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             if (GameObject.Find("MiddleText"))
             {
                 GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Vehicle Destroyed";
@@ -149,19 +151,17 @@ public class GameManager : MonoBehaviour
                 GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = false;
             }
             yield return new WaitForSeconds(delay);
-            var Blayer = GameObject.Find("fuseFront");
             hasInvincibility = false;
-            GameObject.Find("rotorMain").transform.position = -Vector3.one * 69;
-            GameObject.Find("fuseTail").transform.position = -Vector3.one * 69;
-            Blayer.transform.position = -Vector3.one * 69;
-            Blayer.transform.rotation = startingRot;
-            Blayer.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            Blayer.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            Blayer.GetComponent<Rigidbody>().isKinematic = true;
-            GameObject.Find("rotorMain").GetComponent<RotorController>().yVelocity = 0;
-            GameObject.Find("rotorMain").GetComponent<Rigidbody>().velocity = Vector3.zero;
-            GameObject.Find("rotorMain").GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            GameObject.Find("rotorMain").GetComponent<Rigidbody>().isKinematic = true;
+            mainRotor.transform.position = -Vector3.one * 69;
+            mainFuselage.transform.position = -Vector3.one * 69;
+            mainFuselage.transform.rotation = startingRot;
+            mainFuselage.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            mainFuselage.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            mainFuselage.GetComponent<Rigidbody>().isKinematic = true;
+            mainRotor.GetComponent<RotorController>().yVelocity = 0;
+            mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            mainRotor.GetComponent<Rigidbody>().isKinematic = true;
             if (GameObject.Find("MiddleText"))
             {
                 GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Vehicle Destroyed";
@@ -200,20 +200,19 @@ public class GameManager : MonoBehaviour
             StopCoroutine(relaseTimer(timeToRelase));
             deathEvent.Invoke();
             yield return new WaitForSeconds(delay);
-            var Blayer = GameObject.Find("fuseFront");
             hasInvincibility = false;
-            Blayer.transform.position = Vector3.zero;
-            Blayer.transform.eulerAngles = Vector3.zero;    
-            Blayer.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            Blayer.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            GameObject.Find("rotorMain").GetComponent<RotorController>().yVelocity = 0;
-            GameObject.Find("rotorMain").GetComponent<Rigidbody>().velocity = Vector3.zero;
-            GameObject.Find("rotorMain").GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            mainFuselage.transform.position = Vector3.zero;
+            mainFuselage.transform.eulerAngles = Vector3.zero;    
+            mainFuselage.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            mainFuselage.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            mainRotor.GetComponent<RotorController>().yVelocity = 0;
+            mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             if (GameObject.Find("MiddleText"))
             {
                 GameObject.Find("MiddleText").SetActive(false);
             }
-            Blayer.GetComponent<FuselageController>().ResetHealth();
+            mainFuselage.GetComponent<FuselageController>().ResetHealth();
 
             if (!isOfflineGame)
             {
@@ -247,29 +246,31 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isOfflineGame)
+        if (isCurrentPLayer)
         {
-            isCurrentPLayer = true;
-        }
-        
-        if (Debug.isDebugBuild && Input.GetKeyDown(KeyCode.R))
-        {
-            StartCoroutine(HelicopterDestroyed(3));
-        }
-        
-        if (!waitingForInput)
-        {
-            timer -= Time.deltaTime;
-            tmp.text = "Time left: " + Mathf.Round(timer);
-        }
-        else
-        {
-            tmp.text = "Press any key";
-            if (Input.anyKeyDown)
+            if (isOfflineGame)
             {
-                StartFlight();
+                isCurrentPLayer = true;
+            }
+
+            if (Debug.isDebugBuild && Input.GetKeyDown(KeyCode.R))
+            {
+                StartCoroutine(HelicopterDestroyed(3));
+            }
+
+            if (!waitingForInput)
+            {
+                timer -= Time.deltaTime;
+                tmp.text = "Time left: " + Mathf.Round(timer);
+            }
+            else
+            {
+                tmp.text = "Press any key";
+                if (Input.anyKeyDown)
+                {
+                    StartFlight();
+                }
             }
         }
-        
     }
 }

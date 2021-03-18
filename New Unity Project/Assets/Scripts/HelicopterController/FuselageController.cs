@@ -25,8 +25,8 @@ public class FuselageController : MonoBehaviour
     void Start()
     {
         _networkPlayer = transform.root.GetComponent<NetworkPlayer>();
-        
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
+        gameManager = transform.root.GetComponentInChildren<GameManager>();
         _rigidbody = gameObject.GetComponent<Rigidbody>();
 
         gameManager.startingPos = transform.position;
