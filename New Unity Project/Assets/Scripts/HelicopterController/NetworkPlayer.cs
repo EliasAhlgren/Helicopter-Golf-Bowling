@@ -5,8 +5,10 @@ using Cinemachine;
 using MLAPI;
 using UnityEngine;
 using MLAPI.Messaging;
+using MLAPI.SceneManagement;
 using MLAPI.Spawning;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class NetworkPlayer : NetworkedBehaviour
 {
@@ -171,6 +173,14 @@ public class NetworkPlayer : NetworkedBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (IsHost)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                NetworkSceneManager.SwitchScene("OnlineTestScene");
+            }
+        }
+        
         yMovement = Input.GetAxisRaw(yMoveControl);
         xRotation = Input.GetAxisRaw(xRotationControl);
         yRotation = Input.GetAxisRaw(yRotationControl);
