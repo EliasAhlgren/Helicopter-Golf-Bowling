@@ -13,6 +13,7 @@ public class Explosion : MonoBehaviour
     public int fragmentsInRow = 5;
     public int fragmentsInCell= 5;
     public int fragmentsInWidth = 5;
+   
 
     GameObject parentPiece;
 
@@ -73,7 +74,7 @@ public class Explosion : MonoBehaviour
         piece = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
         //Scale the cube and place it on the world
-        piece.transform.position = transform.position + new Vector3(fragmentSize * x , fragmentSize * y, fragmentSize * z) - new Vector3((fragmentSize * fragmentsInCell) / 2, (fragmentSize * fragmentsInRow) / 2 - 0.05f, (fragmentSize * fragmentsInWidth) / 2);
+        piece.transform.position = transform.position + new Vector3(fragmentSize * x , fragmentSize * y, fragmentSize * z) - new Vector3((fragmentSize * fragmentsInRow) / 2, (fragmentSize * fragmentsInCell) / 2 - 0.01f, (fragmentSize * fragmentsInWidth) / 2);
         piece.transform.localScale = new Vector3(fragmentSize, fragmentSize, fragmentSize);
         piece.AddComponent<Rigidbody>();
         piece.GetComponent<Rigidbody>().mass = fragmentSize;
