@@ -56,6 +56,15 @@ public class GameManager : MonoBehaviour
 
     public void ResetFromPos(Vector3 pos, GameObject thisObject)
     {
+        if (!isOfflineGame)
+        {
+            if (GameObject.Find("BottomText"))
+            {
+                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = true;
+                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().text = "Press any key";
+
+            }
+        }
         thisObject.transform.eulerAngles = Vector3.zero + Vector3.up * thisObject.transform.eulerAngles.y;
         thisObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         thisObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
@@ -69,11 +78,14 @@ public class GameManager : MonoBehaviour
     public IEnumerator relaseTimer(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        if (GameObject.Find("TopText"))
+        if (GameObject.Find("TopText") && !isOfflineGame)
         {
             GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().text = "Control lost!";
             //GameObject.Find("MiddleText").SetActive(false);
-
+            if (GameObject.Find("BottomText"))
+            {
+                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = false;
+            }
         }
         relaseEvent.Invoke();
     }
@@ -206,6 +218,11 @@ public class GameManager : MonoBehaviour
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         
+    }
+
+    private void OnGUI()
+    {
+        GUI.Box (new Rect (0,0,100,50), waitingForInput.ToString());
     }
 
     public void StartFlight()
