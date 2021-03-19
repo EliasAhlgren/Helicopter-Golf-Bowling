@@ -113,6 +113,8 @@ namespace GameManagement
 
         public void StopClient()
         {
+            Debug.Log("jees");
+            
             if (!isHost)
             {
                 NetworkingManager.Singleton.StopClient();
