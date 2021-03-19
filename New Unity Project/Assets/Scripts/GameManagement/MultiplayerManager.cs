@@ -114,16 +114,21 @@ namespace GameManagement
         public void StopClient()
         {
             Debug.Log("jees");
-            
-            if (!isHost)
+
+            if (isHost)
             {
-                NetworkingManager.Singleton.StopClient();
+                NetworkingManager.Singleton.StopHost();
+                helicopters = new List<GameObject>();
+                currentPlayer = 0;
+                spawnPosition = Vector3.zero;
+                isHost = false;
+                lookAtCamera = null;
             }
             else
             {
-                NetworkingManager.Singleton.StopHost();
+                NetworkingManager.Singleton.StopClient();
+                gameObject.GetComponent<UnetTransport>().Shutdown();
             }
-            
         }
         
         private void Start()
