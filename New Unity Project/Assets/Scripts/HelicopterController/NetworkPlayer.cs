@@ -184,10 +184,11 @@ public class NetworkPlayer : NetworkedBehaviour
                 {
                     for (var index = 0; index < NetworkingManager.Singleton.ConnectedClientsList.Count; index++)
                     {
+                        Debug.Log("Fuck off cliet number: " + index + " :D");
                         var VARIABLE = NetworkingManager.Singleton.ConnectedClientsList[index];
                         NetworkingManager.Singleton.DisconnectClient(VARIABLE.ClientId);
                     }
-
+                    Debug.Log("Stopping host");
                     NetworkingManager.Singleton.StopHost();
                 }
                 else
