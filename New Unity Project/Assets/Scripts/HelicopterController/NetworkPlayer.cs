@@ -173,12 +173,18 @@ public class NetworkPlayer : NetworkedBehaviour
         
     }
 
+    IEnumerator waitBeforeDc()
+    {
+        yield return new  WaitForSeconds(IsHost ? 3 : 2);
+         MultiplayerManager mp = GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>();
+         mp.isAtStartup = true;
+         mp.StopClient();
+    }
+    
     [ClientRPC]
     void StopAndDisconnect()
     {
-        MultiplayerManager mp = GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>();
-        mp.isAtStartup = true;
-        mp.StopClient();
+        StartCoroutine(waitBeforeDc());
     }
     
     // Update is called once per frame
