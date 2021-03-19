@@ -10,6 +10,7 @@ using MLAPI.SceneManagement;
 using MLAPI.Spawning;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class NetworkPlayer : NetworkedBehaviour
 {
@@ -46,6 +47,7 @@ public class NetworkPlayer : NetworkedBehaviour
     public void SetCamera(Vector3 pos)
     {
         _hasConnected = true;
+        Vector3 randVector = new Vector3(pos.x + Random.Range(5f,-5f), pos.y, pos.z + Random.Range(5f, -5f));
         transform.position = pos;
         Debug.Log("Hello");
         SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<Camera>().enabled = true;

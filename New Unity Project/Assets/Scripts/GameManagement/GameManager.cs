@@ -195,29 +195,51 @@ public class GameManager : MonoBehaviour
     {
         if (!hasBeenDestroyed)
         {
-            Debug.Log("Destruction");
-            hasBeenDestroyed = true;
-            StopCoroutine(relaseTimer(timeToRelase));
-            deathEvent.Invoke();
-            yield return new WaitForSeconds(delay);
-            hasInvincibility = false;
-            mainFuselage.transform.position = Vector3.zero;
-            mainFuselage.transform.eulerAngles = Vector3.zero;    
-            mainFuselage.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            mainFuselage.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            mainRotor.GetComponent<RotorController>().yVelocity = 0;
-            mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            if (GameObject.Find("MiddleText"))
+            if (isOfflineGame)
             {
-                GameObject.Find("MiddleText").SetActive(false);
-            }
-            mainFuselage.GetComponent<FuselageController>().ResetHealth();
+                Debug.Log("Destruction");
+                hasBeenDestroyed = true;
+                StopCoroutine(relaseTimer(timeToRelase));
+                deathEvent.Invoke();
+                yield return new WaitForSeconds(delay);
+                hasInvincibility = false;
+                mainFuselage.transform.position = Vector3.zero;
+                mainFuselage.transform.eulerAngles = Vector3.zero;
+                mainFuselage.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                mainFuselage.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+                mainRotor.GetComponent<RotorController>().yVelocity = 0;
+                mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+                if (GameObject.Find("MiddleText"))
+                {
+                    GameObject.Find("MiddleText").SetActive(false);
+                }
 
-            if (!isOfflineGame)
-            {
-                
+                mainFuselage.GetComponent<FuselageController>().ResetHealth();
             }
+            else
+            {
+                Debug.Log("Destruction");
+                hasBeenDestroyed = true;
+                StopCoroutine(relaseTimer(timeToRelase));
+                deathEvent.Invoke();
+                yield return new WaitForSeconds(delay);
+                hasInvincibility = false;
+                mainFuselage.transform.position = Vector3.zero;
+                mainFuselage.transform.eulerAngles = Vector3.zero;
+                mainFuselage.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                mainFuselage.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+                mainRotor.GetComponent<RotorController>().yVelocity = 0;
+                mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+                if (GameObject.Find("MiddleText"))
+                {
+                    GameObject.Find("MiddleText").SetActive(false);
+                }
+
+                mainFuselage.GetComponent<FuselageController>().ResetHealth();
+            }
+            
             
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
