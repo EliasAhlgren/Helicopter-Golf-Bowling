@@ -126,8 +126,9 @@ namespace GameManagement
             }
             else
             {
-                NetworkingManager.Singleton.StopClient();
                 gameObject.GetComponent<UnetTransport>().Shutdown();
+                NetworkingManager.Singleton.StopClient();
+                
             }
         }
         
