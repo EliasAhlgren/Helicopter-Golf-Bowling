@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using GameManagement;
 using MLAPI;
 using UnityEngine;
 using MLAPI.Messaging;
@@ -172,6 +173,14 @@ public class NetworkPlayer : NetworkedBehaviour
         
     }
 
+    [ClientRPC]
+    void StopAndDisconnect()
+    {
+        MultiplayerManager mp = GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>();
+        mp.isAtStartup = true;
+        mp.StopClient();
+    }
+    
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -180,23 +189,7 @@ public class NetworkPlayer : NetworkedBehaviour
             if (Input.GetKeyDown(KeyCode.R))
             {
                 Debug.Log("Disconnecting");
-                if (NetworkingManager.Singleton.ConnectedClientsList.Count > 1)
-                {
-                    for (var index = 0; index < NetworkingManager.Singleton.ConnectedClientsList.Count; index++)
-                    {
-                        Debug.Log("Fuck off cliet number: " + index + " :D");
-                        var VARIABLE = NetworkingManager.Singleton.ConnectedClientsList[index];
-                        NetworkingManager.Singleton.DisconnectClient(VARIABLE.ClientId);
-                    }
-                    Debug.Log("Stopping host");
-                    NetworkingManager.Singleton.StopHost();
-                }
-                else
-                {
-                    NetworkingManager.Singleton.StopHost();
-                }
-                
-                
+                InvokeClientRpcOnEveryone(StopAndDisconnect);
             }
         }
         

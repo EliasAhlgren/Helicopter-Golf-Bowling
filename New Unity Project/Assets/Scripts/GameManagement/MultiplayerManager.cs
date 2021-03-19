@@ -68,9 +68,7 @@ namespace GameManagement
         void Disconnected(ulong obj)
         {
             Debug.Log("Disconnected");
-            NetworkingManager.Singleton.StopClient();
-            NetworkingManager.Singleton.StopHost();
-            isAtStartup = true;
+            
         }
         
         private void ClientConnected(ulong obj)
@@ -112,7 +110,19 @@ namespace GameManagement
             NetworkingManager.Singleton.StartClient();
             
         }
-        
+
+        public void StopClient()
+        {
+            if (!isHost)
+            {
+                NetworkingManager.Singleton.StopClient();
+            }
+            else
+            {
+                NetworkingManager.Singleton.StopHost();
+            }
+            
+        }
         
         private void Start()
         {
