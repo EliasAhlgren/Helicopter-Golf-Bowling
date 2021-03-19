@@ -179,6 +179,7 @@ public class NetworkPlayer : NetworkedBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
+                Debug.Log("Disconnecting");
                 if (NetworkingManager.Singleton.ConnectedClientsList.Count > 1)
                 {
                     for (var index = 0; index < NetworkingManager.Singleton.ConnectedClientsList.Count; index++)

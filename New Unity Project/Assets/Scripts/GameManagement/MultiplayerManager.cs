@@ -67,6 +67,7 @@ namespace GameManagement
 
         void Disconnected(ulong obj)
         {
+            Debug.Log("Disconnected");
             NetworkingManager.Singleton.StopClient();
             NetworkingManager.Singleton.StopHost();
             isAtStartup = true;
