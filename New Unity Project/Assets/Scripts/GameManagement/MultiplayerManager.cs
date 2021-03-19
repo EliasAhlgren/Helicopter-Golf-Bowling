@@ -215,6 +215,13 @@ namespace GameManagement
                     VARIABLE.isKinematic = false;
                 }
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", helicopters[currentPlayer].GetComponent<NetworkedObject>(), _scoreManager.playerScores[currentPlayer - 1]);
+
+                List<ulong> currentTarget = new List<ulong>();
+                currentTarget.Add(helicopters[currentPlayer].GetComponent<NetworkedObject>().OwnerClientId);
+                
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetSpectatorUI");
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpc("ResetUI", currentTarget);
+                
                 for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
                 {
                     if (i == currentPlayer)
@@ -229,7 +236,7 @@ namespace GameManagement
             }
             else
             {
-               // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("StopAndDisconnect");
             }
 
             if (!isOfflineGame && isHost)

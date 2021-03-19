@@ -23,7 +23,7 @@ public class NetworkPlayer : NetworkedBehaviour
     [SerializeField] private string yRotationControl;
     [SerializeField] private string zRotationControl;
 
-    private bool hasConnected;
+    private bool _hasConnected;
     
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,7 @@ public class NetworkPlayer : NetworkedBehaviour
 
     private void OnGUI()
     {
-        if (hasConnected)
+        if (_hasConnected)
         {
             GUI.Box (new Rect (Screen.width - 100,0,100,50), SpawnManager.GetLocalPlayerObject().OwnerClientId.ToString());
             
@@ -45,14 +45,14 @@ public class NetworkPlayer : NetworkedBehaviour
     [ClientRPC]
     public void SetCamera(Vector3 pos)
     {
-        hasConnected = true;
+        _hasConnected = true;
         transform.position = pos;
         Debug.Log("Hello");
         SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<Camera>().enabled = true;
         SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
-        foreach (var VARIABLE in SpawnManager.SpawnedObjectsList)
+        foreach (var variable in SpawnManager.SpawnedObjectsList)
         {
-            Debug.Log(VARIABLE + " ID " + VARIABLE.OwnerClientId);
+            Debug.Log(variable + " ID " + variable.OwnerClientId);
         }
     }
 
@@ -65,37 +65,37 @@ public class NetworkPlayer : NetworkedBehaviour
     [ClientRPC]
     void ClientGetNextPlayer(int crntPlayer, int newScore)
     {
-            StartCoroutine(textHomma(crntPlayer, newScore));
+            StartCoroutine(TextHomma(crntPlayer, newScore));
         
-            ScoreManager _scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
-            for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
+            ScoreManager scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+            for (int i = 0; i < scoreManager.scoresUguis.Length; i++)
             {
                 if (i == crntPlayer)
                 {
-                    _scoreManager.scoresUguis[i].color = Color.red;
+                    scoreManager.scoresUguis[i].color = Color.red;
                 }
                 else
                 {
-                    _scoreManager.scoresUguis[i].color = Color.white;
+                    scoreManager.scoresUguis[i].color = Color.white;
                 }
             }
         
     }
 
-    public IEnumerator textHomma(int crntPlayer, int newScore)
+    public IEnumerator TextHomma(int crntPlayer, int newScore)
     {
         Debug.Log("new score: " + newScore);
-        ScoreManager _scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
-        for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
+        ScoreManager scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        for (int i = 0; i < scoreManager.scoresUguis.Length; i++)
         {
             if (i == crntPlayer)
             {
-                _scoreManager.scoresUguis[i].color = Color.red;
-                _scoreManager.scoresUguis[i].text = newScore.ToString();
+                scoreManager.scoresUguis[i].color = Color.red;
+                scoreManager.scoresUguis[i].text = newScore.ToString();
             }
             else
             {
-                _scoreManager.scoresUguis[i].color = Color.white;
+                scoreManager.scoresUguis[i].color = Color.white;
             }
         }
 
@@ -123,9 +123,9 @@ public class NetworkPlayer : NetworkedBehaviour
             GameObject.Find("MiddleText").SetActive(false);
         }
 
-        foreach (var VARIABLE in GameObject.FindGameObjectsWithTag("Pin"))
+        foreach (var variable in GameObject.FindGameObjectsWithTag("Pin"))
         {
-            VARIABLE.GetComponent<TargetScript>().ResetTransform();
+            variable.GetComponent<TargetScript>().ResetTransform();
         }
                 
     }
@@ -151,40 +151,67 @@ public class NetworkPlayer : NetworkedBehaviour
         
         Debug.Log("Setting gameras to  " + jyrki);
         
-        foreach (var VARIABLE in SpawnManager.SpawnedObjectsList)
+        foreach (var variable in SpawnManager.SpawnedObjectsList)
         {
-            if (VARIABLE != jyrki)
+            if (variable != jyrki)
             {
-                VARIABLE.GetComponentInChildren<GameManager>().isCurrentPLayer = false;
-                Debug.Log("Not found "+ VARIABLE);
-                VARIABLE.GetComponentInChildren<Camera>().enabled = false;
-                VARIABLE.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
+                variable.GetComponentInChildren<GameManager>().isCurrentPLayer = false;
+                Debug.Log("Not found "+ variable);
+                variable.GetComponentInChildren<Camera>().enabled = false;
+                variable.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
                 
             }
             else
             {
-                VARIABLE.GetComponentInChildren<GameManager>().isCurrentPLayer = true;
-                Debug.Log("found "+ VARIABLE);
-                VARIABLE.GetComponentInChildren<Camera>().enabled = true;
-                VARIABLE.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
+                variable.GetComponentInChildren<GameManager>().isCurrentPLayer = true;
+                Debug.Log("found "+ variable);
+                variable.GetComponentInChildren<Camera>().enabled = true;
+                variable.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
                 return;
             }
         }
         
     }
 
-    IEnumerator waitBeforeDc()
+    IEnumerator WaitBeforeDc()
     {
         yield return new  WaitForSeconds(IsHost ? 3 : 2);
          MultiplayerManager mp = GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>();
          mp.isAtStartup = true;
          mp.StopClient();
     }
+
+    [ClientRPC]
+    void SetSpectatorUI()
+    {
+        Debug.Log("SpectatorUI");
+        if (GameObject.Find("BottomText"))
+        {
+            GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = true;
+            GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().text = "";
+            GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().enabled = true;
+            GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().text = "Spectating";
+        }
+    }
     
     [ClientRPC]
-    void StopAndDisconnect()
+    void ResetUI()
     {
-        StartCoroutine(waitBeforeDc());
+        Debug.Log("PlayerUI");
+        if (GameObject.Find("BottomText"))
+        {
+            GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = true;
+            GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().text = "Press any key";
+            GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().enabled = true;
+            GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().text = "Player In control";
+
+        }
+    }
+    
+    [ClientRPC]
+    public void StopAndDisconnect()
+    {
+        StartCoroutine(WaitBeforeDc());
     }
     
     // Update is called once per frame
