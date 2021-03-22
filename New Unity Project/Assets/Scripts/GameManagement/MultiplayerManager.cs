@@ -63,6 +63,16 @@ namespace GameManagement
             networkPlayers[0].name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
             
             isHost = true;
+            
+            List<ulong> ids = new List<ulong> {SpawnManager.GetLocalPlayerObject().OwnerClientId};
+            //jeff.GetComponentInChildren<Camera>().enabled = false;
+            SpawnManager.GetLocalPlayerObject()
+                .GetComponent<NetworkedBehaviour>()
+                .InvokeClientRpc("SetCamera", ids, spawnPosition);
+            SpawnManager.GetLocalPlayerObject()
+                .GetComponent<NetworkedBehaviour>()
+                .InvokeClientRpc("SpawnHelicopter", ids, spawnPosition);
+            
             //GameObject.Find("CineCamera").GetComponent<NetworkedTransform>().enabled = true;
             //spawnPosition += Vector3.left * 10;
         }
@@ -75,8 +85,6 @@ namespace GameManagement
         
         private void ClientConnected(ulong obj)
         {
-            
-            
                 if (NetworkingManager.Singleton.ConnectedClientsList.Count <= playerCount)
                 {
                     NetworkingManager.Singleton.OnClientDisconnectCallback += Disconnected;
@@ -90,9 +98,10 @@ namespace GameManagement
                     GameObject jeff = SpawnManager.SpawnedObjects[obj].gameObject;
                     jeff.name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
                     networkPlayers.Add(jeff);
-                    List<ulong> ids = new List<ulong> {jeff.GetComponent<NetworkedObject>().OwnerClientId};
+                    
                     if (isHost)
                     {
+                        List<ulong> ids = new List<ulong> {jeff.GetComponent<NetworkedObject>().OwnerClientId};
                         //jeff.GetComponentInChildren<Camera>().enabled = false;
                         SpawnManager.GetLocalPlayerObject()
                             .GetComponent<NetworkedBehaviour>()
