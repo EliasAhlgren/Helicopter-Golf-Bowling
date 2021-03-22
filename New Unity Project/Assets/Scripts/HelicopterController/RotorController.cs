@@ -38,10 +38,11 @@ namespace HelicopterController
         void Start()
         //dwdwdwde
         {
+            gameManager = transform.root.GetComponentInChildren<GameManager>();
             _rigidbody = gameObject.GetComponent<Rigidbody>();
             networkPlayer = transform.root.GetComponent<NetworkPlayer>();
             slider = GameObject.Find("Slider").GetComponent<Slider>();
-            gameManager = transform.root.GetComponentInChildren<GameManager>();
+            
         }
         
         public void Relase()

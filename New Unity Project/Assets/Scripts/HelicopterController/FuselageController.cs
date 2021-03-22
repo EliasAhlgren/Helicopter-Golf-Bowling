@@ -25,6 +25,8 @@ public class FuselageController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = transform.root.GetComponentInChildren<GameManager>();
+        
         _networkPlayer = transform.root.GetComponent<NetworkPlayer>();
 
         gameManager = transform.root.GetComponentInChildren<GameManager>();
