@@ -7,6 +7,8 @@ using MLAPI.Messaging;
 using MLAPI.Prototyping;
 using MLAPI.Spawning;
 using MLAPI.Transports.UNET;
+using UnityEngine.Serialization;
+using NetworkPlayer = HelicopterController.NetworkPlayer;
 
 
 namespace GameManagement
@@ -31,7 +33,7 @@ namespace GameManagement
 
         public GameObject playerPrefab;
 
-        public List<GameObject> helicopters;
+        [FormerlySerializedAs("helicopters")] public List<GameObject> networkPlayers;
 
         public int serverCapacity;
         
@@ -57,8 +59,8 @@ namespace GameManagement
             _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
             _gameManager.isOfflineGame = isOfflineGame;
             //_gameManager.transform.root.gameObject.GetComponentInChildren<Camera>().enabled = true;
-            helicopters.Add(_gameManager.transform.root.gameObject); 
-            helicopters[0].name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
+            networkPlayers.Add(_gameManager.transform.root.gameObject); 
+            networkPlayers[0].name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
             
             isHost = true;
             //GameObject.Find("CineCamera").GetComponent<NetworkedTransform>().enabled = true;
@@ -73,28 +75,44 @@ namespace GameManagement
         
         private void ClientConnected(ulong obj)
         {
-            NetworkingManager.Singleton.OnClientDisconnectCallback += Disconnected;
-            spawnPosition += Vector3.forward * 10;
-            UnetTransport unetTransport = gameObject.GetComponent<UnetTransport>();
-            Debug.Log("Connected to: " + unetTransport.ConnectAddress + " rtt " + unetTransport.GetCurrentRtt(unetTransport.ServerClientId));
-            
-            Debug.Log("Client connected");
-
-            //GameObject jeff = GameObject.Find("Player(Clone)");
-            GameObject jeff = SpawnManager.SpawnedObjects[obj].gameObject;
-            jeff.name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
-            helicopters.Add(jeff);
-            List<ulong> ids = new  List<ulong>();
-            ids.Add(jeff.GetComponent<NetworkedObject>().OwnerClientId);
             if (isHost)
             {
-                //jeff.GetComponentInChildren<Camera>().enabled = false;
-                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera",ids, spawnPosition);
-                if (helicopters.Count == serverCapacity)
+                if (NetworkingManager.Singleton.ConnectedClientsList.Count <= playerCount)
                 {
-                    //StartGame();
+                    NetworkingManager.Singleton.OnClientDisconnectCallback += Disconnected;
+                    spawnPosition += Vector3.forward * 10;
+                    UnetTransport unetTransport = gameObject.GetComponent<UnetTransport>();
+                    Debug.Log("Connected to: " + unetTransport.ConnectAddress + " rtt " + unetTransport.GetCurrentRtt(unetTransport.ServerClientId));
+
+                    Debug.Log("Client connected");
+
+                    //GameObject jeff = GameObject.Find("Player(Clone)");
+                    GameObject jeff = SpawnManager.SpawnedObjects[obj].gameObject;
+                    jeff.name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
+                    networkPlayers.Add(jeff);
+                    List<ulong> ids = new List<ulong> {jeff.GetComponent<NetworkedObject>().OwnerClientId};
+                    if (isHost)
+                    {
+                        //jeff.GetComponentInChildren<Camera>().enabled = false;
+                        SpawnManager.GetLocalPlayerObject()
+                            .GetComponent<NetworkedBehaviour>()
+                            .InvokeClientRpc("SetCamera", ids, spawnPosition);
+                        SpawnManager.GetLocalPlayerObject()
+                            .GetComponent<NetworkedBehaviour>()
+                            .InvokeClientRpc("SpawnHelicopter", ids, spawnPosition);
+                        if (networkPlayers.Count == serverCapacity)
+                        {
+                            StartGame();
+                        }
+                    }
                 }
+                else
+                {
+                    NetworkingManager.Singleton.DisconnectClient(obj);
+                }
+                
             }
+            
             
         }
 
@@ -118,7 +136,7 @@ namespace GameManagement
             if (isHost)
             {
                 NetworkingManager.Singleton.StopHost();
-                helicopters = new List<GameObject>();
+                networkPlayers = new List<GameObject>();
                 currentPlayer = 0;
                 spawnPosition = Vector3.zero;
                 isHost = false;
@@ -159,11 +177,11 @@ namespace GameManagement
             if (isHost && NetworkingManager.Singleton.ConnectedClientsList.Count > 1)
             {
                 //List<ulong> ids = new List<ulong>(0);
-                //ids.Add(helicopters[currentPlayer].GetComponent<NetworkedBehaviour>().OwnerClientId);
+                //ids.Add(networkPlayers[currentPlayer].GetComponent<NetworkedBehaviour>().OwnerClientId);
 
-                //helicopters[0].GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone(helicopters[0].GetComponent<NetworkPlayer>().SetCamera);
+                //networkPlayers[0].GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone(networkPlayers[0].GetComponent<NetworkPlayer>().SetCamera);
                 
-                //helicopters[currentPlayer].GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera" ,ids);
+                //networkPlayers[currentPlayer].GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera" ,ids);
                 
                 
                 
@@ -193,8 +211,8 @@ namespace GameManagement
 
             if (!isOfflineGame && isHost)
             {
-                helicopters[currentPlayer].transform.position = -Vector3.one * 69f;
-                foreach (var VARIABLE in helicopters[currentPlayer].GetComponentsInChildren<Rigidbody>())
+                networkPlayers[currentPlayer].transform.position = -Vector3.one * 69f;
+                foreach (var VARIABLE in networkPlayers[currentPlayer].GetComponentsInChildren<Rigidbody>())
                 {
                     VARIABLE.isKinematic = true;
                 }
@@ -209,15 +227,15 @@ namespace GameManagement
                     currentPlayer++;
                 
                 _scoreManager.currentPlayer++;
-                helicopters[currentPlayer].transform.position = Vector3.zero;
-                foreach (var VARIABLE in helicopters[currentPlayer].GetComponentsInChildren<Rigidbody>())
+                networkPlayers[currentPlayer].transform.position = Vector3.zero;
+                foreach (var VARIABLE in networkPlayers[currentPlayer].GetComponentsInChildren<Rigidbody>())
                 {
                     VARIABLE.isKinematic = false;
                 }
-                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", helicopters[currentPlayer].GetComponent<NetworkedObject>(), _scoreManager.playerScores[currentPlayer - 1]);
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", networkPlayers[currentPlayer].GetComponent<NetworkedObject>(), _scoreManager.playerScores[currentPlayer - 1]);
 
                 List<ulong> currentTarget = new List<ulong>();
-                currentTarget.Add(helicopters[currentPlayer].GetComponent<NetworkedObject>().OwnerClientId);
+                currentTarget.Add(networkPlayers[currentPlayer].GetComponent<NetworkedObject>().OwnerClientId);
                 
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetSpectatorUI");
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpc("ResetUI", currentTarget);
@@ -242,7 +260,7 @@ namespace GameManagement
             if (!isOfflineGame && isHost)
             {
                // lookAtCamera.GetComponentInChildren<CinemachineVirtualCamera>().LookAt =
-                //    helicopters[currentPlayer].transform;
+                //    networkPlayers[currentPlayer].transform;
             }
             
             List<ulong> ids = new List<ulong>();

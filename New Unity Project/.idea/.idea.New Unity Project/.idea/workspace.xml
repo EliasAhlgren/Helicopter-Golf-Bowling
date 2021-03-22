@@ -50,13 +50,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/TargetScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/ScoreManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/RotorController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/MenuScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/InputField.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/HostButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" />
       </list>
     </option>
   </component>
@@ -73,7 +73,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="RiderDpaPageId" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys_rider" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -142,6 +142,7 @@
       <workItem from="1616060684945" duration="7348000" />
       <workItem from="1616140835844" duration="8471000" />
       <workItem from="1616348797746" duration="2108000" />
+      <workItem from="1616402019907" duration="2691000" />
     </task>
     <servers />
   </component>
@@ -170,6 +171,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="708" y="345" key="#Notifications/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1615190492029" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1616404391988">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616404391988" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1616068628905">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NetworkPlayer = HelicopterController.NetworkPlayer;
 
 public class FuselageController : MonoBehaviour
 {
