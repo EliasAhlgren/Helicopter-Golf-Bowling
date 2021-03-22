@@ -62,7 +62,6 @@ namespace GameManagement
             networkPlayers.Add(_gameManager.transform.root.gameObject); 
             networkPlayers[0].name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
 
-            networkPlayers[0].GetComponent<NetworkPlayer>().isHost = true;
             isHost = true;
             
             List<ulong> ids = new List<ulong> {SpawnManager.GetLocalPlayerObject().OwnerClientId};
@@ -108,9 +107,7 @@ namespace GameManagement
                         SpawnManager.GetLocalPlayerObject()
                             .GetComponent<NetworkedBehaviour>()
                             .InvokeClientRpc("SetCamera", ids, spawnPosition);
-                        SpawnManager.GetLocalPlayerObject()
-                            .GetComponent<NetworkedBehaviour>()
-                            .InvokeClientRpc("SpawnHelicopter", ids, spawnPosition, obj);
+                        //SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SpawnHelicopter", ids, spawnPosition, obj);
                         SpawnManager.GetLocalPlayerObject()
                             .GetComponent<NetworkedBehaviour>()
                             .InvokeClientRpc("Testi", ids);
@@ -133,6 +130,11 @@ namespace GameManagement
         
         void StartGame()
         {
+            foreach (var VARIABLE in networkPlayers)
+            {
+                List<ulong> ids = new List<ulong> {VARIABLE.GetComponent<NetworkedObject>().OwnerClientId};
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SpawnHelicopter", ids, spawnPosition, VARIABLE.GetComponent<NetworkedObject>().OwnerClientId);
+            }
             Debug.Log(NetworkingManager.Singleton.LocalClientId + " le number");
             SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", SpawnManager.GetLocalPlayerObject(), 0);
         }

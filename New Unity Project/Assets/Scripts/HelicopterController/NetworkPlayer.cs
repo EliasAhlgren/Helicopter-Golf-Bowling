@@ -26,7 +26,6 @@ namespace HelicopterController
 
         public GameObject physicalObject;
 
-        public bool isHost;
         
         // Start is called before the first frame update
         void Start()
