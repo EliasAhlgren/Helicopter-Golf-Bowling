@@ -69,9 +69,7 @@ namespace GameManagement
             SpawnManager.GetLocalPlayerObject()
                 .GetComponent<NetworkedBehaviour>()
                 .InvokeClientRpc("SetCamera", ids, spawnPosition);
-            SpawnManager.GetLocalPlayerObject()
-                .GetComponent<NetworkedBehaviour>()
-                .InvokeClientRpc("SpawnHelicopter", ids, spawnPosition, NetworkingManager.Singleton.LocalClientId);
+            //SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SpawnHelicopter", ids, spawnPosition, NetworkingManager.Singleton.LocalClientId);
             
             //GameObject.Find("CineCamera").GetComponent<NetworkedTransform>().enabled = true;
             //spawnPosition += Vector3.left * 10;
