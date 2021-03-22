@@ -50,14 +50,20 @@ namespace HelicopterController
         [ClientRPC]
         public void SpawnHelicopter(Vector3 pos)
         {
-            Vector3 randVector = new Vector3(pos.x + Random.Range(5f,-5f), pos.y, pos.z + Random.Range(5f, -5f));
-            GameObject gb = Instantiate(physicalObject, randVector, Quaternion.identity, transform);
-            gameObject.GetComponentInChildren<GameManager>().mainFuselage =
-                gb.GetComponentInChildren<FuselageController>().gameObject;
-            gameObject.GetComponentInChildren<GameManager>().mainRotor =
-                gb.GetComponentInChildren<RotorController>().gameObject;
-            
-            gameObject.GetComponentInChildren<CinemachineFreeLook>().Follow = gameObject.GetComponentInChildren<CinemachineFreeLook>().LookAt = gb.GetComponentInChildren<FuselageController>().transform;
+            if (!NetworkingManager.Singleton.IsHost)
+            {
+                Vector3 randVector = new Vector3(pos.x + Random.Range(5f, -5f), pos.y, pos.z + Random.Range(5f, -5f));
+                GameObject gb = Instantiate(physicalObject, randVector, Quaternion.identity, transform);
+                gameObject.GetComponentInChildren<GameManager>().mainFuselage =
+                    gb.GetComponentInChildren<FuselageController>().gameObject;
+                gameObject.GetComponentInChildren<GameManager>().mainRotor =
+                    gb.GetComponentInChildren<RotorController>().gameObject;
+
+                gameObject.GetComponentInChildren<CinemachineFreeLook>().Follow =
+                    gameObject.GetComponentInChildren<CinemachineFreeLook>().LookAt =
+                        gb.GetComponentInChildren<FuselageController>().transform;
+            }
+           
         }
     
         [ClientRPC]
