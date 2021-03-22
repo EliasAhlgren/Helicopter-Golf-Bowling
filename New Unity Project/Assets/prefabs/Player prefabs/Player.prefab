@@ -396,7 +396,8 @@ MonoBehaviour:
   xRotationControl: Horizontal
   yRotationControl: YRotation
   zRotationControl: Vertical
-  physicalObject: {fileID: 0}
+  physicalObject: {fileID: 4411522515422845347, guid: 25421c24a6c61f54eb051482c4cfbd1b,
+    type: 3}
 --- !u!114 &2118109396504063161
 MonoBehaviour:
   m_ObjectHideFlags: 0
