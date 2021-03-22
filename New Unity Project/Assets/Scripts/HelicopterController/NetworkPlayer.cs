@@ -25,7 +25,9 @@ namespace HelicopterController
         private bool _hasConnected;
 
         public GameObject physicalObject;
-    
+
+        public bool isHost;
+        
         // Start is called before the first frame update
         void Start()
         {
@@ -48,9 +50,11 @@ namespace HelicopterController
         }
         
         [ClientRPC]
-        public void SpawnHelicopter(Vector3 pos)
+        public void SpawnHelicopter(Vector3 pos, ulong target)
         {
-            if (!NetworkingManager.Singleton.IsHost)
+            Debug.Log("Helicopter Spawned");
+            
+            if (NetworkingManager.Singleton.LocalClientId == target)
             {
                 Vector3 randVector = new Vector3(pos.x + Random.Range(5f, -5f), pos.y, pos.z + Random.Range(5f, -5f));
                 GameObject gb = Instantiate(physicalObject, randVector, Quaternion.identity, transform);

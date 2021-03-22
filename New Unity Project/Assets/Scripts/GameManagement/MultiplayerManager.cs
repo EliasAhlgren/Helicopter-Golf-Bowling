@@ -61,7 +61,8 @@ namespace GameManagement
             //_gameManager.transform.root.gameObject.GetComponentInChildren<Camera>().enabled = true;
             networkPlayers.Add(_gameManager.transform.root.gameObject); 
             networkPlayers[0].name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
-            
+
+            networkPlayers[0].GetComponent<NetworkPlayer>().isHost = true;
             isHost = true;
             
             List<ulong> ids = new List<ulong> {SpawnManager.GetLocalPlayerObject().OwnerClientId};
@@ -71,7 +72,7 @@ namespace GameManagement
                 .InvokeClientRpc("SetCamera", ids, spawnPosition);
             SpawnManager.GetLocalPlayerObject()
                 .GetComponent<NetworkedBehaviour>()
-                .InvokeClientRpc("SpawnHelicopter", ids, spawnPosition);
+                .InvokeClientRpc("SpawnHelicopter", ids, spawnPosition, NetworkingManager.Singleton.LocalClientId);
             
             //GameObject.Find("CineCamera").GetComponent<NetworkedTransform>().enabled = true;
             //spawnPosition += Vector3.left * 10;
@@ -101,6 +102,7 @@ namespace GameManagement
                     
                     if (isHost)
                     {
+                        Debug.Log("Host: Client spawned");
                         List<ulong> ids = new List<ulong> {jeff.GetComponent<NetworkedObject>().OwnerClientId};
                         //jeff.GetComponentInChildren<Camera>().enabled = false;
                         SpawnManager.GetLocalPlayerObject()
@@ -108,7 +110,7 @@ namespace GameManagement
                             .InvokeClientRpc("SetCamera", ids, spawnPosition);
                         SpawnManager.GetLocalPlayerObject()
                             .GetComponent<NetworkedBehaviour>()
-                            .InvokeClientRpc("SpawnHelicopter", ids, spawnPosition);
+                            .InvokeClientRpc("SpawnHelicopter", ids, spawnPosition, obj);
                         SpawnManager.GetLocalPlayerObject()
                             .GetComponent<NetworkedBehaviour>()
                             .InvokeClientRpc("Testi", ids);
