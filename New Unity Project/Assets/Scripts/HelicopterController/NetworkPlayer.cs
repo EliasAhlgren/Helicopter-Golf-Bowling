@@ -50,6 +50,8 @@ namespace HelicopterController
                 gb.GetComponentInChildren<FuselageController>().gameObject;
             gameObject.GetComponentInChildren<GameManager>().mainRotor =
                 gb.GetComponentInChildren<RotorController>().gameObject;
+            
+            gameObject.GetComponentInChildren<CinemachineFreeLook>().Follow = gameObject.GetComponentInChildren<CinemachineFreeLook>().LookAt = gb.GetComponentInChildren<FuselageController>().transform;
         }
     
         [ClientRPC]
