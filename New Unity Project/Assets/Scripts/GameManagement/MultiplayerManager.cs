@@ -109,6 +109,9 @@ namespace GameManagement
                         SpawnManager.GetLocalPlayerObject()
                             .GetComponent<NetworkedBehaviour>()
                             .InvokeClientRpc("SpawnHelicopter", ids, spawnPosition);
+                        SpawnManager.GetLocalPlayerObject()
+                            .GetComponent<NetworkedBehaviour>()
+                            .InvokeClientRpc("Testi", ids);
                         if (networkPlayers.Count == serverCapacity)
                         {
                             StartGame();

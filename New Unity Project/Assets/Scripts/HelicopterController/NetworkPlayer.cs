@@ -42,6 +42,12 @@ namespace HelicopterController
         }
 
         [ClientRPC]
+        public void Testi()
+        {
+            Debug.Log("TESTI TESTI TESTI");
+        }
+        
+        [ClientRPC]
         public void SpawnHelicopter(Vector3 pos)
         {
             Vector3 randVector = new Vector3(pos.x + Random.Range(5f,-5f), pos.y, pos.z + Random.Range(5f, -5f));
