@@ -67,6 +67,7 @@ namespace HelicopterController
                 gameObject.GetComponentInChildren<CinemachineFreeLook>().Follow =
                     gameObject.GetComponentInChildren<CinemachineFreeLook>().LookAt =
                         gb.GetComponentInChildren<FuselageController>().transform;
+               Debug.Log("Tämän viestin lähetti", gameObject);
                 Debug.Log("Helicopter Spawned for "+ target, gb);
             }
            
