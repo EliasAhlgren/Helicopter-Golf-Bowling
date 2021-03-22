@@ -28,6 +28,10 @@
           <e p="GameManagement" t="Include">
             <e p="CustomTrack.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
+            <e p="Menu" t="Include">
+              <e p="HostButton.cs" t="Include" />
+              <e p="InputField.cs" t="Include" />
+            </e>
             <e p="MultiplayerManager.cs" t="Include" />
             <e p="NetManagerHud.cs" t="Include" />
             <e p="ScoreManager.cs" t="Include" />
