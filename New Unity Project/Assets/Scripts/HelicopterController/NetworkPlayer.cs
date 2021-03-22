@@ -45,7 +45,7 @@ namespace HelicopterController
         public void SpawnHelicopter(Vector3 pos)
         {
             Vector3 randVector = new Vector3(pos.x + Random.Range(5f,-5f), pos.y, pos.z + Random.Range(5f, -5f));
-            GameObject gb = Instantiate(physicalObject, randVector, Quaternion.identity);
+            GameObject gb = Instantiate(physicalObject, randVector, Quaternion.identity, transform);
             gameObject.GetComponentInChildren<GameManager>().mainFuselage =
                 gb.GetComponentInChildren<FuselageController>().gameObject;
             gameObject.GetComponentInChildren<GameManager>().mainRotor =
