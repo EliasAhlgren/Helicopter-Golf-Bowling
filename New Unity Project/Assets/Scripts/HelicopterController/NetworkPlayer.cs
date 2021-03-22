@@ -57,7 +57,6 @@ namespace HelicopterController
             if (NetworkingManager.Singleton.LocalClientId == target)
             {
                 
-                Debug.Log("Helicopter Spawned");
                 Vector3 randVector = new Vector3(pos.x + Random.Range(5f, -5f), pos.y, pos.z + Random.Range(5f, -5f));
                 GameObject gb = Instantiate(physicalObject, randVector, Quaternion.identity, transform);
                 gameObject.GetComponentInChildren<GameManager>().mainFuselage =
@@ -68,6 +67,7 @@ namespace HelicopterController
                 gameObject.GetComponentInChildren<CinemachineFreeLook>().Follow =
                     gameObject.GetComponentInChildren<CinemachineFreeLook>().LookAt =
                         gb.GetComponentInChildren<FuselageController>().transform;
+                Debug.Log("Helicopter Spawned", gb);
             }
            
         }
