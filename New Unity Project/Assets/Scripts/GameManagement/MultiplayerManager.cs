@@ -75,8 +75,8 @@ namespace GameManagement
         
         private void ClientConnected(ulong obj)
         {
-            if (isHost)
-            {
+            
+            
                 if (NetworkingManager.Singleton.ConnectedClientsList.Count <= playerCount)
                 {
                     NetworkingManager.Singleton.OnClientDisconnectCallback += Disconnected;
@@ -84,7 +84,7 @@ namespace GameManagement
                     UnetTransport unetTransport = gameObject.GetComponent<UnetTransport>();
                     Debug.Log("Connected to: " + unetTransport.ConnectAddress + " rtt " + unetTransport.GetCurrentRtt(unetTransport.ServerClientId));
 
-                    Debug.Log("Client connected");
+                    Debug.Log("Client " + obj + " connected");
 
                     //GameObject jeff = GameObject.Find("Player(Clone)");
                     GameObject jeff = SpawnManager.SpawnedObjects[obj].gameObject;
@@ -111,7 +111,7 @@ namespace GameManagement
                     NetworkingManager.Singleton.DisconnectClient(obj);
                 }
                 
-            }
+            
             
             
         }
