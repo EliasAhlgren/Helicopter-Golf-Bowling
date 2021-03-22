@@ -52,10 +52,12 @@ namespace HelicopterController
         [ClientRPC]
         public void SpawnHelicopter(Vector3 pos, ulong target)
         {
-            Debug.Log("Helicopter Spawned");
+            
             
             if (NetworkingManager.Singleton.LocalClientId == target)
             {
+                
+                Debug.Log("Helicopter Spawned");
                 Vector3 randVector = new Vector3(pos.x + Random.Range(5f, -5f), pos.y, pos.z + Random.Range(5f, -5f));
                 GameObject gb = Instantiate(physicalObject, randVector, Quaternion.identity, transform);
                 gameObject.GetComponentInChildren<GameManager>().mainFuselage =
