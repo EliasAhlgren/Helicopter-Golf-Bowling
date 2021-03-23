@@ -235,7 +235,12 @@ namespace GameManagement
                 Debug.Log("Next player");
                
                     currentPlayer++;
-                
+
+                    for (int i = 0; i < networkPlayers.Count; i++)
+                    {
+                        Debug.Log("Index: "+i+ " player: " +networkPlayers[i]);
+                    }
+                    
                 _scoreManager.currentPlayer++;
                 networkPlayers[currentPlayer].transform.position = Vector3.zero;
                 foreach (var VARIABLE in networkPlayers[currentPlayer].GetComponentsInChildren<Rigidbody>())
