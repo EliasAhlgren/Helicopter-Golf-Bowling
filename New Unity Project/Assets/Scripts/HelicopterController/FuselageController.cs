@@ -74,6 +74,7 @@ public class FuselageController : MonoBehaviour
                 {
                     Debug.Log("No movement");
                     StartCoroutine(gameManager.HelicopterDestroyed(3f));
+                    gameManager.waitingForInput = true;
                 }
             }
         }
@@ -103,6 +104,7 @@ public class FuselageController : MonoBehaviour
         {
             Debug.Log("Low hp destroyed");
             StartCoroutine(gameManager.HelicopterDestroyed(3));
+            gameManager.hasInvincibility = true;
         }
         
         if (isPlayerControlled && gameManager.isCurrentPLayer)
