@@ -17,6 +17,7 @@ public enum UIstate
     Awaiting,
     Spectator,
     Player,
+    LostControl,
     Destroyed,
     Strike
 }
@@ -105,7 +106,8 @@ public class GameManager : MonoBehaviour
     public IEnumerator relaseTimer(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-       
+
+        currentUIstate = UIstate.LostControl;
         relaseEvent.Invoke();
     }
 
@@ -291,6 +293,12 @@ public class GameManager : MonoBehaviour
                                 _topText.enabled = true;
                                 _topText.text = "Player In control";
                             }
+                            break;
+                        case UIstate.LostControl:
+                            _middleText.enabled = false;
+                            _bottomText.enabled = false;
+                            _topText.enabled = true;
+                            _topText.text = "Lost Control";
                             break;
                         case UIstate.Spectator:
                             if (_bottomText)
