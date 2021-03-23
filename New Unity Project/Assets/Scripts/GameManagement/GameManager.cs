@@ -236,7 +236,9 @@ public class GameManager : MonoBehaviour
             {
                 GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = false;
             }
+            
             yield return new WaitForSeconds(delay);
+            
             hasInvincibility = false;
             mainRotor.transform.position = -Vector3.one * 69;
             mainFuselage.transform.position = -Vector3.one * 69;
@@ -321,10 +323,18 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+                if (GameObject.Find("MiddleText"))
+                {
+                    GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().enabled = true;
+                    GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().enabled = true;
+                    GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = true;
+                }
+                
                 tmp.text = "Press any key";
                 if (Input.anyKeyDown)
                 {
                     StartFlight();
+                    
                 }
             }
         }
