@@ -128,7 +128,7 @@ namespace GameManagement
         
         void StartGame()
         {
-                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpcOnEveryone("SpawnHelicopter", spawnPosition);
+            //SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpcOnEveryone("SpawnHelicopter", spawnPosition);
             Debug.Log(NetworkingManager.Singleton.LocalClientId + " le number");
             SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", SpawnManager.GetLocalPlayerObject(), 0);
         }

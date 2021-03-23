@@ -28,9 +28,10 @@ namespace HelicopterController
 
         
         // Start is called before the first frame update
-        void Start()
+        IEnumerator Start()
         {
-        
+            yield return new  WaitForSeconds(5f);
+            SpawnHelicopter(Vector3.one);
         }
 
         private void OnGUI()
