@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using GameManagement;
 using HelicopterController;
+using MLAPI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -266,52 +267,57 @@ public class GameManager : MonoBehaviour
         {
             currentUIstate = UIstate.Spectator;
         }
-        
-        switch (currentUIstate)
+
+        if (transform.root.GetComponent<NetworkedObject>().IsLocalPlayer)
         {
-            case UIstate.Awaiting:
-                if (_bottomText)
-                {
-                    _middleText.enabled = false;
-                    _bottomText.enabled = true;
-                    _bottomText.text = "Press any key";
-                    _topText.enabled = true;
-                    _topText.text = "Player In control";
-                }
-                break;
-            case UIstate.Player:
-                if (_bottomText)
-                {
-                    _middleText.enabled = false;
-                    _bottomText.enabled = true;
-                    _bottomText.text = "Time left: " + Mathf.Round(timer);
-                    _topText.enabled = true;
-                    _topText.text = "Player In control";
-                }
-                break;
-            case UIstate.Spectator:
-                if (_bottomText)
-                {
-                    _middleText.enabled = false;
-                    _bottomText.enabled = false;
-                    _topText.enabled = true;
-                    _topText.text = "Spectating";
-                }
-                break;
-            case UIstate.Destroyed:
-                if (_bottomText)
-                {
-                    _topText.enabled = false;
-                    _middleText.text = "Destroyed";
-                    _bottomText.enabled = false;
-                }
-                break;
-            case UIstate.Strike:
-                _topText.enabled = false;
-                _middleText.text = "Strike";
-                _bottomText.enabled = false;
-                break;
+            switch (currentUIstate)
+                    {
+                        case UIstate.Awaiting:
+                            if (_bottomText)
+                            {
+                                _middleText.enabled = false;
+                                _bottomText.enabled = true;
+                                _bottomText.text = "Press any key";
+                                _topText.enabled = true;
+                                _topText.text = "Player In control";
+                            }
+                            break;
+                        case UIstate.Player:
+                            if (_bottomText)
+                            {
+                                _middleText.enabled = false;
+                                _bottomText.enabled = true;
+                                _bottomText.text = "Time left: " + Mathf.Round(timer);
+                                _topText.enabled = true;
+                                _topText.text = "Player In control";
+                            }
+                            break;
+                        case UIstate.Spectator:
+                            if (_bottomText)
+                            {
+                                _middleText.enabled = false;
+                                _bottomText.enabled = false;
+                                _topText.enabled = true;
+                                _topText.text = "Spectating";
+                            }
+                            break;
+                        case UIstate.Destroyed:
+                            if (_bottomText)
+                            {
+                                _topText.enabled = false;
+                                _middleText.text = "Destroyed";
+                                _bottomText.enabled = false;
+                            }
+                            break;
+                        case UIstate.Strike:
+                            _topText.enabled = false;
+                            _middleText.text = "Strike";
+                            _bottomText.enabled = false;
+                            break;
+                    }
         }
+        
+        
         
         if (isCurrentPLayer)
         {
