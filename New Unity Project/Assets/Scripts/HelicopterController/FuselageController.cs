@@ -49,7 +49,6 @@ public class FuselageController : MonoBehaviour
             if (!isPlayerControlled && !gameManager.waitingForInput && other.gameObject.CompareTag("Enviroment") &&
                 !gameManager.hasInvincibility)
             {
-
                 gameManager.ResetFromPos(transform.position, gameObject);
             }
             else if (gameManager.hasInvincibility)
@@ -70,11 +69,11 @@ public class FuselageController : MonoBehaviour
         {
             if (!gameManager.waitingForInput)
             {
-                //framesOnGround++;
+                framesOnGround++;
                 if (framesOnGround > 200)
                 {
                     Debug.Log("No movement");
-                    StartCoroutine(gameManager.Strike(3f)/*täs pitäis olla destroyed*/);
+                    StartCoroutine(gameManager.HelicopterDestroyed(3f));
                 }
             }
         }
