@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fdc2416d600674ca56df652bd9657b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentUIstate: 0
   isOfflineGame: 0
   isCurrentPLayer: 0
   timeToRelase: 10
