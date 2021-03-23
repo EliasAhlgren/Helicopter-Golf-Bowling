@@ -31,7 +31,7 @@ namespace HelicopterController
         IEnumerator Start()
         {
             yield return new  WaitForSeconds(5f);
-            SpawnHelicopter(Vector3.one);
+            SpawnHelicopter(GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().spawnPosition);
         }
 
         private void OnGUI()
