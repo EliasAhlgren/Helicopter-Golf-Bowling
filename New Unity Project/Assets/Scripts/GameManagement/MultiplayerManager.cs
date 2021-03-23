@@ -128,12 +128,7 @@ namespace GameManagement
         
         void StartGame()
         {
-            foreach (var VARIABLE in networkPlayers)
-            {
-                List<ulong> ids = new List<ulong> {VARIABLE.GetComponent<NetworkedObject>().OwnerClientId};
-                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SpawnHelicopter", ids, spawnPosition, VARIABLE.GetComponent<NetworkedObject>().OwnerClientId);
-                Debug.Log(VARIABLE, VARIABLE);
-            }
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpcOnEveryone("SpawnHelicopter", spawnPosition);
             Debug.Log(NetworkingManager.Singleton.LocalClientId + " le number");
             SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", SpawnManager.GetLocalPlayerObject(), 0);
         }

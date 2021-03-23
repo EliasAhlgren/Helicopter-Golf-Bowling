@@ -49,12 +49,10 @@ namespace HelicopterController
         }
         
         [ClientRPC]
-        public void SpawnHelicopter(Vector3 pos, ulong target)
+        public void SpawnHelicopter(Vector3 pos)
         {
             
             
-            if (NetworkingManager.Singleton.LocalClientId == target)
-            {
                 
                 Vector3 randVector = new Vector3(pos.x + Random.Range(5f, -5f), pos.y, pos.z + Random.Range(5f, -5f));
                 physicalObject.SetActive(true);
@@ -69,8 +67,6 @@ namespace HelicopterController
                     gameObject.GetComponentInChildren<CinemachineFreeLook>().LookAt =
                         gb.GetComponentInChildren<FuselageController>().transform;
                Debug.Log("Tämän viestin lähetti " +NetworkingManager.Singleton.LocalClientId , gameObject);
-                Debug.Log("Helicopter Spawned for "+ target, gb);
-            }
            
         }
     
