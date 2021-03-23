@@ -11,8 +11,19 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
+public enum UIstate
+{
+    Awaiting,
+    Spectator,
+    Player,
+    Destroyed,
+    Strike
+}
+
 public class GameManager : MonoBehaviour
 {
+    public UIstate currentUIstate;
+    
     public bool isOfflineGame;
 
     public bool isCurrentPLayer;
@@ -44,6 +55,10 @@ public class GameManager : MonoBehaviour
     public GameObject mainRotor;
 
     public GameObject mainFuselage;
+
+    private TextMeshProUGUI _topText;
+    private TextMeshProUGUI _middleText;
+    private TextMeshProUGUI _bottomText;
     
     private void Awake()
     {
@@ -52,7 +67,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tmp = GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>();
+        _topText = GameObject.Find("TopText").GetComponent<TextMeshProUGUI>();
+        _middleText = GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>();
+        _bottomText = GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>();
+        
+        
         //timer = timeToRelase;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -62,17 +81,15 @@ public class GameManager : MonoBehaviour
 
     public void ResetFromPos(Vector3 pos, GameObject thisObject)
     {
+        if (isCurrentPLayer)
+        {
+            currentUIstate = UIstate.Awaiting;
+        }
+        
         Debug.Log(thisObject + " HAS RESETED", thisObject);
         
         if (!isOfflineGame)
         {
-            if (GameObject.Find("BottomText"))
-            {
-                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = true;
-                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().text = "Press any key";
-                GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().text = "Player In control";
-
-            }
         }
         thisObject.transform.eulerAngles = Vector3.zero + Vector3.up * thisObject.transform.eulerAngles.y;
         thisObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -87,29 +104,19 @@ public class GameManager : MonoBehaviour
     public IEnumerator relaseTimer(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        if (GameObject.Find("TopText") && !isOfflineGame)
-        {
-            GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().text = "Control lost!";
-            //GameObject.Find("MiddleText").SetActive(false);
-            if (GameObject.Find("BottomText"))
-            {
-                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = false;
-            }
-        }
+       
         relaseEvent.Invoke();
     }
 
     public IEnumerator Strike(float delay)
     {
+        currentUIstate = UIstate.Strike;
         if (isOfflineGame) //offline game reset
         {
             isReseting = true;
             StopCoroutine(relaseTimer(timeToRelase));
             deathEvent.Invoke();
-            if (GameObject.Find("MiddleText"))
-            {
-                GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Strike";
-            }
+            
 
             yield return new WaitForSeconds(delay);
             hasInvincibility = false;
@@ -121,11 +128,7 @@ public class GameManager : MonoBehaviour
             mainRotor.GetComponent<RotorController>().yVelocity = 0;
             mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
             mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            if (GameObject.Find("MiddleText"))
-            {
-                GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Vehicle Destroyed";
-                GameObject.Find("MiddleText").SetActive(false);
-            }
+            
 
             foreach (var VARIABLE in GameObject.FindGameObjectsWithTag("Pin"))
             {
@@ -138,18 +141,7 @@ public class GameManager : MonoBehaviour
         {
             isReseting = true;
             StopCoroutine(relaseTimer(timeToRelase));
-            if (GameObject.Find("MiddleText"))
-            {
-                GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Strike";
-            }
-            if (GameObject.Find("TopText"))
-            {
-                GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().enabled = false;
-            }
-            if (GameObject.Find("BottomText"))
-            {
-                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = false;
-            }
+            
             yield return new WaitForSeconds(delay);
             hasInvincibility = false;
             mainRotor.transform.position = -Vector3.one * 69;
@@ -162,30 +154,14 @@ public class GameManager : MonoBehaviour
             mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
             mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             mainRotor.GetComponent<Rigidbody>().isKinematic = true;
-            if (GameObject.Find("MiddleText"))
-            {
-                GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Vehicle Destroyed";
-                GameObject.Find("MiddleText").SetActive(false);
-            }
-
-            if (GameObject.Find("TopText"))
-            {
-                GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().enabled = true;
-            }
-            if (GameObject.Find("BottomText"))
-            {
-                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = true;
-            }
+            
             
             foreach (var VARIABLE in GameObject.FindGameObjectsWithTag("Pin"))
             {
                 VARIABLE.GetComponent<TargetScript>().ResetTransform();
             }
 
-            if (GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().isHost)
-            {
-                GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
-            }
+            
             
             isReseting = false;
             
@@ -196,6 +172,7 @@ public class GameManager : MonoBehaviour
     
     public IEnumerator HelicopterDestroyed(float delay)
     {
+        currentUIstate = UIstate.Destroyed;
         if (!hasBeenDestroyed)
         {
             if (isOfflineGame)
@@ -213,10 +190,7 @@ public class GameManager : MonoBehaviour
                 mainRotor.GetComponent<RotorController>().yVelocity = 0;
                 mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-                if (GameObject.Find("MiddleText"))
-                {
-                    GameObject.Find("MiddleText").SetActive(false);
-                }
+                
 
                 mainFuselage.GetComponent<FuselageController>().ResetHealth();
             }
@@ -224,18 +198,7 @@ public class GameManager : MonoBehaviour
             {
                 isReseting = true;
             StopCoroutine(relaseTimer(timeToRelase));
-            if (GameObject.Find("MiddleText"))
-            {
-                GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Helicopter Destroyed";
-            }
-            if (GameObject.Find("TopText"))
-            {
-                GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().enabled = false;
-            }
-            if (GameObject.Find("BottomText"))
-            {
-                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = false;
-            }
+            
             
             yield return new WaitForSeconds(delay);
             
@@ -250,20 +213,8 @@ public class GameManager : MonoBehaviour
             mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
             mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             mainRotor.GetComponent<Rigidbody>().isKinematic = true;
-            if (GameObject.Find("MiddleText"))
-            {
-                GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Vehicle Destroyed";
-                GameObject.Find("MiddleText").SetActive(false);
-            }
-
-            if (GameObject.Find("TopText"))
-            {
-                GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().enabled = true;
-            }
-            if (GameObject.Find("BottomText"))
-            {
-                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = true;
-            }
+           
+            
             
             foreach (var VARIABLE in GameObject.FindGameObjectsWithTag("Pin"))
             {
@@ -293,6 +244,7 @@ public class GameManager : MonoBehaviour
 
     public void StartFlight()
     {
+        currentUIstate = UIstate.Player;
         hasBeenDestroyed = false;
         startEvent.Invoke();
         waitingForInput = false;
@@ -305,9 +257,62 @@ public class GameManager : MonoBehaviour
         Debug.Log(Event + " Invoked");
     }
     
+    
+    
     // Update is called once per frame
     void Update()
     {
+        if (!isCurrentPLayer)
+        {
+            currentUIstate = UIstate.Spectator;
+        }
+        
+        switch (currentUIstate)
+        {
+            case UIstate.Awaiting:
+                if (_bottomText)
+                {
+                    _middleText.enabled = false;
+                    _bottomText.enabled = true;
+                    _bottomText.text = "Press any key";
+                    _topText.enabled = true;
+                    _topText.text = "Player In control";
+                }
+                break;
+            case UIstate.Player:
+                if (_bottomText)
+                {
+                    _middleText.enabled = false;
+                    _bottomText.enabled = true;
+                    _bottomText.text = "Time left: " + Mathf.Round(timer);
+                    _topText.enabled = true;
+                    _topText.text = "Player In control";
+                }
+                break;
+            case UIstate.Spectator:
+                if (_bottomText)
+                {
+                    _middleText.enabled = false;
+                    _bottomText.enabled = false;
+                    _topText.enabled = true;
+                    _topText.text = "Spectating";
+                }
+                break;
+            case UIstate.Destroyed:
+                if (_bottomText)
+                {
+                    _topText.enabled = false;
+                    _middleText.text = "Destroyed";
+                    _bottomText.enabled = false;
+                }
+                break;
+            case UIstate.Strike:
+                _topText.enabled = false;
+                _middleText.text = "Strike";
+                _bottomText.enabled = false;
+                break;
+        }
+        
         if (isCurrentPLayer)
         {
             if (isOfflineGame)
@@ -323,14 +328,6 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                if (GameObject.Find("MiddleText"))
-                {
-                    GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().enabled = true;
-                    GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().enabled = true;
-                    GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = true;
-                }
-                
-                tmp.text = "Press any key";
                 if (Input.anyKeyDown)
                 {
                     StartFlight();

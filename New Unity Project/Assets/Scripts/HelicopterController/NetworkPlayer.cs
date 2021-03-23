@@ -123,29 +123,10 @@ namespace HelicopterController
                 }
             }
 
-            Debug.Log("yea");
-            if (GameObject.Find("MiddleText"))
-            {
-                GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Strike";
-            }
-
-            if (GameObject.Find("TopText"))
-            {
-                GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().enabled = false;
-            }
-
-            if (GameObject.Find("BottomText"))
-            {
-                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = false;
-            }
-
+            
             yield return new WaitForSeconds(2);
 
-            if (GameObject.Find("MiddleText"))
-            {
-                GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>().text = "Vehicle Destroyed";
-                GameObject.Find("MiddleText").SetActive(false);
-            }
+            
 
             foreach (var variable in GameObject.FindGameObjectsWithTag("Pin"))
             {
@@ -209,27 +190,14 @@ namespace HelicopterController
         void SetSpectatorUI()
         {
             Debug.Log("SpectatorUI");
-            if (GameObject.Find("BottomText"))
-            {
-                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = true;
-                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().text = "";
-                GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().enabled = true;
-                GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().text = "Spectating";
-            }
+           
         }
     
         [ClientRPC]
         void ResetUI()
         {
             Debug.Log("PlayerUI");
-            if (GameObject.Find("BottomText"))
-            {
-                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().enabled = true;
-                GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>().text = "Press any key";
-                GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().enabled = true;
-                GameObject.Find("TopText").GetComponent<TextMeshProUGUI>().text = "Player In control";
-
-            }
+            
         }
     
         [ClientRPC]
