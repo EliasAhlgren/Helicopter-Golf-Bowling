@@ -51,23 +51,18 @@ namespace HelicopterController
         [ClientRPC]
         public void SpawnHelicopter(Vector3 pos)
         {
-            
-            
-                
                 Vector3 randVector = new Vector3(pos.x + Random.Range(5f, -5f), pos.y, pos.z + Random.Range(5f, -5f));
                 physicalObject.SetActive(true);
                 physicalObject.transform.position = randVector;
-                GameObject gb = physicalObject;
                 gameObject.GetComponentInChildren<GameManager>().mainFuselage =
-                    gb.GetComponentInChildren<FuselageController>().gameObject;
+                    physicalObject.GetComponentInChildren<FuselageController>().gameObject;
                 gameObject.GetComponentInChildren<GameManager>().mainRotor =
-                    gb.GetComponentInChildren<RotorController>().gameObject;
+                    physicalObject.GetComponentInChildren<RotorController>().gameObject;
 
                 gameObject.GetComponentInChildren<CinemachineFreeLook>().Follow =
                     gameObject.GetComponentInChildren<CinemachineFreeLook>().LookAt =
-                        gb.GetComponentInChildren<FuselageController>().transform;
+                        physicalObject.GetComponentInChildren<FuselageController>().transform;
                Debug.Log("Tämän viestin lähetti " +NetworkingManager.Singleton.LocalClientId , gameObject);
-           
         }
     
         [ClientRPC]
