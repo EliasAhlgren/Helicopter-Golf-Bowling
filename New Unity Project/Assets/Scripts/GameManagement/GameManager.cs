@@ -324,7 +324,6 @@ public class GameManager : MonoBehaviour
             if (!waitingForInput)
             {
                 timer -= Time.deltaTime;
-                tmp.text = "Time left: " + Mathf.Round(timer);
             }
             else
             {
