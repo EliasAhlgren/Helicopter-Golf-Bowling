@@ -9,6 +9,14 @@ using MLAPI.Spawning;
 using MLAPI.Transports.UNET;
 using UnityEngine.Serialization;
 using NetworkPlayer = HelicopterController.NetworkPlayer;
+/*
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Sheets.v4;
+using Google.Apis.Sheets.v4.Data;
+using Google.Apis.Services;
+using Google.Apis.Util.Store;
+*/
+using Color = UnityEngine.Color;
 
 
 namespace GameManagement
@@ -65,7 +73,6 @@ namespace GameManagement
             isHost = true;
             
             List<ulong> ids = new List<ulong> {SpawnManager.GetLocalPlayerObject().OwnerClientId};
-            //jeff.GetComponentInChildren<Camera>().enabled = false;
             SpawnManager.GetLocalPlayerObject()
                 .GetComponent<NetworkedBehaviour>()
                 .InvokeClientRpc("SetCamera", ids, spawnPosition);
@@ -161,7 +168,13 @@ namespace GameManagement
         
         private void Start()
         {
-
+            /*
+            String spreadsheetId = "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms";
+            String range = "Class Data!A2:E";
+            SpreadsheetsResource.ValuesResource.GetRequest request =
+            service.Spreadsheets.Values.Get(spreadsheetId, range);
+            */
+            
             lookAtCamera = GameObject.Find("CineCamera").GetComponent<Camera>();
             lookAtCamera.enabled = true;
             
@@ -172,9 +185,18 @@ namespace GameManagement
                  _gameManager.isOfflineGame = isOfflineGame;
             }
             _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
-            
-           
             _scoreManager.scoresUguis[0].color = Color.red;
+
+            if (PlayerPrefs.GetInt("ShouldStartClient") == 1)
+            {
+                gameObject.GetComponent<UnetTransport>().ConnectAddress = PlayerPrefs.GetString("HostIp");
+                StartClient();
+            }
+            else
+            {
+                playerCount = PlayerPrefs.GetInt("Capacity");
+                StartHost();
+            }
         }
 
         private void Update()
@@ -197,6 +219,7 @@ namespace GameManagement
                 
             }
             
+            /*
             if (Input.GetKeyDown(KeyCode.H) && isAtStartup)
             {
                 StartHost();
@@ -208,7 +231,7 @@ namespace GameManagement
                 StartClient();
                 isAtStartup = false;
             }
-
+            */
             if (isHost)
             {
             
