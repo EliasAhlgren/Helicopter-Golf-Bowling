@@ -7,6 +7,7 @@ using MLAPI.Messaging;
 using MLAPI.Prototyping;
 using MLAPI.Spawning;
 using MLAPI.Transports.UNET;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using NetworkPlayer = HelicopterController.NetworkPlayer;
 /*
@@ -187,16 +188,30 @@ namespace GameManagement
             _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
             _scoreManager.scoresUguis[0].color = Color.red;
 
-            if (PlayerPrefs.GetInt("ShouldStartClient") == 1)
+            if (!isOfflineGame)
             {
-                gameObject.GetComponent<UnetTransport>().ConnectAddress = PlayerPrefs.GetString("HostIp");
-                StartClient();
+                if (PlayerPrefs.GetInt("ShouldStartClient") == 1)
+                {
+                    try
+                    {
+                        gameObject.GetComponent<UnetTransport>().ConnectAddress = PlayerPrefs.GetString("HostIp");
+                        StartClient();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        SceneManager.LoadScene(0);
+                        throw;
+                    }
+                    
+                }
+                else
+                {
+                    playerCount = PlayerPrefs.GetInt("Capacity");
+                    StartHost();
+                }
             }
-            else
-            {
-                playerCount = PlayerPrefs.GetInt("Capacity");
-                StartHost();
-            }
+            
         }
 
         private void Update()
