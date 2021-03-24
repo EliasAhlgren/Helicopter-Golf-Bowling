@@ -14,13 +14,13 @@ namespace GameManagement.Menu
 
         public TextMeshProUGUI textMeshProUGUI;
         
-        void ModifyCapacity(bool add)
+        public void ModifyCapacity(bool add)
         {
-            if (add && capacity >= 2)
+            if (add && capacity >= 2 && capacity < 4)
             {
                 capacity++;
             }
-            else if (!add && capacity >= 2)
+            else if (!add && capacity > 2 && capacity <= 4)
             {
                 capacity--;
             }

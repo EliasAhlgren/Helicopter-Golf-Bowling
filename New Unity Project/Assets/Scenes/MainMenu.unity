@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -346,7 +346,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 1
       - m_Target: {fileID: 1179501376}
         m_MethodName: SetActive
         m_Mode: 6
@@ -357,7 +357,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &61576809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,7 +712,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 1
       - m_Target: {fileID: 1070110296}
         m_MethodName: SetActive
         m_Mode: 6
@@ -723,7 +723,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &154515377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1108,7 +1108,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 371881010}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1842439146}
+        m_MethodName: ModifyCapacity
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 1
 --- !u!114 &371881010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1811,7 +1822,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 782373285}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1179501376}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &782373285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2605,7 +2627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1070110297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3099,7 +3121,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 1
       - m_Target: {fileID: 1070110296}
         m_MethodName: SetActive
         m_Mode: 6
@@ -3110,7 +3132,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1174996562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3517,7 +3539,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
       - m_Target: {fileID: 1070110296}
         m_MethodName: SetActive
         m_Mode: 6
@@ -3528,7 +3550,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1350665562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3658,7 +3680,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 1
       - m_Target: {fileID: 1070110296}
         m_MethodName: SetActive
         m_Mode: 6
@@ -3669,7 +3691,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1433149166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4460,7 +4482,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1825416778}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1842439146}
+        m_MethodName: ModifyCapacity
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1825416778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4590,7 +4623,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 1
       - m_Target: {fileID: 1842439141}
         m_MethodName: SetActive
         m_Mode: 6
@@ -4601,7 +4634,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1828343379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4651,13 +4684,14 @@ GameObject:
   - component: {fileID: 1842439144}
   - component: {fileID: 1842439143}
   - component: {fileID: 1842439142}
+  - component: {fileID: 1842439146}
   m_Layer: 5
   m_Name: Host Online Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1842439142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4743,6 +4777,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1842439146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842439141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6d569bc52843daba220fb9e21d794d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capacity: 2
+  textMeshProUGUI: {fileID: 151519237}
 --- !u!1 &1889159982
 GameObject:
   m_ObjectHideFlags: 0
@@ -5317,7 +5365,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 1
       - m_Target: {fileID: 785152143}
         m_MethodName: SetActive
         m_Mode: 6
@@ -5328,7 +5376,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &2062356056
 MonoBehaviour:
   m_ObjectHideFlags: 0
