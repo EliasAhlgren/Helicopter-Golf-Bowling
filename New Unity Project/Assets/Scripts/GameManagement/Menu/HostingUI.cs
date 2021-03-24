@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,8 @@ namespace GameManagement.Menu
     public class HostingUI : MonoBehaviour
     {
         public int capacity = 2;
+
+        public TextMeshProUGUI textMeshProUGUI;
         
         void ModifyCapacity(bool add)
         {
@@ -21,6 +24,8 @@ namespace GameManagement.Menu
             {
                 capacity--;
             }
+
+            textMeshProUGUI.text = capacity.ToString();
         }
         
         void StartServer()
