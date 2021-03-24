@@ -7,12 +7,11 @@ namespace GameManagement.Menu
     public class ClientUI : MonoBehaviour
     {
 
-        private TMP_InputField _inputField;
+        public TMP_InputField _inputField;
     
         // Start is called before the first frame update
         void Start()
         {
-            _inputField = gameObject.GetComponent<TMP_InputField>();
             _inputField.characterValidation = TMP_InputField.CharacterValidation.Decimal;
         }
 
