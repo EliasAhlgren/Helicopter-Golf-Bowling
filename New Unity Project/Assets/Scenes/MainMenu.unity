@@ -1986,6 +1986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputField: {fileID: 1330242340}
+  character: {fileID: 11400000, guid: 7334cafce61c57c41a0096ce04e4eb76, type: 2}
 --- !u!1 &872934179
 GameObject:
   m_ObjectHideFlags: 0
