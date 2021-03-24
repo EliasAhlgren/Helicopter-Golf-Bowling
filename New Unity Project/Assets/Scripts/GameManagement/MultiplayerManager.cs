@@ -117,8 +117,10 @@ namespace GameManagement
                         SpawnManager.GetLocalPlayerObject()
                             .GetComponent<NetworkedBehaviour>()
                             .InvokeClientRpc("Testi", ids);
+                        Debug.Log(networkPlayers.Count + " pelaajaa");
                         if (networkPlayers.Count == serverCapacity)
                         {
+                            Debug.Log("Nyt mennää");
                             StartGame();
                         }
                     }
@@ -216,10 +218,7 @@ namespace GameManagement
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                StartGame();
-            }
+            
             
             if (isHost && NetworkingManager.Singleton.ConnectedClientsList.Count > 1)
             {
