@@ -16,7 +16,7 @@ namespace GameManagement.Menu
             _inputField.characterValidation = TMP_InputField.CharacterValidation.Decimal;
         }
 
-        void AttemptJoin()
+        public void AttemptJoin()
         {
             PlayerPrefs.SetInt("ShouldStartClient", 1);
             PlayerPrefs.SetString("HostIp", _inputField.text);

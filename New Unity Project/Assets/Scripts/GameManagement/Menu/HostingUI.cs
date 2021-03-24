@@ -28,7 +28,7 @@ namespace GameManagement.Menu
             textMeshProUGUI.text = capacity.ToString();
         }
         
-        void StartServer()
+        public void StartServer()
         {
             PlayerPrefs.SetInt("ShouldStartClient", 0);
             PlayerPrefs.SetInt("Capacity", capacity);
