@@ -13,7 +13,7 @@ namespace GameManagement.Menu
         void Start()
         {
             TMP_InputField.CharacterValidation character;
-            character = TMP_InputField.CharacterValidation.Decimal;
+            character = TMP_InputField.CharacterValidation.Digit;
             _inputField.characterValidation = character;
         }
 
