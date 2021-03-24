@@ -12,7 +12,9 @@ namespace GameManagement.Menu
         // Start is called before the first frame update
         void Start()
         {
-            _inputField.characterValidation = TMP_InputField.CharacterValidation.Decimal;
+            TMP_InputField.CharacterValidation character;
+            character = TMP_InputField.CharacterValidation.Decimal;
+            _inputField.characterValidation = character;
         }
 
         public void AttemptJoin()
