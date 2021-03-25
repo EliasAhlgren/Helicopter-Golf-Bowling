@@ -140,7 +140,6 @@ namespace GameManagement
         async void StartGame()
         {
             await Task.Delay(TimeSpan.FromSeconds(2.5f));
-            //SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpcOnEveryone("SpawnHelicopter", spawnPosition);
             Debug.Log(NetworkingManager.Singleton.LocalClientId + " le number");
             SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", SpawnManager.GetLocalPlayerObject(), 0);
         }
@@ -258,8 +257,6 @@ namespace GameManagement
                 List<ulong> currentTarget = new List<ulong>();
                 currentTarget.Add(networkPlayers[currentPlayer].GetComponent<NetworkedObject>().OwnerClientId);
                 
-                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetSpectatorUI");
-                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpc("ResetUI", currentTarget);
                 
                 for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
                 {

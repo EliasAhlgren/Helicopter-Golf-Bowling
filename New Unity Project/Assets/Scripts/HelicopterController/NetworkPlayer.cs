@@ -169,6 +169,7 @@ namespace HelicopterController
                 else
                 {
                     variable.GetComponentInChildren<GameManager>().isCurrentPLayer = true;
+                    variable.GetComponentInChildren<GameManager>().currentUIstate = UIstate.Awaiting;
                     Debug.Log("found "+ variable);
                     variable.GetComponentInChildren<Camera>().enabled = true;
                     variable.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
@@ -186,20 +187,7 @@ namespace HelicopterController
             mp.StopClient();
         }
 
-        [ClientRPC]
-        void SetSpectatorUI()
-        {
-            Debug.Log("SpectatorUI");
-           
-        }
-    
-        [ClientRPC]
-        void ResetUI()
-        {
-            Debug.Log("PlayerUI");
-            
-        }
-    
+        
         [ClientRPC]
         public void StopAndDisconnect()
         {
