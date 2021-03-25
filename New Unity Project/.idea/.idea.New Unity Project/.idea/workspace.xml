@@ -30,7 +30,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/metadata/FB30C534-32D2-4870-A072-04F0E760FF8E/de/0c5b03f0/Unity.TextMeshPro.Editor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TMP_InputValidator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/f2/9643dd44/NetworkSceneManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/62/d1d13b07/Char.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/71/36ff7a01/Attribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/b9/1c8f16eb/UInt64.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/NetManagerHud.cs" root0="FORCE_HIGHLIGHTING" />
@@ -43,6 +46,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/19/e3e98d62/Transport.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/cf/9323c0e8/NetworkingManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/3a/e120894f/RPCAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TMP_InputField.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/b1/3f68d739/ClientRPCAttribute.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -79,7 +83,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="RiderNuGetOptionsPageId" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -149,7 +153,8 @@
       <workItem from="1616140835844" duration="8471000" />
       <workItem from="1616348797746" duration="2108000" />
       <workItem from="1616402019907" duration="2691000" />
-      <workItem from="1616573323000" duration="4696000" />
+      <workItem from="1616573323000" duration="12513000" />
+      <workItem from="1616658206433" duration="585000" />
     </task>
     <servers />
   </component>
@@ -178,17 +183,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="708" y="345" key="#Notifications/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1615190492029" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1616574541627">
+    <state x="461" y="165" key="SettingsEditor" timestamp="1616598374685">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616574541627" />
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616598374685" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1616068628905">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616068628905" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1616060709050">
+    <state x="528" y="224" width="672" height="678" key="search.everywhere.popup" timestamp="1616598462040">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616060709050" />
+    <state x="528" y="224" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616598462040" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand>
+      <path>
+        <item name="New Unity Project" type="b2602c69:ProjectViewProjectNode" />
+        <item name="New Unity Project" type="462c0819:PsiDirectoryNode" />
+      </path>
+    </expand>
+    <select />
   </component>
 </project>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Cinemachine;
 using UnityEngine;
 using MLAPI;
@@ -136,8 +137,9 @@ namespace GameManagement
         }
 
         
-        void StartGame()
+        async void StartGame()
         {
+            await Task.Delay(TimeSpan.FromSeconds(2.5f));
             //SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpcOnEveryone("SpawnHelicopter", spawnPosition);
             Debug.Log(NetworkingManager.Singleton.LocalClientId + " le number");
             SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", SpawnManager.GetLocalPlayerObject(), 0);
@@ -218,39 +220,6 @@ namespace GameManagement
 
         private void Update()
         {
-            
-            
-            if (isHost && NetworkingManager.Singleton.ConnectedClientsList.Count > 1)
-            {
-                //List<ulong> ids = new List<ulong>(0);
-                //ids.Add(networkPlayers[currentPlayer].GetComponent<NetworkedBehaviour>().OwnerClientId);
-
-                //networkPlayers[0].GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone(networkPlayers[0].GetComponent<NetworkPlayer>().SetCamera);
-                
-                //networkPlayers[currentPlayer].GetComponent<NetworkedBehaviour>().InvokeClientRpc("SetCamera" ,ids);
-                
-                
-                
-            }
-            
-            /*
-            if (Input.GetKeyDown(KeyCode.H) && isAtStartup)
-            {
-                StartHost();
-                isAtStartup = false;
-                return;
-            }
-            if (Input.GetKeyDown(KeyCode.C) && isAtStartup)
-            {
-                StartClient();
-                isAtStartup = false;
-            }
-            */
-            if (isHost)
-            {
-            
-            }
-
         }
 
         public void NextPlayerTurn()
