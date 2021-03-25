@@ -111,9 +111,10 @@ namespace GameManagement
                         Debug.Log("Host: Client spawned");
                         List<ulong> ids = new List<ulong> {jeff.GetComponent<NetworkedObject>().OwnerClientId};
                         //jeff.GetComponentInChildren<Camera>().enabled = false;
-                        SpawnManager.GetLocalPlayerObject()
+                        /*SpawnManager.GetLocalPlayerObject()
                             .GetComponent<NetworkedBehaviour>()
                             .InvokeClientRpc("SetCamera", ids, spawnPosition);
+                        */
                         //SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SpawnHelicopter", ids, spawnPosition, obj);
                         SpawnManager.GetLocalPlayerObject()
                             .GetComponent<NetworkedBehaviour>()

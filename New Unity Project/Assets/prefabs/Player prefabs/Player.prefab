@@ -460,6 +460,11 @@ PrefabInstance:
       propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1443187170789496076, guid: 25421c24a6c61f54eb051482c4cfbd1b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2886884220828266164, guid: 25421c24a6c61f54eb051482c4cfbd1b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -32,6 +32,7 @@ namespace HelicopterController
         {
             yield return new  WaitForSeconds(2f);
             SpawnHelicopter(GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().spawnPosition);
+            SetCamera(Vector3.zero);
         }
 
         private void OnGUI()
