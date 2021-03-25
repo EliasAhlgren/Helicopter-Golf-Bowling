@@ -21,6 +21,8 @@ public class FuselageController : MonoBehaviour
     public float framesOnGround;
 
     private NetworkPlayer _networkPlayer;
+
+    private bool shouldMouseRot;
     
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,7 @@ public class FuselageController : MonoBehaviour
         gameManager.startingPos = transform.position;
         gameManager.startingRot = transform.rotation;
 
+        shouldMouseRot = PlayerPrefs.GetInt("EasyMode") == 1;
     }
 
     public void ResetHealth()
@@ -95,9 +98,9 @@ public class FuselageController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (gameManager.waitingForInput)
+        if (gameManager.waitingForInput && shouldMouseRot)
         {
-            //MouseRot();
+            MouseRot();
         }
         
         if (helicopterHealth <= 0 && !gameManager.hasInvincibility)

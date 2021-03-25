@@ -58,13 +58,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/RotorController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/MenuScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/InputField.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/HostButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/HostingUI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/ClientUI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/HostingUI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" />
       </list>
     </option>
   </component>
@@ -154,7 +154,7 @@
       <workItem from="1616348797746" duration="2108000" />
       <workItem from="1616402019907" duration="2691000" />
       <workItem from="1616573323000" duration="12513000" />
-      <workItem from="1616658206433" duration="1296000" />
+      <workItem from="1616658206433" duration="3043000" />
     </task>
     <servers />
   </component>

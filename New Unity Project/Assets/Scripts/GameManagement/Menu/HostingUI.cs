@@ -3,6 +3,7 @@ using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace GameManagement.Menu
 {
@@ -13,6 +14,17 @@ namespace GameManagement.Menu
         public int capacity = 2;
 
         public TextMeshProUGUI textMeshProUGUI;
+
+
+        private void Start()
+        {
+            PlayerPrefs.SetInt("EasyMode", 0);
+        }
+
+        public void ChangeEasyMode(Toggle ugui)
+        {
+            PlayerPrefs.SetInt("EasyMode", ugui.isOn ? 1 : 0);
+        }
         
         public void ModifyCapacity(bool add)
         {
