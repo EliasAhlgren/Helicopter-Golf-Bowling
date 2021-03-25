@@ -200,6 +200,7 @@ namespace GameManagement
                 {
                     try
                     {
+                        //tähän chekki onko validi ip
                         gameObject.GetComponent<UnetTransport>().ConnectAddress = PlayerPrefs.GetString("HostIp");
                         StartClient();
                     }

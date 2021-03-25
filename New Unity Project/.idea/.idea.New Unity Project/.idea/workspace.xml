@@ -67,12 +67,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/ClientUI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/HostingUI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/jea.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/SinglePlayerMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/OfflineMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -162,7 +162,7 @@
       <workItem from="1616348797746" duration="2108000" />
       <workItem from="1616402019907" duration="2691000" />
       <workItem from="1616573323000" duration="12513000" />
-      <workItem from="1616658206433" duration="4610000" />
+      <workItem from="1616658206433" duration="5236000" />
     </task>
     <servers />
   </component>

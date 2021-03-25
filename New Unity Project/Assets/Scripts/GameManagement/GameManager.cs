@@ -170,7 +170,10 @@ public class GameManager : MonoBehaviour
                 VARIABLE.GetComponent<TargetScript>().ResetTransform();
             }
 
-            
+            if (GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().isHost)
+            {
+                GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
+            }
             
             isReseting = false;
             
