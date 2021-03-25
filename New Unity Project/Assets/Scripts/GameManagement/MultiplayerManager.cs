@@ -75,9 +75,11 @@ namespace GameManagement
             isHost = true;
             
             List<ulong> ids = new List<ulong> {SpawnManager.GetLocalPlayerObject().OwnerClientId};
+            /*
             SpawnManager.GetLocalPlayerObject()
                 .GetComponent<NetworkedBehaviour>()
                 .InvokeClientRpc("SetCamera", ids, spawnPosition);
+            */
             //SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SpawnHelicopter", ids, spawnPosition, NetworkingManager.Singleton.LocalClientId);
             
             //GameObject.Find("CineCamera").GetComponent<NetworkedTransform>().enabled = true;
@@ -240,7 +242,7 @@ namespace GameManagement
                 
             }
 
-            if (currentPlayer + 1 <= playerCount)
+            if (currentPlayer <= playerCount)
             {
                 Debug.Log("Next player");
                
