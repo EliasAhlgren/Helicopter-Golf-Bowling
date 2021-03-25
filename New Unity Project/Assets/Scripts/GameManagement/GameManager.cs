@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void ResetFromPos(Vector3 pos, GameObject thisObject)
+    public void ResetFromPos(Vector3 pos, GameObject thisObject, Vector3 contact)
     {
         if (isCurrentPLayer)
         {
@@ -99,6 +99,12 @@ public class GameManager : MonoBehaviour
         mainRotor.GetComponent<RotorController>().yVelocity = 0;
         mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
         mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
+        if (PlayerPrefs.GetInt("EasyMode") == 1)
+        {
+            thisObject.transform.up = contact;
+        }
+        
         resetEvent.Invoke();
         waitingForInput = true;
     }

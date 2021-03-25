@@ -52,7 +52,7 @@ public class FuselageController : MonoBehaviour
             if (!isPlayerControlled && !gameManager.waitingForInput && other.gameObject.CompareTag("Enviroment") &&
                 !gameManager.hasInvincibility)
             {
-                gameManager.ResetFromPos(transform.position, gameObject);
+                gameManager.ResetFromPos(transform.position, gameObject, other.contacts[0].normal);
             }
             else if (gameManager.hasInvincibility)
             {

@@ -178,16 +178,16 @@ namespace GameManagement
             SpreadsheetsResource.ValuesResource.GetRequest request =
             service.Spreadsheets.Values.Get(spreadsheetId, range);
             */
+
+            if (!isOfflineGame)
+            {
+                lookAtCamera = GameObject.Find("CineCamera").GetComponent<Camera>();
+                lookAtCamera.enabled = true;
+            }
             
-            lookAtCamera = GameObject.Find("CineCamera").GetComponent<Camera>();
-            lookAtCamera.enabled = true;
             
             //Destroy(GameObject.FindGameObjectsWithTag("ScoreManager")[1]);
-            if (isOfflineGame)
-            {
-                 _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-                 _gameManager.isOfflineGame = isOfflineGame;
-            }
+           
             _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
             _scoreManager.scoresUguis[0].color = Color.red;
 
@@ -213,6 +213,10 @@ namespace GameManagement
                     serverCapacity = PlayerPrefs.GetInt("Capacity");
                     StartHost();
                 }
+            }
+            else //offline game setup
+            {
+                //Instantiate()
             }
             
         }
@@ -272,6 +276,7 @@ namespace GameManagement
             }
             else
             {
+                Debug.Log("Last player");
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("StopAndDisconnect");
             }
 

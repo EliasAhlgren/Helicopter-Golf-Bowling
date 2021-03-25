@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/OnlineTestScene.unity
     guid: 5069fab522e46c94c96c7be52693ae1f
   - enabled: 1
-    path: Assets/Scenes/HeliCopterTest.unity
-    guid: 2b05646f988140a44aa16a5a935fdd89
+    path: Assets/Scenes/Level 1.unity
+    guid: 9335e14a0a19343a7a21dad34abf9df6
   m_configObjects: {}
