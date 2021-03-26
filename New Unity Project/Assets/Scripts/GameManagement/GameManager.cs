@@ -245,6 +245,7 @@ public class GameManager : MonoBehaviour
                 GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
             }else
             {
+                Debug.Log("Asking Host");
                 transform.root.GetComponent<NetworkPlayer>().InvokeServerRpc<RpcResponse<string>>("HostNextPlayer");
             }
             

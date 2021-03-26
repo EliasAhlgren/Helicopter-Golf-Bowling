@@ -47,6 +47,7 @@ namespace HelicopterController
         [ServerRPC(RequireOwnership = false)]
         public void HostNextPlayer()
         {
+            Debug.Log("Host got the message");
             GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
         }
         
