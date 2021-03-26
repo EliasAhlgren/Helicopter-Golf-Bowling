@@ -87,7 +87,6 @@ namespace GameManagement
         void Disconnected(ulong obj)
         {
             Debug.Log("Disconnected");
-            
         }
         
         private void ClientConnected(ulong obj)
@@ -230,6 +229,8 @@ namespace GameManagement
         public void NextPlayerTurn()
         {
 
+            Debug.Log("Current player is"+ currentPlayer + " " + networkPlayers[currentPlayer]);
+            
             if (!isOfflineGame && isHost)
             {
                 networkPlayers[currentPlayer].transform.position = -Vector3.one * 69f;
