@@ -44,7 +44,7 @@ namespace HelicopterController
             }
         }
 
-        [ClientRPC]
+        [ServerRPC]
         public void HostNextPlayer()
         {
             GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();

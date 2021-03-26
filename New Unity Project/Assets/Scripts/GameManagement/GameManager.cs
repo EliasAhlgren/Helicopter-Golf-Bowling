@@ -178,7 +178,8 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                transform.root.GetComponent<NetworkPlayer>().InvokeClientRpcOnClient<RpcResponse<string>>("HostNextPlayer", 0);
+                transform.root.GetComponent<NetworkPlayer>().InvokeServerRpc<RpcResponse<string>>("HostNextPlayer");
+
             }
             
             isReseting = false;
@@ -244,7 +245,7 @@ public class GameManager : MonoBehaviour
                 GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
             }else
             {
-                transform.root.GetComponent<NetworkPlayer>().InvokeClientRpcOnClient<RpcResponse<string>>("HostNextPlayer", 0);
+                transform.root.GetComponent<NetworkPlayer>().InvokeServerRpc<RpcResponse<string>>("HostNextPlayer");
             }
             
             isReseting = false;
