@@ -5,11 +5,13 @@ using Cinemachine;
 using GameManagement;
 using HelicopterController;
 using MLAPI;
+using MLAPI.Messaging;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using NetworkPlayer = HelicopterController.NetworkPlayer;
 using Object = UnityEngine.Object;
 
 public enum UIstate
@@ -173,6 +175,10 @@ public class GameManager : MonoBehaviour
             if (GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().isHost)
             {
                 GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
+            }
+            else
+            {
+                transform.root.GetComponent<NetworkPlayer>().InvokeClientRpcOnClient<RpcResponse<string>>("HostNextPlayer", 0);
             }
             
             isReseting = false;
