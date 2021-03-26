@@ -56,7 +56,6 @@ public class TargetScript : MonoBehaviour
         if (other.gameObject.CompareTag("Helicopter"))
         {
             _gameManager = other.transform.root.GetComponentInChildren<GameManager>();
-            Debug.Log("Gamemanage: " + _gameManager);
             _gameManager.startEvent.AddListener(ResetTransform);
             _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
             
