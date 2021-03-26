@@ -242,6 +242,9 @@ public class GameManager : MonoBehaviour
             if (GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().isHost)
             {
                 GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
+            }else
+            {
+                transform.root.GetComponent<NetworkPlayer>().InvokeClientRpcOnClient<RpcResponse<string>>("HostNextPlayer", 0);
             }
             
             isReseting = false;
