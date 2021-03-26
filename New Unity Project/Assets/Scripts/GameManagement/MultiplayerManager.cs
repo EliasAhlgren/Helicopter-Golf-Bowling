@@ -129,6 +129,7 @@ namespace GameManagement
                 }
                 else
                 {
+                    Debug.Log("capacity reached");
                     NetworkingManager.Singleton.DisconnectClient(obj);
                 }
                 
