@@ -228,7 +228,6 @@ namespace GameManagement
         private void Update()
         {
         }
-
         public void NextPlayerTurn()
         {
 
@@ -243,7 +242,7 @@ namespace GameManagement
                 
             }
 
-            if (currentPlayer <= playerCount)
+            if (currentPlayer + 1 <= playerCount - 1)
             {
                 Debug.Log("Next player");
                

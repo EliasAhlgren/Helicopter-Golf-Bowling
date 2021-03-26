@@ -29,52 +29,19 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/metadata/FB30C534-32D2-4870-A072-04F0E760FF8E/de/0c5b03f0/Unity.TextMeshPro.Editor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/HostingUI.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TMP_InputValidator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/f2/9643dd44/NetworkSceneManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/62/d1d13b07/Char.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/71/36ff7a01/Attribute.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/b9/1c8f16eb/UInt64.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/NetManagerHud.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/be/78ad4475/List`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/2f/6dad834d/SpawnManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/8d/6c70051a/InternalMessageHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TMP_InputValidator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/NetManagerHud.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/ClientUI.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/19/e3e98d62/Transport.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/cf/9323c0e8/NetworkingManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/3a/e120894f/RPCAttribute.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/OfflineMenu.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/IPaddress.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TMP_InputField.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/b1/3f68d739/ClientRPCAttribute.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/NetManagerHud.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/TargetScript.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/ScoreManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/RotorController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/MenuScript.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/InputField.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/HostButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/ClientUI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/HostingUI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/jea.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/SinglePlayerMenu.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/OfflineMenu.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
-      </list>
-    </option>
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
+    </changedPaths>
   </component>
   <component name="ProjectId" id="1oFOjHGAWa6P96tjH0zciEaimoh" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -108,7 +75,7 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="selectedOptions">
-        <set />
+        <list />
       </option>
       <method v="2" />
     </configuration>
@@ -117,12 +84,12 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="selectedOptions">
-        <set />
+        <list />
       </option>
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="1b9e7e1d-ee3c-49c8-b392-198650d3ecff" name="Default Changelist" comment="" />
@@ -163,6 +130,7 @@
       <workItem from="1616402019907" duration="2691000" />
       <workItem from="1616573323000" duration="12513000" />
       <workItem from="1616658206433" duration="5236000" />
+      <workItem from="1616739524610" duration="779000" />
     </task>
     <servers />
   </component>
