@@ -45,8 +45,6 @@ namespace GameManagement
 
         [FormerlySerializedAs("helicopters")] public List<GameObject> networkPlayers;
 
-        public int serverCapacity;
-        
         public Camera lookAtCamera;
 
         public Vector3 spawnPosition; 
@@ -121,8 +119,8 @@ namespace GameManagement
                         SpawnManager.GetLocalPlayerObject()
                             .GetComponent<NetworkedBehaviour>()
                             .InvokeClientRpc("Testi", ids);
-                        Debug.Log(networkPlayers.Count + " pelaajaa" + serverCapacity + " tarvitaan");
-                        if (networkPlayers.Count == serverCapacity)
+                        Debug.Log(networkPlayers.Count + " pelaajaa" + playerCount + " tarvitaan");
+                        if (networkPlayers.Count == playerCount)
                         {
                             Debug.Log("Nyt mennää");
                             StartGame();
@@ -214,7 +212,7 @@ namespace GameManagement
                 }
                 else
                 {
-                    serverCapacity = PlayerPrefs.GetInt("Capacity");
+                    playerCount = PlayerPrefs.GetInt("Capacity");
                     StartHost();
                 }
             }
@@ -253,7 +251,7 @@ namespace GameManagement
              * 
              */
             
-            if (currentPlayer + 1 != serverCapacity)
+            if (currentPlayer + 1 < playerCount)
             {
                 Debug.Log("Next player");
                
