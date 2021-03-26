@@ -242,7 +242,18 @@ namespace GameManagement
                 
             }
 
-            if (currentPlayer + 1 <= playerCount - 1)
+            /*
+             * count cap current
+             * 0     1     0
+             * 1     2     1
+             *             2
+             *
+             *
+             *
+             * 
+             */
+            
+            if (currentPlayer + 1 != serverCapacity)
             {
                 Debug.Log("Next player");
                
