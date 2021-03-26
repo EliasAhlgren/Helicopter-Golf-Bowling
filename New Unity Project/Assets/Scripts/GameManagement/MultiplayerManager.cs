@@ -225,6 +225,12 @@ namespace GameManagement
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>()
+                    .InvokeClientRpcOnEveryone("StopAndDisconnect");
+            }
+            
         }
         public void NextPlayerTurn()
         {
