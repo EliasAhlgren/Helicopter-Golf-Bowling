@@ -191,6 +191,7 @@ namespace HelicopterController
         IEnumerator WaitBeforeDc()
         {
             yield return new  WaitForSeconds(IsHost ? 3 : 2);
+            Debug.Log("Disconnecting from server");
             MultiplayerManager mp = GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>();
             mp.isAtStartup = true;
             mp.StopClient();
