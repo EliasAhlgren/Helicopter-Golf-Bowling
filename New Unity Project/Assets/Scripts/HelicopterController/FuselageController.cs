@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameManagement;
+using MLAPI.Spawning;
 using UnityEngine;
 using NetworkPlayer = HelicopterController.NetworkPlayer;
 
@@ -99,6 +101,12 @@ public class FuselageController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!transform.root.GetComponent<MultiplayerManager>().isHost)
+        {
+            shouldMouseRot = SpawnManager.SpawnedObjectsList[0].GetComponentInChildren<FuselageController>()
+                .shouldMouseRot;
+        }
+        
         if (gameManager.waitingForInput && shouldMouseRot)
         {
             MouseRot();
