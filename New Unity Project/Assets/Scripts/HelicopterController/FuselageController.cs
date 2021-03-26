@@ -101,11 +101,7 @@ public class FuselageController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!transform.root.GetComponent<MultiplayerManager>().isHost)
-        {
-            shouldMouseRot = SpawnManager.SpawnedObjectsList[0].GetComponentInChildren<FuselageController>()
-                .shouldMouseRot;
-        }
+        
         
         if (gameManager.waitingForInput && shouldMouseRot)
         {
