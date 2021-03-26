@@ -189,6 +189,7 @@ namespace HelicopterController
             gameObject.GetComponentInChildren<FuselageController>().shouldMouseRot = EasyMode;
             if (EasyMode)
             {
+                Debug.Log("Client has easymode");
                 PlayerPrefs.SetInt("EasyMode", 1);
             }
 
