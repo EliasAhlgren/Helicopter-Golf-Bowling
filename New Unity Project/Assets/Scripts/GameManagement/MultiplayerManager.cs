@@ -81,7 +81,7 @@ namespace GameManagement
             //SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SpawnHelicopter", ids, spawnPosition, NetworkingManager.Singleton.LocalClientId);
             
             //GameObject.Find("CineCamera").GetComponent<NetworkedTransform>().enabled = true;
-            //spawnPosition += Vector3.left * 10;
+            spawnPosition += Vector3.left * 10;
         }
 
         void Disconnected(ulong obj)
