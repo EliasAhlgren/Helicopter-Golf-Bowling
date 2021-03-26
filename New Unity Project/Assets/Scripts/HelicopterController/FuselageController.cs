@@ -37,6 +37,7 @@ public class FuselageController : MonoBehaviour
         gameManager.startingPos = transform.position;
         gameManager.startingRot = transform.rotation;
 
+        Debug.Log("startupissa easy mode on: " + shouldMouseRot);
         shouldMouseRot = PlayerPrefs.GetInt("EasyMode") == 1;
     }
 
