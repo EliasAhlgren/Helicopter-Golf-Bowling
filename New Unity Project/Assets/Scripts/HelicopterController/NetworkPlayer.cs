@@ -14,6 +14,8 @@ namespace HelicopterController
     public class NetworkPlayer : NetworkedBehaviour
     {
      
+        
+        
         public float yMovement;
         public float xRotation;
         public float yRotation;
@@ -187,11 +189,7 @@ namespace HelicopterController
             }
 
             gameObject.GetComponentInChildren<FuselageController>().shouldMouseRot = EasyMode;
-            if (EasyMode)
-            {
-                Debug.Log("Client has easymode");
-                PlayerPrefs.SetInt("EasyMode", 1);
-            }
+            
 
         }
 

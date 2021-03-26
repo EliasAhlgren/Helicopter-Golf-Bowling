@@ -140,12 +140,18 @@ namespace GameManagement
         
         async void StartGame()
         {
+            bool giveEasyMode = new bool();
+            
             await Task.Delay(TimeSpan.FromSeconds(2.5f));
             Debug.Log(NetworkingManager.Singleton.LocalClientId + " le number");
             Debug.Log("EasyMode = " + PlayerPrefs.GetInt("EasyMode"));
+            if (PlayerPrefs.GetInt("EasyMode") == 1)
+            {
+                giveEasyMode = true;
+            }
+            
             SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone(
-                "SetCurrentPlayerCamera", SpawnManager.GetLocalPlayerObject(),
-                PlayerPrefs.GetInt("EasyMode") == 1 ? true : false);
+                "SetCurrentPlayerCamera", SpawnManager.GetLocalPlayerObject(),t2: giveEasyMode);
         }
         
         public void StartClient()
