@@ -22,7 +22,7 @@ public class FuselageController : MonoBehaviour
 
     private NetworkPlayer _networkPlayer;
 
-    private bool shouldMouseRot;
+    public bool shouldMouseRot;
     
     // Start is called before the first frame update
     void Start()

@@ -142,7 +142,7 @@ namespace GameManagement
         {
             await Task.Delay(TimeSpan.FromSeconds(2.5f));
             Debug.Log(NetworkingManager.Singleton.LocalClientId + " le number");
-            SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", SpawnManager.GetLocalPlayerObject(), 0);
+            SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", SpawnManager.GetLocalPlayerObject(), PlayerPrefs.GetInt("EasyMode") == 1);
         }
         
         public void StartClient()
@@ -225,7 +225,7 @@ namespace GameManagement
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.O))
+            if (Input.GetKeyDown(KeyCode.F) && Input.GetKeyDown(KeyCode.U))
             {
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>()
                     .InvokeClientRpcOnEveryone("StopAndDisconnect");
