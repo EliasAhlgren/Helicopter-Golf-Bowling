@@ -6,6 +6,7 @@ using MLAPI.Messaging;
 using MLAPI.Spawning;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace HelicopterController
@@ -193,6 +194,7 @@ namespace HelicopterController
             MultiplayerManager mp = GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>();
             mp.isAtStartup = true;
             mp.StopClient();
+            SceneManager.LoadScene(0);
         }
 
         
