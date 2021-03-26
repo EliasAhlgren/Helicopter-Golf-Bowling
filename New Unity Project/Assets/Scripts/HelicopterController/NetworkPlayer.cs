@@ -155,7 +155,7 @@ namespace HelicopterController
    
     
         [ClientRPC]
-        public void SetCurrentPlayerCamera(NetworkedObject jyrki, bool EasyMode)
+        public void SetCurrentPlayerCamera(NetworkedObject jyrki)
         {
             /*
         foreach (var VARIABLE in SpawnManager.SpawnedObjects)
@@ -187,12 +187,16 @@ namespace HelicopterController
                     return;
                 }
             }
-
-            gameObject.GetComponentInChildren<FuselageController>().shouldMouseRot = EasyMode;
             
-
         }
 
+        [ClientRPC]
+        void SetEasyMode()
+        {
+            Debug.Log("Clientti sai easyModen");
+            gameObject.GetComponentInChildren<FuselageController>().shouldMouseRot = true;
+        }
+        
         IEnumerator WaitBeforeDc()
         {
             yield return new  WaitForSeconds(IsHost ? 3 : 2);
