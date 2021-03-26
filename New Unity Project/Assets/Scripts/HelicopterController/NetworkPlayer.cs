@@ -205,6 +205,8 @@ namespace HelicopterController
             MultiplayerManager mp = GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>();
             mp.isAtStartup = true;
             mp.StopClient();
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene(0);
         }
 
