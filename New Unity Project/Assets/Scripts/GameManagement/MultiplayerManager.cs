@@ -233,7 +233,7 @@ namespace GameManagement
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.F) && Input.GetKeyDown(KeyCode.U))
+            if (Input.GetKey(KeyCode.F) && Input.GetKeyDown(KeyCode.U))
             {
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>()
                     .InvokeClientRpcOnEveryone("StopAndDisconnect");
@@ -244,8 +244,8 @@ namespace GameManagement
         {
 
             Debug.Log("Current player is"+ currentPlayer + " " + networkPlayers[currentPlayer]);
-            
-            if (!isOfflineGame && isHost)
+            bool alwaysTrue = true;
+            if (/*!isOfflineGame && isHost*/ alwaysTrue)
             {
                 networkPlayers[currentPlayer].transform.position = -Vector3.one * 69f;
                 foreach (var VARIABLE in networkPlayers[currentPlayer].GetComponentsInChildren<Rigidbody>())

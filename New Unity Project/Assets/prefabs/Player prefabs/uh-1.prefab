@@ -3357,6 +3357,7 @@ MonoBehaviour:
   helicopterHealth: 100
   collisionDamageMultiplier: 2
   framesOnGround: 0
+  shouldMouseRot: 0
 --- !u!82 &3991914898172995082
 AudioSource:
   m_ObjectHideFlags: 0

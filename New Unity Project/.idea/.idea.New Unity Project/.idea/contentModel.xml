@@ -32,6 +32,7 @@
             <e p="Menu" t="Include">
               <e p="ClientUI.cs" t="Include" />
               <e p="HostingUI.cs" t="Include" />
+              <e p="IpValidator.cs" t="Include" />
               <e p="OfflineMenu.cs" t="Include" />
             </e>
             <e p="MultiplayerManager.cs" t="Include" />
