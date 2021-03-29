@@ -51,7 +51,13 @@ public class TargetScript : MonoBehaviour
     //
     private void OnCollisionEnter(Collision other)
     {
+        
+        
         MultiplayerManager mp = GameObject.FindWithTag("ScoreManager").GetComponent<MultiplayerManager>();
+        if (!mp.networkPlayers[mp.currentPlayer] == other.transform.root)
+        {
+            return;
+        }
         if (other.gameObject.CompareTag("Helicopter"))
         {
             _gameManager = other.transform.root.GetComponentInChildren<GameManager>();
