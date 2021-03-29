@@ -3,6 +3,7 @@
 using System;
 using System.Collections;
 using GameManagement;
+using MLAPI;
 using TMPro;
 using UnityEngine;
 
@@ -54,7 +55,7 @@ public class TargetScript : MonoBehaviour
         
         
         MultiplayerManager mp = GameObject.FindWithTag("ScoreManager").GetComponent<MultiplayerManager>();
-        if (!mp.networkPlayers[mp.currentPlayer] == other.transform.root)
+        if (!other.transform.root.GetComponent<NetworkedObject>().IsOwner)
         {
             return;
         }
