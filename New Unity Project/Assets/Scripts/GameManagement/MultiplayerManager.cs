@@ -56,6 +56,53 @@ namespace GameManagement
             //DontDestroyOnLoad(gameObject);
         }
 
+        private void Start()
+        {
+            isOfflineGame = Boolean.TryParse(PlayerPrefs.GetString("IsOffline"), out isOfflineGame);
+
+            if (!isOfflineGame)
+            {
+                lookAtCamera = GameObject.Find("CineCamera").GetComponent<Camera>();
+                lookAtCamera.enabled = true;
+            }
+            
+            
+            //Destroy(GameObject.FindGameObjectsWithTag("ScoreManager")[1]);
+           
+            _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
+            _scoreManager.scoresUguis[0].color = Color.red;
+
+            if (!isOfflineGame)
+            {
+                if (PlayerPrefs.GetInt("ShouldStartClient") == 1)
+                {
+                    try
+                    {
+                        //TODO tähän chekki onko validi ip
+                        gameObject.GetComponent<UnetTransport>().ConnectAddress = PlayerPrefs.GetString("HostIp");
+                        StartClient();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        SceneManager.LoadScene(0);
+                        throw;
+                    }
+                    
+                }
+                else
+                {
+                    playerCount = PlayerPrefs.GetInt("Capacity");
+                    StartHost();
+                }
+            }
+            else //offline game setup
+            {
+                //Instantiate()
+            }
+            
+        }
+        
         public void StartHost()
         {
             spawnPosition = Vector3.zero;
@@ -163,57 +210,7 @@ namespace GameManagement
             }
         }
         
-        private void Start()
-        {
-            /*
-            String spreadsheetId = "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms";
-            String range = "Class Data!A2:E";
-            SpreadsheetsResource.ValuesResource.GetRequest request =
-            service.Spreadsheets.Values.Get(spreadsheetId, range);
-            */
-
-            if (!isOfflineGame)
-            {
-                lookAtCamera = GameObject.Find("CineCamera").GetComponent<Camera>();
-                lookAtCamera.enabled = true;
-            }
-            
-            
-            //Destroy(GameObject.FindGameObjectsWithTag("ScoreManager")[1]);
-           
-            _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
-            _scoreManager.scoresUguis[0].color = Color.red;
-
-            if (!isOfflineGame)
-            {
-                if (PlayerPrefs.GetInt("ShouldStartClient") == 1)
-                {
-                    try
-                    {
-                        //TODO tähän chekki onko validi ip
-                        gameObject.GetComponent<UnetTransport>().ConnectAddress = PlayerPrefs.GetString("HostIp");
-                        StartClient();
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                        SceneManager.LoadScene(0);
-                        throw;
-                    }
-                    
-                }
-                else
-                {
-                    playerCount = PlayerPrefs.GetInt("Capacity");
-                    StartHost();
-                }
-            }
-            else //offline game setup
-            {
-                //Instantiate()
-            }
-            
-        }
+        
 
         
         private void Update()
