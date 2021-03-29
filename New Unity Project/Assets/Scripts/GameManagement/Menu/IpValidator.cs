@@ -4,7 +4,7 @@ using UnityEngine;
 namespace GameManagement.Menu
 {
     [CreateAssetMenu(fileName = "Input Field Validator", menuName = "Input Field Validator")]
-    public class CustomValidator : TMPro.TMP_InputValidator
+    public class IpValidator : TMPro.TMP_InputValidator
     {
     
         public override char Validate(ref string text, ref int pos, char ch)

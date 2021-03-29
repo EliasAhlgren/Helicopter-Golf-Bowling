@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Cinemachine;
 using UnityEngine;
@@ -141,7 +143,7 @@ namespace GameManagement
         async void StartGame()
         {
             await Task.Delay(TimeSpan.FromSeconds(2.5f));
-            Debug.Log(NetworkingManager.Singleton.LocalClientId + " le number");
+
             Debug.Log("EasyMode = " + PlayerPrefs.GetInt("EasyMode"));
             if (PlayerPrefs.GetInt("EasyMode") == 1)
             {
@@ -231,8 +233,11 @@ namespace GameManagement
             
         }
 
+        
         private void Update()
         {
+            LogOnChanged(currentPlayer);
+            
             if (Input.GetKey(KeyCode.F) && Input.GetKeyDown(KeyCode.U))
             {
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>()
@@ -240,12 +245,24 @@ namespace GameManagement
             }
             
         }
+
+        private int previousBool;
+        void LogOnChanged(int _int)
+        {
+            if (previousBool != _int)
+            {
+                Debug.Log("Variable changed");
+            }
+            previousBool = _int;
+        }
+        
+       
         public void NextPlayerTurn()
         {
 
             Debug.Log("Current player is"+ currentPlayer + " " + networkPlayers[currentPlayer]);
             bool alwaysTrue = true;
-            if (/*!isOfflineGame && isHost*/ alwaysTrue)
+            if (!isOfflineGame && isHost)
             {
                 networkPlayers[currentPlayer].transform.position = -Vector3.one * 69f;
                 foreach (var VARIABLE in networkPlayers[currentPlayer].GetComponentsInChildren<Rigidbody>())
@@ -255,17 +272,7 @@ namespace GameManagement
                 
                 
             }
-
-            /*
-             * count cap current
-             * 0     1     0
-             * 1     2     1
-             *             2
-             *
-             *
-             *
-             * 
-             */
+            
             
             if (currentPlayer + 1 < playerCount)
             {

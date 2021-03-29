@@ -9,13 +9,14 @@ namespace GameManagement.Menu
     {
 
         public TMP_InputField _inputField;
-        public CustomValidator character;
+        public IpValidator character;
         
         // Start is called before the first frame update
         void Start()
         {
-            
-            _inputField.characterValidation = TMP_InputField.CharacterValidation.None;
+
+            PlayerPrefs.DeleteAll();
+            _inputField.characterValidation = TMP_InputField.CharacterValidation.CustomValidator;
             _inputField.inputValidator = character;
         }
 
@@ -28,4 +29,5 @@ namespace GameManagement.Menu
     
     }
 }
+
 

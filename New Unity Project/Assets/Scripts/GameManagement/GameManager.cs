@@ -124,6 +124,7 @@ public class GameManager : MonoBehaviour
         currentUIstate = UIstate.Strike;
         if (isOfflineGame) //offline game reset
         {
+            //TODO tää toimimaan
             isReseting = true;
             StopCoroutine(relaseTimer(timeToRelase));
             deathEvent.Invoke();
@@ -150,11 +151,13 @@ public class GameManager : MonoBehaviour
         }
         else //Online game reset
         {
+            //start reset and wait
             isReseting = true;
             StopCoroutine(relaseTimer(timeToRelase));
             
             yield return new WaitForSeconds(delay);
             hasInvincibility = false;
+            //Stop helicopter and move it out of sight
             mainRotor.transform.position = -Vector3.one * 69;
             mainFuselage.transform.position = -Vector3.one * 69;
             mainFuselage.transform.rotation = startingRot;
@@ -166,12 +169,13 @@ public class GameManager : MonoBehaviour
             mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             mainRotor.GetComponent<Rigidbody>().isKinematic = true;
             
-            
+            //reset pins
             foreach (var VARIABLE in GameObject.FindGameObjectsWithTag("Pin"))
             {
                 VARIABLE.GetComponent<TargetScript>().ResetTransform();
             }
 
+            //next player
             if (GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().isHost)
             {
                 GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
@@ -179,9 +183,9 @@ public class GameManager : MonoBehaviour
             else
             {
                 transform.root.GetComponent<NetworkPlayer>().InvokeServerRpc<RpcResponse<string>>("HostNextPlayer");
-
             }
             
+            // end reset
             isReseting = false;
             
             

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,7 +11,12 @@ namespace GameManagement.Menu
         public int capacity = 2;
 
         public TextMeshProUGUI textMeshProUGUI;
-        
+
+        private void Start()
+        {
+            PlayerPrefs.DeleteAll();
+        }
+
         public void ModifyCapacity(bool add)
         {
             if (add && capacity >= 2 && capacity < 4)

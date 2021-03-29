@@ -8,16 +8,20 @@ using UnityEngine.UI;
 namespace GameManagement.Menu
 {
 
-   
+   /// <summary>
+   /// controls how many players can join and whether easymode is on: Uses playerPrefs to carry values to scenes.
+   /// PlayerPrefs are always reseted when menu scen starts
+   /// </summary>
     public class HostingUI : MonoBehaviour
     {
-        public int capacity = 2;
+        public int capacity = 1;
 
         public TextMeshProUGUI textMeshProUGUI;
 
 
         private void Start()
         {
+            PlayerPrefs.DeleteAll();
             PlayerPrefs.SetInt("EasyMode", 0);
         }
 
@@ -28,16 +32,18 @@ namespace GameManagement.Menu
         
         public void ModifyCapacity(bool add)
         {
-            if (add && capacity >= 2 && capacity < 4)
+            // capacity starts at 0
+            
+            if (add && capacity >= 1 && capacity < 3)
             {
                 capacity++;
             }
-            else if (!add && capacity > 2 && capacity <= 4)
+            else if (!add && capacity > 1 && capacity <= 3)
             {
                 capacity--;
             }
 
-            textMeshProUGUI.text = capacity.ToString();
+            textMeshProUGUI.text = capacity + 1.ToString();
         }
         
         public void StartServer()

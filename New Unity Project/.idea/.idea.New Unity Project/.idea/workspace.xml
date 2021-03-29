@@ -39,12 +39,19 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TMP_InputField.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/62/8adcecc3/RpcResponse`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/43/d52bbc2a/ServerRPCAttribute.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/TargetScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/IpValidator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/ClientUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/OfflineMenu.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/HostingUI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oFOjHGAWa6P96tjH0zciEaimoh" />
@@ -134,7 +141,8 @@
       <workItem from="1616402019907" duration="2691000" />
       <workItem from="1616573323000" duration="12513000" />
       <workItem from="1616658206433" duration="5236000" />
-      <workItem from="1616739524610" duration="1808000" />
+      <workItem from="1616739524610" duration="15848000" />
+      <workItem from="1616930090973" duration="4664000" />
     </task>
     <servers />
   </component>
@@ -157,24 +165,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="708" y="345" key="#Notifications" timestamp="1615190492029">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="708" y="345" key="#Notifications/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1615190492029" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1616598374685">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616598374685" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1616068628905">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616068628905" />
-    <state x="528" y="224" width="672" height="678" key="search.everywhere.popup" timestamp="1616598462040">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="528" y="224" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616598462040" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>
