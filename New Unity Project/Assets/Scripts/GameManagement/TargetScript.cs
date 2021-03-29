@@ -52,34 +52,27 @@ public class TargetScript : MonoBehaviour
     //
     private void OnCollisionEnter(Collision other)
     {
-        
-        
+        if (!other.gameObject.CompareTag("Helicopter")) return;
         MultiplayerManager mp = GameObject.FindWithTag("ScoreManager").GetComponent<MultiplayerManager>();
         if (!other.transform.root.GetComponent<NetworkedObject>().IsOwner)
         {
             Debug.Log("Hyvä yritys saatana");
             return;
         }
-        if (other.gameObject.CompareTag("Helicopter"))
-        {
-            _gameManager = other.transform.root.GetComponentInChildren<GameManager>();
-            _gameManager.startEvent.AddListener(ResetTransform);
-            _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
-            
-            if (!hasFallen && _gameManager.isReseting == false)
-            {
-                 Debug.Log("Adding score " + other.gameObject);
-                 _scoreManager.playerScores[_scoreManager.currentPlayer] += targetScore * _scoreManager.scoreMultiplier;
-                 hasFallen = true;
-                 other.transform.root.GetComponentInChildren<FuselageController>().helicopterHealth = 100f;
-                 _gameManager.hasInvincibility = true;
-                 _gameManager.StartCoroutine(_gameManager.Strike(2f));
-                 //StartCoroutine(waitBeforeReset());
-                 //targetScore = 0;
-            }
+        _gameManager = other.transform.root.GetComponentInChildren<GameManager>();
+        _gameManager.startEvent.AddListener(ResetTransform);
+        _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
 
-           
-            
+        if (!hasFallen && _gameManager.isReseting == false)
+        {
+            Debug.Log("Adding score " + other.gameObject);
+            _scoreManager.playerScores[_scoreManager.currentPlayer] += targetScore * _scoreManager.scoreMultiplier;
+            hasFallen = true;
+            other.transform.root.GetComponentInChildren<FuselageController>().helicopterHealth = 100f;
+            _gameManager.hasInvincibility = true;
+            _gameManager.StartCoroutine(_gameManager.Strike(2f));
+            //StartCoroutine(waitBeforeReset());
+            //targetScore = 0;
         }
     }
 }
