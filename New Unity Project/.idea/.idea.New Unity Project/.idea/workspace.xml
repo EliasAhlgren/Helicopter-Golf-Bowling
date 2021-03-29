@@ -49,8 +49,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/ClientUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/OfflineMenu.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/HostingUI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" />
     </changedPaths>
   </component>
@@ -143,7 +143,7 @@
       <workItem from="1616658206433" duration="5236000" />
       <workItem from="1616739524610" duration="15848000" />
       <workItem from="1616930090973" duration="4664000" />
-      <workItem from="1616997357309" duration="1838000" />
+      <workItem from="1616997357309" duration="2841000" />
     </task>
     <servers />
   </component>

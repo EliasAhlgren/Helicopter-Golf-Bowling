@@ -39,7 +39,6 @@ public class TargetScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         
-        Debug.Log("Ending Round");
         
         
         _gameManager.HelicopterDestroyed(0.1f);

@@ -50,14 +50,13 @@ namespace HelicopterController
         [ServerRPC(RequireOwnership = false)]
         public void HostNextPlayer()
         {
-            Debug.Log("Host got the message");
+            Debug.Log("Host got the message, Next Player turn");
             GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
         }
         
         [ClientRPC]
         public void Testi()
         {
-            Debug.Log("TESTI TESTI TESTI");
         }
         
         [ClientRPC]
@@ -74,7 +73,6 @@ namespace HelicopterController
                 gameObject.GetComponentInChildren<CinemachineFreeLook>().Follow =
                     gameObject.GetComponentInChildren<CinemachineFreeLook>().LookAt =
                         physicalObject.GetComponentInChildren<FuselageController>().transform;
-               Debug.Log("Tämän viestin lähetti " +NetworkingManager.Singleton.LocalClientId , gameObject);
         }
     
         [ClientRPC]
@@ -82,12 +80,10 @@ namespace HelicopterController
         {
             _hasConnected = true;
         
-            Debug.Log("Hello");
             SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<Camera>().enabled = true;
             SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
             foreach (var variable in SpawnManager.SpawnedObjectsList)
             {
-                Debug.Log(variable + " ID " + variable.OwnerClientId);
             }
         }
 
@@ -119,7 +115,6 @@ namespace HelicopterController
 
         public IEnumerator TextHomma(int crntPlayer, int newScore)
         {
-            Debug.Log("new score: " + newScore);
             ScoreManager scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
             for (int i = 0; i < scoreManager.scoresUguis.Length; i++)
             {
@@ -200,8 +195,8 @@ namespace HelicopterController
         
         IEnumerator WaitBeforeDc()
         {
+            Debug.Log("Disconnecting from server, wait started");
             yield return new  WaitForSeconds(IsHost ? 3 : 2);
-            Debug.Log("Disconnecting from server");
             MultiplayerManager mp = GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>();
             mp.isAtStartup = true;
             mp.StopClient();
@@ -220,15 +215,7 @@ namespace HelicopterController
         // Update is called once per frame
         void FixedUpdate()
         {
-            if (IsHost)
-            {
-                if (Input.GetKeyDown(KeyCode.R))
-                {
-                    Debug.Log("Disconnecting");
-                    InvokeClientRpcOnEveryone(StopAndDisconnect);
-                }
-            }
-        
+            
             yMovement = Input.GetAxisRaw(yMoveControl);
             xRotation = Input.GetAxisRaw(xRotationControl);
             yRotation = Input.GetAxisRaw(yRotationControl);

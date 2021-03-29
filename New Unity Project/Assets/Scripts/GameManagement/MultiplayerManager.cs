@@ -63,26 +63,16 @@ namespace GameManagement
             NetworkingManager.Singleton.OnClientConnectedCallback += ClientConnected;
             NetworkingManager.Singleton.StartHost(spawnPosition,Quaternion.identity,true, SpawnManager.GetPrefabHashFromIndex(0));
             
-            //GameObject teuvo = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-            //teuvo.GetComponent<NetworkedObject>().SpawnWithOwnership(NetworkingManager.Singleton.ServerClientId);
             
             _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
             _gameManager.isOfflineGame = isOfflineGame;
-            //_gameManager.transform.root.gameObject.GetComponentInChildren<Camera>().enabled = true;
             networkPlayers.Add(_gameManager.transform.root.gameObject); 
             networkPlayers[0].name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
 
             isHost = true;
             
             List<ulong> ids = new List<ulong> {SpawnManager.GetLocalPlayerObject().OwnerClientId};
-            /*
-            SpawnManager.GetLocalPlayerObject()
-                .GetComponent<NetworkedBehaviour>()
-                .InvokeClientRpc("SetCamera", ids, spawnPosition);
-            */
-            //SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SpawnHelicopter", ids, spawnPosition, NetworkingManager.Singleton.LocalClientId);
             
-            //GameObject.Find("CineCamera").GetComponent<NetworkedTransform>().enabled = true;
             spawnPosition += Vector3.left * 10;
         }
 
@@ -98,9 +88,8 @@ namespace GameManagement
                     NetworkingManager.Singleton.OnClientDisconnectCallback += Disconnected;
                     spawnPosition += Vector3.forward * 10;
                     UnetTransport unetTransport = gameObject.GetComponent<UnetTransport>();
-                    Debug.Log("Connected to: " + unetTransport.ConnectAddress + " rtt " + unetTransport.GetCurrentRtt(unetTransport.ServerClientId));
 
-                    Debug.Log("Client " + obj + " connected");
+                    Debug.Log("Client " + obj + "Connected to: " + unetTransport.ConnectAddress + " rtt " + unetTransport.GetCurrentRtt(unetTransport.ServerClientId));
 
                     //GameObject jeff = GameObject.Find("Player(Clone)");
                     GameObject jeff = SpawnManager.SpawnedObjects[obj].gameObject;
@@ -111,16 +100,11 @@ namespace GameManagement
                     {
                         Debug.Log("Host: Client spawned");
                         List<ulong> ids = new List<ulong> {jeff.GetComponent<NetworkedObject>().OwnerClientId};
-                        //jeff.GetComponentInChildren<Camera>().enabled = false;
-                        /*SpawnManager.GetLocalPlayerObject()
-                            .GetComponent<NetworkedBehaviour>()
-                            .InvokeClientRpc("SetCamera", ids, spawnPosition);
-                        */
-                        //SpawnManager.GetLocalPlayerObject().GetComponent<NetworkedBehaviour>().InvokeClientRpc("SpawnHelicopter", ids, spawnPosition, obj);
+                       
                         SpawnManager.GetLocalPlayerObject()
                             .GetComponent<NetworkedBehaviour>()
                             .InvokeClientRpc("Testi", ids);
-                        Debug.Log(networkPlayers.Count + " pelaajaa" + playerCount + " tarvitaan");
+                        Debug.Log(networkPlayers.Count + " pelaajaa " + playerCount + " tarvitaan");
                         if (networkPlayers.Count == playerCount)
                         {
                             Debug.Log("Nyt mennää");
@@ -144,7 +128,6 @@ namespace GameManagement
         {
             await Task.Delay(TimeSpan.FromSeconds(2.5f));
 
-            Debug.Log("EasyMode = " + PlayerPrefs.GetInt("EasyMode"));
             if (PlayerPrefs.GetInt("EasyMode") == 1)
             {
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>()
@@ -163,7 +146,6 @@ namespace GameManagement
 
         public void StopClient()
         {
-            Debug.Log("jees");
 
             if (isHost)
             {
@@ -208,7 +190,7 @@ namespace GameManagement
                 {
                     try
                     {
-                        //tähän chekki onko validi ip
+                        //TODO tähän chekki onko validi ip
                         gameObject.GetComponent<UnetTransport>().ConnectAddress = PlayerPrefs.GetString("HostIp");
                         StartClient();
                     }
@@ -315,7 +297,7 @@ namespace GameManagement
             }
             else
             {
-                Debug.Log("Last player", gameObject);
+                Debug.Log("Last player, shutting down", gameObject);
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("StopAndDisconnect");
             }
 

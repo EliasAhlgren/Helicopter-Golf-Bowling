@@ -247,10 +247,11 @@ public class GameManager : MonoBehaviour
 
             if (GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().isHost)
             {
+                Debug.Log("Is host, Next Player", gameObject);
                 GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
             }else
             {
-                Debug.Log("Asking Host");
+                Debug.Log("Is not the host, Next Player", gameObject);
                 transform.root.GetComponent<NetworkPlayer>().InvokeServerRpc<RpcResponse<string>>("HostNextPlayer");
             }
             
@@ -260,7 +261,6 @@ public class GameManager : MonoBehaviour
             }
             
             
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         
     }

@@ -39,7 +39,6 @@ public class FuselageController : MonoBehaviour
         gameManager.startingPos = transform.position;
         gameManager.startingRot = transform.rotation;
 
-        Debug.Log("startupissa easy mode on: " + shouldMouseRot);
         shouldMouseRot = PlayerPrefs.GetInt("EasyMode") == 1;
     }
 
@@ -111,7 +110,7 @@ public class FuselageController : MonoBehaviour
         if (helicopterHealth <= 0 && !gameManager.hasInvincibility)
         {
             //TODO HP homma kuntoon 
-            Debug.Log("Low hp destroyed");
+            //Debug.Log("Low hp destroyed");
             //StartCoroutine(gameManager.HelicopterDestroyed(3));
             //gameManager.hasInvincibility = true;
         }
