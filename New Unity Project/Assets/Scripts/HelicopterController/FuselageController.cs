@@ -110,9 +110,10 @@ public class FuselageController : MonoBehaviour
         
         if (helicopterHealth <= 0 && !gameManager.hasInvincibility)
         {
+            //TODO HP homma kuntoon 
             Debug.Log("Low hp destroyed");
-            StartCoroutine(gameManager.HelicopterDestroyed(3));
-            gameManager.hasInvincibility = true;
+            //StartCoroutine(gameManager.HelicopterDestroyed(3));
+            //gameManager.hasInvincibility = true;
         }
         
         if (isPlayerControlled && gameManager.isCurrentPLayer)

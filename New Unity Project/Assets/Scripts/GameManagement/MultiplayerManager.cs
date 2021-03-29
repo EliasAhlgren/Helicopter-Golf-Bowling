@@ -251,7 +251,7 @@ namespace GameManagement
         {
             if (previousBool != _int)
             {
-                Debug.Log("Variable changed");
+                Debug.Log("Variable changed " + "Value was " + previousBool + " New value is" + _int);
             }
             previousBool = _int;
         }
@@ -264,6 +264,10 @@ namespace GameManagement
             bool alwaysTrue = true;
             if (!isOfflineGame && isHost)
             {
+                if (!networkPlayers[currentPlayer])
+                {
+                    return;
+                }
                 networkPlayers[currentPlayer].transform.position = -Vector3.one * 69f;
                 foreach (var VARIABLE in networkPlayers[currentPlayer].GetComponentsInChildren<Rigidbody>())
                 {
@@ -311,7 +315,7 @@ namespace GameManagement
             }
             else
             {
-                Debug.Log("Last player");
+                Debug.Log("Last player", gameObject);
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("StopAndDisconnect");
             }
 

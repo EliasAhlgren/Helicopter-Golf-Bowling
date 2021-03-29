@@ -90,7 +90,6 @@ public class GameManager : MonoBehaviour
             currentUIstate = UIstate.Awaiting;
         }
         
-        Debug.Log(thisObject + " HAS RESETED", thisObject);
         
         if (!isOfflineGame)
         {
@@ -178,10 +177,12 @@ public class GameManager : MonoBehaviour
             //next player
             if (GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().isHost)
             {
+                Debug.Log("Is host, Next Player", gameObject);
                 GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
             }
             else
             {
+                Debug.Log("Is not the host, Next Player", gameObject);
                 transform.root.GetComponent<NetworkPlayer>().InvokeServerRpc<RpcResponse<string>>("HostNextPlayer");
             }
             
