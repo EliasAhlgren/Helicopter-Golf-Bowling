@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameManagement;
+using MLAPI.Spawning;
 using UnityEngine;
+using NetworkPlayer = HelicopterController.NetworkPlayer;
 
 public class FuselageController : MonoBehaviour
 {
@@ -20,18 +23,23 @@ public class FuselageController : MonoBehaviour
     public float framesOnGround;
 
     private NetworkPlayer _networkPlayer;
+
+    public bool shouldMouseRot;
     
     // Start is called before the first frame update
     void Start()
     {
-        _networkPlayer = transform.root.GetComponent<NetworkPlayer>();
+        gameManager = transform.root.GetComponentInChildren<GameManager>();
         
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        _networkPlayer = transform.root.GetComponent<NetworkPlayer>();
+
+        gameManager = transform.root.GetComponentInChildren<GameManager>();
         _rigidbody = gameObject.GetComponent<Rigidbody>();
 
         gameManager.startingPos = transform.position;
         gameManager.startingRot = transform.rotation;
 
+        shouldMouseRot = PlayerPrefs.GetInt("EasyMode") == 1;
     }
 
     public void ResetHealth()
@@ -41,16 +49,17 @@ public class FuselageController : MonoBehaviour
     
     private void OnCollisionEnter(Collision other)
     {
-        
-        
-        if (!isPlayerControlled && !gameManager.waitingForInput && other.gameObject.CompareTag("Enviroment") && !gameManager.hasInvincibility)
+        if (gameManager.isCurrentPLayer)
         {
-            
-            gameManager.ResetFromPos(transform.position, gameObject);
-        }
-        else if (gameManager.hasInvincibility)
-        {
-            helicopterHealth -= other.relativeVelocity.magnitude * collisionDamageMultiplier;
+            if (!isPlayerControlled && !gameManager.waitingForInput && other.gameObject.CompareTag("Enviroment") &&
+                !gameManager.hasInvincibility)
+            {
+                gameManager.ResetFromPos(transform.position, gameObject, other.contacts[0].normal);
+            }
+            else if (gameManager.hasInvincibility)
+            {
+                helicopterHealth -= other.relativeVelocity.magnitude * collisionDamageMultiplier;
+            }
         }
     }
 
@@ -61,16 +70,19 @@ public class FuselageController : MonoBehaviour
 
     private void OnCollisionStay(Collision other)
     {
-        if (!gameManager.waitingForInput)
+        if (gameManager.isCurrentPLayer)
         {
-            framesOnGround++;
-            if (framesOnGround > 200)
-            { 
-                Debug.Log("No movement");
-                StartCoroutine(gameManager.HelicopterDestroyed(3f));
+            if (!gameManager.waitingForInput)
+            {
+                framesOnGround++;
+                if (framesOnGround > 200)
+                {
+                    Debug.Log("No movement");
+                    StartCoroutine(gameManager.HelicopterDestroyed(3f));
+                    gameManager.waitingForInput = true;
+                }
             }
         }
-        
     }
 
     
@@ -88,18 +100,22 @@ public class FuselageController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (gameManager.waitingForInput)
+        
+        
+        if (gameManager.waitingForInput && shouldMouseRot)
         {
-            //MouseRot();
+            MouseRot();
         }
         
         if (helicopterHealth <= 0 && !gameManager.hasInvincibility)
         {
-            Debug.Log("Low hp destroyed");
-            StartCoroutine(gameManager.HelicopterDestroyed(3));
+            //TODO HP homma kuntoon 
+            //Debug.Log("Low hp destroyed");
+            //StartCoroutine(gameManager.HelicopterDestroyed(3));
+            //gameManager.hasInvincibility = true;
         }
         
-        if (isPlayerControlled)
+        if (isPlayerControlled && gameManager.isCurrentPLayer)
         {
              _rigidbody.AddRelativeTorque(0, -_networkPlayer.yRotation * rotSpeed,0,ForceMode.Force);
         }

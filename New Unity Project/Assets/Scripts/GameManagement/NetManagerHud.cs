@@ -5,12 +5,22 @@ using UnityEngine;
 
 public class NetManagerHud : MonoBehaviour
 {
-
+/*
     public bool isAtStartup = true;
+
+    public bool isHost;
     
     public void StartHost()
     {
+        NetworkingManager.Singleton.OnClientConnectedCallback += ClientConnected;
         NetworkingManager.Singleton.StartHost();
+        isHost = true;
+    }
+
+    private void ClientConnected(ulong obj)
+    {
+        LoggingLevel = Instantiate()
+        NetworkingManager.Singleton.ConnectedClients[obj]
     }
 
     public void StartClient()
@@ -18,6 +28,8 @@ public class NetManagerHud : MonoBehaviour
         NetworkingManager.Singleton.StartClient();
     }
 
+    
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.H) && isAtStartup)
@@ -31,6 +43,12 @@ public class NetManagerHud : MonoBehaviour
             StartClient();
             isAtStartup = false;
         }
+
+        if (isHost)
+        {
+            
+        }
         
     }
+    */
 }

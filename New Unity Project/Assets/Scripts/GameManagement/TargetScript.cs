@@ -2,17 +2,19 @@
 
 using System;
 using System.Collections;
+using GameManagement;
+using MLAPI;
 using TMPro;
 using UnityEngine;
 
 public class TargetScript : MonoBehaviour
 {
-    private Vector3 _ogPos;
+    [SerializeField] private Vector3 _ogPos;
     private Quaternion _ogRot;
     
-    private ScoreManager _scoreManager;
+    [SerializeField] private ScoreManager _scoreManager;
 
-    private GameManager _gameManager;
+    [SerializeField] private GameManager _gameManager;
     
     public float targetScore = 10f;
 
@@ -20,8 +22,6 @@ public class TargetScript : MonoBehaviour
     
     private void Start()
     {
-        _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        _gameManager.startEvent.AddListener(ResetTransform);
         _ogPos = transform.position;
         _ogRot = transform.rotation;
         _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
@@ -40,7 +40,6 @@ public class TargetScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         
-        Debug.Log("Ending Round");
         
         
         _gameManager.HelicopterDestroyed(0.1f);
@@ -53,20 +52,27 @@ public class TargetScript : MonoBehaviour
     //
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Helicopter"))
+        if (!other.gameObject.CompareTag("Helicopter")) return;
+        MultiplayerManager mp = GameObject.FindWithTag("ScoreManager").GetComponent<MultiplayerManager>();
+        if (!other.transform.root.GetComponent<NetworkedObject>().IsOwner)
         {
-            if (!hasFallen && _gameManager.isReseting == false)
-            {
-                 Debug.Log("Adding score " + other.gameObject);
-                 _scoreManager.playerScores[_scoreManager.currentPlayer] += targetScore * _scoreManager.scoreMultiplier;
-                 hasFallen = true;
-                 GameObject.Find("fuseFront").GetComponent<FuselageController>().helicopterHealth = 100f;
-                 _gameManager.hasInvincibility = true;
-                 _gameManager.StartCoroutine(_gameManager.Strike(2f));
-                 //StartCoroutine(waitBeforeReset());
-                 //targetScore = 0;
-            }
-           
+            Debug.Log("Hyvä yritys saatana");
+            return;
+        }
+        _gameManager = other.transform.root.GetComponentInChildren<GameManager>();
+        _gameManager.startEvent.AddListener(ResetTransform);
+        _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
+
+        if (!hasFallen && _gameManager.isReseting == false)
+        {
+            Debug.Log("Adding score " + other.gameObject);
+            _scoreManager.playerScores[_scoreManager.currentPlayer] += targetScore * _scoreManager.scoreMultiplier;
+            hasFallen = true;
+            other.transform.root.GetComponentInChildren<FuselageController>().helicopterHealth = 100f;
+            _gameManager.hasInvincibility = true;
+            _gameManager.StartCoroutine(_gameManager.Strike(2f));
+            //StartCoroutine(waitBeforeReset());
+            //targetScore = 0;
         }
     }
 }

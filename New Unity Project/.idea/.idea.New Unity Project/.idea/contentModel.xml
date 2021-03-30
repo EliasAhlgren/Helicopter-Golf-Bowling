@@ -24,10 +24,17 @@
             <e p="MLAPI.xml" t="Include" />
           </e>
         </e>
+        <e p="Packages" t="ExcludeRecursive" />
         <e p="Scripts" t="Include">
           <e p="GameManagement" t="Include">
             <e p="CustomTrack.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
+            <e p="Menu" t="Include">
+              <e p="ClientUI.cs" t="Include" />
+              <e p="HostingUI.cs" t="Include" />
+              <e p="IpValidator.cs" t="Include" />
+              <e p="OfflineMenu.cs" t="Include" />
+            </e>
             <e p="MultiplayerManager.cs" t="Include" />
             <e p="NetManagerHud.cs" t="Include" />
             <e p="ScoreManager.cs" t="Include" />
@@ -97,7 +104,6 @@
       </e>
       <e p="New Unity Project.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
-      <e p="Packages" t="ExcludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />
     </e>
   </component>
