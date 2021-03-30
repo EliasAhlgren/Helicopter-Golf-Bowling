@@ -123,6 +123,8 @@ public class GameManager : MonoBehaviour
         currentUIstate = UIstate.Strike;
         if (isOfflineGame) //offline game reset
         {
+            Debug.Log("Offline Reset from strike");
+            
             //TODO tää toimimaan
             isReseting = true;
             StopCoroutine(relaseTimer(timeToRelase));
@@ -131,9 +133,9 @@ public class GameManager : MonoBehaviour
 
             yield return new WaitForSeconds(delay);
             hasInvincibility = false;
-            mainRotor.transform.position = Vector3.zero;
-            mainFuselage.transform.position = startingPos;
-            mainFuselage.transform.rotation = startingRot;
+            mainRotor.transform.position = GameObject.FindWithTag("StartingPoint").transform.position;
+            mainFuselage.transform.position = GameObject.FindWithTag("StartingPoint").transform.position;
+            mainFuselage.transform.rotation = GameObject.FindWithTag("StartingPoint").transform.rotation;
             mainFuselage.GetComponent<Rigidbody>().velocity = Vector3.zero;
             mainFuselage.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             mainRotor.GetComponent<RotorController>().yVelocity = 0;
@@ -207,7 +209,7 @@ public class GameManager : MonoBehaviour
                 deathEvent.Invoke();
                 yield return new WaitForSeconds(delay);
                 hasInvincibility = false;
-                mainFuselage.transform.position = Vector3.zero;
+                mainFuselage.transform.position = GameObject.FindWithTag("StartingPoint").transform.position;;
                 mainFuselage.transform.eulerAngles = Vector3.zero;
                 mainFuselage.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 mainFuselage.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
@@ -295,7 +297,7 @@ public class GameManager : MonoBehaviour
             currentUIstate = UIstate.Spectator;
         }
 
-        if (transform.root.GetComponent<NetworkedObject>().IsLocalPlayer)
+        if (transform.root.GetComponent<NetworkedObject>().IsLocalPlayer && !isOfflineGame)
         {
             switch (currentUIstate)
                     {
@@ -349,7 +351,61 @@ public class GameManager : MonoBehaviour
                             break;
                     }
         }
-        
+
+        if (isOfflineGame) // offline UI state
+        {
+            switch (currentUIstate)
+                    {
+                        case UIstate.Awaiting:
+                            if (_bottomText)
+                            {
+                                _middleText.enabled = false;
+                                _bottomText.enabled = true;
+                                _bottomText.text = "Press any key";
+                                _topText.enabled = true;
+                                _topText.text = "Player In control";
+                            }
+                            break;
+                        case UIstate.Player:
+                            if (_bottomText)
+                            {
+                                _middleText.enabled = false;
+                                _bottomText.enabled = true;
+                                _bottomText.text = "Time left: " + Mathf.Round(timer);
+                                _topText.enabled = true;
+                                _topText.text = "Player In control";
+                            }
+                            break;
+                        case UIstate.LostControl:
+                            _middleText.enabled = false;
+                            _bottomText.enabled = false;
+                            _topText.enabled = true;
+                            _topText.text = "Lost Control";
+                            break;
+                        case UIstate.Spectator:
+                            if (_bottomText)
+                            {
+                                _middleText.enabled = false;
+                                _bottomText.enabled = false;
+                                _topText.enabled = true;
+                                _topText.text = "Spectating";
+                            }
+                            break;
+                        case UIstate.Destroyed:
+                            if (_bottomText)
+                            {
+                                _topText.enabled = false;
+                                _middleText.text = "Destroyed";
+                                _bottomText.enabled = false;
+                            }
+                            break;
+                        case UIstate.Strike:
+                            _topText.enabled = false;
+                            _middleText.text = "Strike";
+                            _bottomText.enabled = false;
+                            break;
+                    }
+        }
         
         
         if (isCurrentPLayer)

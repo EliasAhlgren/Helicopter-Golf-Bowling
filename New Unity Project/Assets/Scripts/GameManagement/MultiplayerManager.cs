@@ -51,6 +51,8 @@ namespace GameManagement
 
         public Vector3 spawnPosition; 
         
+        
+        
         private void Awake()
         {
             //DontDestroyOnLoad(gameObject);
@@ -62,6 +64,7 @@ namespace GameManagement
 
             if (!isOfflineGame)
             {
+                isHost = true;
                 lookAtCamera = GameObject.Find("CineCamera").GetComponent<Camera>();
                 lookAtCamera.enabled = true;
             }
@@ -98,14 +101,17 @@ namespace GameManagement
             }
             else //offline game setup
             {
-                //Instantiate()
+                Debug.Log("Offline game started");
+                var offlinePlayer = Instantiate(playerPrefab,  GameObject.FindWithTag("StartingPoint").transform.position, Quaternion.Euler(Vector3.forward));
+                offlinePlayer.GetComponentInChildren<GameManager>().isOfflineGame = true;
+                StartGame();
             }
             
         }
         
         public void StartHost()
         {
-            spawnPosition = Vector3.zero;
+            spawnPosition =  GameObject.FindWithTag("StartingPoint").transform.position;
             
             NetworkingManager.Singleton.OnClientConnectedCallback += ClientConnected;
             NetworkingManager.Singleton.StartHost(spawnPosition,Quaternion.identity,true, SpawnManager.GetPrefabHashFromIndex(0));
@@ -177,12 +183,18 @@ namespace GameManagement
 
             if (PlayerPrefs.GetInt("EasyMode") == 1)
             {
-                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>()
-                    .InvokeClientRpcOnEveryone("SetEasyMode");
+                if (!isOfflineGame)
+                {
+                    SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>()
+                                        .InvokeClientRpcOnEveryone("SetEasyMode");
+                }
             }
-            
-            SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone(
-                "SetCurrentPlayerCamera", SpawnManager.GetLocalPlayerObject());
+
+            if (!isOfflineGame)
+            {
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone(
+                                "SetCurrentPlayerCamera", SpawnManager.GetLocalPlayerObject());
+            }
         }
         
         public void StartClient()
@@ -199,7 +211,7 @@ namespace GameManagement
                 NetworkingManager.Singleton.StopHost();
                 networkPlayers = new List<GameObject>();
                 currentPlayer = 0;
-                spawnPosition = Vector3.zero;
+                spawnPosition =  GameObject.FindWithTag("StartingPoint").transform.position;;
                 isHost = false;
                 lookAtCamera = null;
             }
@@ -216,12 +228,6 @@ namespace GameManagement
         private void Update()
         {
             LogOnChanged(currentPlayer);
-            
-            if (Input.GetKey(KeyCode.F) && Input.GetKeyDown(KeyCode.U))
-            {
-                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>()
-                    .InvokeClientRpcOnEveryone("StopAndDisconnect");
-            }
             
         }
 
@@ -269,7 +275,7 @@ namespace GameManagement
                     }
                     
                 _scoreManager.currentPlayer++;
-                networkPlayers[currentPlayer].transform.position = Vector3.zero;
+                networkPlayers[currentPlayer].transform.position = GameObject.FindWithTag("StartingPoint").transform.position;;
                 foreach (var VARIABLE in networkPlayers[currentPlayer].GetComponentsInChildren<Rigidbody>())
                 {
                     VARIABLE.isKinematic = false;

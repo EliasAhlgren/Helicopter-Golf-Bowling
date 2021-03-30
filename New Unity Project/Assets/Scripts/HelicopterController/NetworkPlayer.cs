@@ -3,6 +3,7 @@ using Cinemachine;
 using GameManagement;
 using MLAPI;
 using MLAPI.Messaging;
+using MLAPI.Prototyping;
 using MLAPI.Spawning;
 using TMPro;
 using UnityEngine;
@@ -13,8 +14,7 @@ namespace HelicopterController
 {
     public class NetworkPlayer : NetworkedBehaviour
     {
-     
-        
+        private MultiplayerManager _multiplayerManager;
         
         public float yMovement;
         public float xRotation;
@@ -33,17 +33,30 @@ namespace HelicopterController
         // Start is called before the first frame update
         IEnumerator Start()
         {
+            _multiplayerManager = GameObject.FindWithTag("ScoreManager").GetComponent<MultiplayerManager>();
+            
             yield return new  WaitForSeconds(2f);
-            SpawnHelicopter(GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().spawnPosition);
-            SetCamera(Vector3.zero);
+            
+            SetCamera(GameObject.FindWithTag("StartingPoint").transform.position);
+            
+            SpawnHelicopter(_multiplayerManager.spawnPosition);
+            
+            if (_multiplayerManager.isOfflineGame)
+            {
+                Debug.Log("Is offline");
+                foreach (var VARIABLE in FindObjectsOfType<NetworkedTransform>())
+                {
+                    Debug.Log(VARIABLE + " Found, disabling net transform");
+                    VARIABLE.enabled = false;
+                }
+            }
         }
 
         private void OnGUI()
         {
-            if (_hasConnected)
+            if (_hasConnected && !_multiplayerManager.isOfflineGame)
             {
                 GUI.Box (new Rect (Screen.width - 100,0,100,50), SpawnManager.GetLocalPlayerObject().OwnerClientId.ToString());
-            
             }
         }
 
@@ -51,7 +64,7 @@ namespace HelicopterController
         public void HostNextPlayer()
         {
             Debug.Log("Host got the message, Next Player turn");
-            GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
+            _multiplayerManager.NextPlayerTurn();
         }
         
         [ClientRPC]
@@ -62,9 +75,8 @@ namespace HelicopterController
         [ClientRPC]
         public void SpawnHelicopter(Vector3 pos)
         {
-                Vector3 randVector = new Vector3(pos.x + Random.Range(5f, -5f), pos.y, pos.z + Random.Range(5f, -5f));
                 physicalObject.SetActive(true);
-                physicalObject.transform.position = randVector;
+                //physicalObject.transform.position = pos;
                 gameObject.GetComponentInChildren<GameManager>().mainFuselage =
                     physicalObject.GetComponentInChildren<FuselageController>().gameObject;
                 gameObject.GetComponentInChildren<GameManager>().mainRotor =
@@ -73,24 +85,37 @@ namespace HelicopterController
                 gameObject.GetComponentInChildren<CinemachineFreeLook>().Follow =
                     gameObject.GetComponentInChildren<CinemachineFreeLook>().LookAt =
                         physicalObject.GetComponentInChildren<FuselageController>().transform;
+                if (_multiplayerManager.isOfflineGame)
+                {
+                    SetCurrentPlayerCamera(null);
+                }
+                Debug.Log("Helicopter spawned");
         }
     
         [ClientRPC]
         public void SetCamera(Vector3 pos)
         {
             _hasConnected = true;
-        
-            SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<Camera>().enabled = true;
-            SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
-            foreach (var variable in SpawnManager.SpawnedObjectsList)
+
+            if (!_multiplayerManager.isOfflineGame)
             {
+                SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<Camera>().enabled = true;
+                SpawnManager.GetLocalPlayerObject().gameObject.GetComponentInChildren<CinemachineFreeLook>().enabled =
+                    true;
             }
+            else
+            {
+                gameObject.GetComponentInChildren<Camera>().enabled = true;
+                gameObject.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
+            }
+            
+            
         }
 
         [ClientRPC]
         void SetCineCamera()
         {
-        
+            
         }
     
         [ClientRPC]
@@ -152,37 +177,40 @@ namespace HelicopterController
         [ClientRPC]
         public void SetCurrentPlayerCamera(NetworkedObject jyrki)
         {
-            /*
-        foreach (var VARIABLE in SpawnManager.SpawnedObjects)
-        {
-            Debug.Log("Object: " + VARIABLE);
-        }
-        */
-        
-        
-            Debug.Log("Setting gameras to  " + jyrki);
-        
-            foreach (var variable in SpawnManager.SpawnedObjectsList)
+
+            if (_multiplayerManager.isOfflineGame)
             {
-                if (variable != jyrki)
+                Debug.Log("Offline Camera Set");
+                gameObject.GetComponentInChildren<GameManager>().isCurrentPLayer = true;
+                gameObject.GetComponentInChildren<GameManager>().currentUIstate = UIstate.Awaiting;
+                gameObject.GetComponentInChildren<Camera>().enabled = true;
+                gameObject.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
+            }
+            else
+            {
+                Debug.Log("Setting gameras to  " + jyrki);
+
+                foreach (var variable in SpawnManager.SpawnedObjectsList)
                 {
-                    variable.GetComponentInChildren<GameManager>().isCurrentPLayer = false;
-                    Debug.Log("Not found "+ variable);
-                    variable.GetComponentInChildren<Camera>().enabled = false;
-                    variable.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
-                
-                }
-                else
-                {
-                    variable.GetComponentInChildren<GameManager>().isCurrentPLayer = true;
-                    variable.GetComponentInChildren<GameManager>().currentUIstate = UIstate.Awaiting;
-                    Debug.Log("found "+ variable);
-                    variable.GetComponentInChildren<Camera>().enabled = true;
-                    variable.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
-                    return;
+                    if (variable != jyrki)
+                    {
+                        variable.GetComponentInChildren<GameManager>().isCurrentPLayer = false;
+                        Debug.Log("Not found " + variable);
+                        variable.GetComponentInChildren<Camera>().enabled = false;
+                        variable.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
+
+                    }
+                    else
+                    {
+                        variable.GetComponentInChildren<GameManager>().isCurrentPLayer = true;
+                        variable.GetComponentInChildren<GameManager>().currentUIstate = UIstate.Awaiting;
+                        Debug.Log("found " + variable);
+                        variable.GetComponentInChildren<Camera>().enabled = true;
+                        variable.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
+                        return;
+                    }
                 }
             }
-            
         }
 
         [ClientRPC]
@@ -197,7 +225,7 @@ namespace HelicopterController
         {
             Debug.Log("Disconnecting from server, wait started");
             yield return new  WaitForSeconds(IsHost ? 3 : 2);
-            MultiplayerManager mp = GameObject.Find("ScoreManager").GetComponent<MultiplayerManager>();
+            MultiplayerManager mp = _multiplayerManager;
             mp.isAtStartup = true;
             mp.StopClient();
             Cursor.visible = true;

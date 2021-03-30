@@ -22,6 +22,7 @@ namespace GameManagement.Menu
 
         public void AttemptJoin()
         {
+            PlayerPrefs.SetString("IsOffline", "false");
             PlayerPrefs.SetInt("ShouldStartClient", 1);
             PlayerPrefs.SetString("HostIp", _inputField.text);
             SceneManager.LoadScene(1);

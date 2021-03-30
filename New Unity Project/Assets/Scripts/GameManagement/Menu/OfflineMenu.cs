@@ -33,11 +33,12 @@ namespace GameManagement.Menu
         
         public void StartGame(Toggle toggle)
         {
+            PlayerPrefs.SetString("IsOffline", "true");
             PlayerPrefs.SetInt("EasyMode", toggle.isOn ? 1 : 0);
             PlayerPrefs.SetInt("ShouldStartClient", 3);
             PlayerPrefs.SetInt("ShouldStartHost", 3);
             PlayerPrefs.SetInt("Capacity", capacity);
-            SceneManager.LoadScene("Level 1");
+            SceneManager.LoadScene(1);
         }
     }
 }

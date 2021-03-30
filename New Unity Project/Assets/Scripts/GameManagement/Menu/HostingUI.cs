@@ -9,7 +9,7 @@ namespace GameManagement.Menu
 {
 
    /// <summary>
-   /// controls how many players can join and whether easymode is on: Uses playerPrefs to carry values to scenes.
+   /// controls how many players can join and whether easymode is on. Uses playerPrefs to carry values to scenes.
    /// PlayerPrefs are always reseted when menu scen starts
    /// </summary>
     public class HostingUI : MonoBehaviour
@@ -48,6 +48,7 @@ namespace GameManagement.Menu
         
         public void StartServer()
         {
+            PlayerPrefs.SetString("IsOffline", "false");
             PlayerPrefs.SetInt("ShouldStartClient", 0);
             PlayerPrefs.SetInt("Capacity", capacity);
             SceneManager.LoadScene(1);
