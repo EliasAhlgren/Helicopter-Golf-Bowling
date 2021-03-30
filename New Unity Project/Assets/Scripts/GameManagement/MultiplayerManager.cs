@@ -64,7 +64,7 @@ namespace GameManagement
 
             if (!isOfflineGame)
             {
-                isHost = true;
+                
                 lookAtCamera = GameObject.Find("CineCamera").GetComponent<Camera>();
                 lookAtCamera.enabled = true;
             }
@@ -101,6 +101,7 @@ namespace GameManagement
             }
             else //offline game setup
             {
+                isHost = true;
                 Debug.Log("Offline game started");
                 var offlinePlayer = Instantiate(playerPrefab,  GameObject.FindWithTag("StartingPoint").transform.position, Quaternion.Euler(Vector3.forward));
                 offlinePlayer.GetComponentInChildren<GameManager>().isOfflineGame = true;
