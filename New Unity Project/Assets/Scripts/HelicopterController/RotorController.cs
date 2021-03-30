@@ -32,7 +32,7 @@ namespace HelicopterController
         
         public float xzRotationPower = 5;
         Slider slider;
-        NetworkPlayer networkPlayer;
+        [HideInInspector] public NetworkPlayer networkPlayer;
         
         // Start is called before the first frame update
         void Start()
@@ -76,7 +76,7 @@ namespace HelicopterController
             }
         }
 
-        void YMovement()
+        public void YMovement()
         {
             
             if ( networkPlayer.yMovement == 0 && yVelocity > 1)

@@ -67,6 +67,7 @@ namespace GameManagement
                 
                 lookAtCamera = GameObject.Find("CineCamera").GetComponent<Camera>();
                 lookAtCamera.enabled = true;
+                
             }
             
             

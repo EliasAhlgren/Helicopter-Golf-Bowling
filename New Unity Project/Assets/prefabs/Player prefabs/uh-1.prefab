@@ -3689,6 +3689,7 @@ MonoBehaviour:
   yDeceleration: 6
   yDecelartionInFilight: 1
   xzRotationPower: 3.7
+  networkPlayer: {fileID: 0}
 --- !u!138 &1443187170789496066
 FixedJoint:
   m_ObjectHideFlags: 0
