@@ -60,7 +60,7 @@ namespace GameManagement
 
         private void Start()
         {
-            isOfflineGame = Boolean.TryParse(PlayerPrefs.GetString("IsOffline"), out isOfflineGame);
+            Boolean.TryParse(PlayerPrefs.GetString("IsOffline"), out isOfflineGame);
 
             if (!isOfflineGame)
             {
