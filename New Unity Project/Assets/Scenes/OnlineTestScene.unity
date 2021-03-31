@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 36118efa4708ad04a8e57cff6120b418,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1825,7 +1825,7 @@ GameObject:
   - component: {fileID: 1219966967}
   - component: {fileID: 1219966969}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ScoreHolderObject
   m_TagString: ScoreHolder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2928,22 +2928,22 @@ PrefabInstance:
     - target: {fileID: 7216170480306075905, guid: 3836055cb99ea2a41b09ef9ead7f082a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8850281
+      value: 0.88491315
       objectReference: {fileID: 0}
     - target: {fileID: 7216170480306075905, guid: 3836055cb99ea2a41b09ef9ead7f082a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.46553755
+      value: 0.46575618
       objectReference: {fileID: 0}
     - target: {fileID: 7216170480306075905, guid: 3836055cb99ea2a41b09ef9ead7f082a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00017241966
+      value: 0.00017249817
       objectReference: {fileID: 0}
     - target: {fileID: 7216170480306075905, guid: 3836055cb99ea2a41b09ef9ead7f082a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000012998705
+      value: -0.000013004625
       objectReference: {fileID: 0}
     - target: {fileID: 7216170480306075905, guid: 3836055cb99ea2a41b09ef9ead7f082a,
         type: 3}
