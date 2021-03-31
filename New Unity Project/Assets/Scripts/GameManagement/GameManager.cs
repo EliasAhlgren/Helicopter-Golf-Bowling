@@ -269,7 +269,7 @@ public class GameManager : MonoBehaviour
 
     private void OnGUI()
     {
-        GUI.Box (new Rect (0,0,100,50), waitingForInput.ToString());
+        
     }
 
     public void StartFlight()

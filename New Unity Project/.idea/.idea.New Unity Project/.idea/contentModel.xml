@@ -26,6 +26,7 @@
         </e>
         <e p="Packages" t="ExcludeRecursive" />
         <e p="Scripts" t="Include">
+          <e p="Explosion.cs" t="Include" />
           <e p="GameManagement" t="Include">
             <e p="CustomTrack.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
@@ -39,16 +40,25 @@
             <e p="NetManagerHud.cs" t="Include" />
             <e p="ScoreManager.cs" t="Include" />
             <e p="TargetScript.cs" t="Include" />
+            <e p="TrickManager.cs" t="Include" />
           </e>
           <e p="HelicopterController" t="Include">
             <e p="FuselageController.cs" t="Include" />
             <e p="NetworkPlayer.cs" t="Include" />
             <e p="RotorController.cs" t="Include" />
           </e>
+          <e p="Scripts.asmdef" t="Include" />
           <e p="SimpleCameraController.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">
           <e p="AwesomeToonHelper.cs" t="Include" />
+          <e p="menuShader" t="Include">
+            <e p="blackOut.cs" t="Include" />
+            <e p="building.cs" t="Include" />
+            <e p="daBuildingsh.cs" t="Include" />
+            <e p="menuCopterExplosion.cs" t="Include" />
+            <e p="spinMeRightroundbaby.cs" t="Include" />
+          </e>
           <e p="QuickOutline" t="Include">
             <e p="Resources" t="Include">
               <e p="Shaders" t="Include">
@@ -104,6 +114,7 @@
       </e>
       <e p="New Unity Project.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
+      <e p="Scripts.csproj" t="IncludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />
     </e>
   </component>
