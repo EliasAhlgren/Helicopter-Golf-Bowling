@@ -224,14 +224,17 @@ namespace GameManagement
                 //gameObject.GetComponent<UnetTransport>().Shutdown();   
             }
         }
-        
-        
 
-        
+
+        private int testInt;
         private void Update()
         {
             LogOnChanged(currentPlayer);
-            
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                GameObject.FindWithTag("ScoreHolder").GetComponent<ScoreHolder>().SetCurrentScores(testInt);
+                testInt++;
+            }
         }
 
         private int previousBool;
@@ -287,12 +290,14 @@ namespace GameManagement
                     {
                         VARIABLE.isKinematic = false;
                     }
-                
 
-                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", networkPlayers[currentPlayer].GetComponent<NetworkedObject>(), _scoreManager.playerScores[currentPlayer - 1]);
 
-                List<ulong> currentTarget = new List<ulong>();
-                currentTarget.Add(networkPlayers[currentPlayer].GetComponent<NetworkedObject>().OwnerClientId);
+                    SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone(
+                        "SetCurrentPlayerCamera", networkPlayers[currentPlayer].GetComponent<NetworkedObject>(),
+                        _scoreManager.playerScores[currentPlayer - 1]);
+
+                    List<ulong> currentTarget = new List<ulong>();
+                    currentTarget.Add(networkPlayers[currentPlayer].GetComponent<NetworkedObject>().OwnerClientId);
                } 
                 
                 for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)

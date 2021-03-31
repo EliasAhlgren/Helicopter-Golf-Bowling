@@ -11,7 +11,6 @@ public class ScoreManager : MonoBehaviour
 {
     public int currentPlayer;
     
-    [SyncedVar]
     public float[] playerScores;
     public TextMeshProUGUI[] scoresUguis;
     
@@ -29,7 +28,13 @@ public class ScoreManager : MonoBehaviour
         isOfflineGame = gameObject.GetComponent<MultiplayerManager>().isOfflineGame;
     }
 
-    
+    public void SetScores(float[] newScores)
+    {
+        for (int i = 0; i < newScores.Length; i++)
+        {
+            playerScores[i] = newScores[i];
+        }
+    }
     
     // Update is called once per frame
     void Update()

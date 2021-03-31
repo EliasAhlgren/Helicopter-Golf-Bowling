@@ -38,6 +38,7 @@
             </e>
             <e p="MultiplayerManager.cs" t="Include" />
             <e p="NetManagerHud.cs" t="Include" />
+            <e p="ScoreHolder.cs" t="Include" />
             <e p="ScoreManager.cs" t="Include" />
             <e p="TargetScript.cs" t="Include" />
             <e p="TrickManager.cs" t="Include" />
