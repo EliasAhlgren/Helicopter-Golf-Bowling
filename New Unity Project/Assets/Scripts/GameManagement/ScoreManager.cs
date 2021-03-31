@@ -35,7 +35,7 @@ public class ScoreManager : MonoBehaviour
         SetScores(newScores);
     }
     
-    public void SetScores(float[] newScores)
+    private void SetScores(float[] newScores)
     {
         for (int i = 0; i < newScores.Length; i++)
         {

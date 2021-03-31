@@ -227,15 +227,10 @@ namespace GameManagement
         }
 
 
-        private int testInt;
         private void Update()
         {
             LogOnChanged(currentPlayer);
-            if (Input.GetKeyDown(KeyCode.N))
-            {
-                GameObject.FindWithTag("ScoreHolder").GetComponent<ScoreHolder>().SetCurrentScores(testInt);
-                testInt++;
-            }
+            
         }
 
         private int previousBool;
@@ -299,7 +294,9 @@ namespace GameManagement
 
                     List<ulong> currentTarget = new List<ulong>();
                     currentTarget.Add(networkPlayers[currentPlayer].GetComponent<NetworkedObject>().OwnerClientId);
-               } 
+                    
+                    gameObject.GetComponent<ScoreManager>().GetScoresFromServer();
+                } 
                 
                 for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
                 {

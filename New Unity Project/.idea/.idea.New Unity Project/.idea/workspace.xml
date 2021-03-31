@@ -36,6 +36,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph@7.5.2/Editor/Data/Nodes/Procedural/Shape/RoundedRectangleNode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/51/4404809a/SyncedVarAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ArrowScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -56,9 +57,9 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/RotorController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/TrickManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/ScoreManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/TargetScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/ScoreHolder.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/ScoreManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
     </changedPaths>
   </component>
