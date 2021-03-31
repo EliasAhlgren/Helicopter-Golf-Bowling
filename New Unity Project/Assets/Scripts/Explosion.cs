@@ -36,11 +36,14 @@ public class Explosion : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-
-
-        explode();
+        if (other.gameObject.tag == "Helicopter" && (other.GetComponent<Rigidbody>().velocity.x > 14.8f || other.GetComponent<Rigidbody>().velocity.x < -14.8f || other.GetComponent<Rigidbody>().velocity.y > 14.8f ||
+            other.GetComponent<Rigidbody>().velocity.y < -14.8f || other.GetComponent<Rigidbody>().velocity.z > 14.8f || other.GetComponent<Rigidbody>().velocity.x < -14.8f))
+        {
+            explode();
+        }
     }
 
 
@@ -79,6 +82,8 @@ public class Explosion : MonoBehaviour
         piece.AddComponent<Rigidbody>();
         piece.GetComponent<Rigidbody>().mass = fragmentSize;
         piece.GetComponent<MeshRenderer>().material = gameObject.GetComponent<MeshRenderer>().material;
+        piece.GetComponent<Rigidbody>().mass = 0.05f;
+        piece.tag = "Helicopter";
 
         //Match same speed and direction as the parent object
         piece.GetComponent<Rigidbody>().velocity = lastVelocity;
