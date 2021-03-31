@@ -114,6 +114,7 @@ namespace GameManagement
         
         public void StartHost()
         {
+            Debug.Log("StartHost");
             spawnPosition =  GameObject.FindWithTag("StartingPoint").transform.position;
             
             NetworkingManager.Singleton.OnClientConnectedCallback += ClientConnected;

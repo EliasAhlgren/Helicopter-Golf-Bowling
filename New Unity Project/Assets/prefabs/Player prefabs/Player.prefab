@@ -35493,6 +35493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationDone: 0
+  mFloat: 0
 --- !u!1 &3281106933298893132
 GameObject:
   m_ObjectHideFlags: 0
@@ -38638,22 +38639,22 @@ PrefabInstance:
     - target: {fileID: 4222205186202222015, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8915702
+      value: 0.8892087
       objectReference: {fileID: 0}
     - target: {fileID: 4222205186202222015, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.45288253
+      value: 0.45750183
       objectReference: {fileID: 0}
     - target: {fileID: 4222205186202222015, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00016787431
+      value: 0.00016953354
       objectReference: {fileID: 0}
     - target: {fileID: 4222205186202222015, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000012656016
+      value: -0.000012781113
       objectReference: {fileID: 0}
     - target: {fileID: 4222205186202222015, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
         type: 3}
