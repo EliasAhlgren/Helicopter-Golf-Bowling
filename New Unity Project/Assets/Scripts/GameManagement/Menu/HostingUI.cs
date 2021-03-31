@@ -14,6 +14,7 @@ namespace GameManagement.Menu
    /// </summary>
     public class HostingUI : MonoBehaviour
     {
+        float animationExitTimer = -1;
         public int capacity = 1;
 
         public TextMeshProUGUI textMeshProUGUI;
@@ -45,13 +46,30 @@ namespace GameManagement.Menu
 
             textMeshProUGUI.text = capacity + 1.ToString();
         }
-        
+
+
+
+        private void Update()
+        {
+            if (animationExitTimer >= 0)
+            {
+                animationExitTimer += Time.deltaTime;
+                if (animationExitTimer >= 2.5)
+                {
+                    SceneManager.LoadScene(1);
+                }
+            }
+
+        }
+
         public void StartServer()
         {
+            GameObject.Find("crashBuilding").transform.position = new Vector3(GameObject.Find("crashBuilding").transform.position.x, 0, GameObject.Find("crashBuilding").transform.position.z);
+            animationExitTimer = 0;
             PlayerPrefs.SetString("IsOffline", "false");
             PlayerPrefs.SetInt("ShouldStartClient", 0);
             PlayerPrefs.SetInt("Capacity", capacity);
-            SceneManager.LoadScene(1);
+            
         }
     }
 }

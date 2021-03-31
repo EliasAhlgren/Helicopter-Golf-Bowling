@@ -12,7 +12,7 @@ public class menuCopterExplosion : MonoBehaviour
     {
         if (startMoving == true)
         {
-            gameObject.transform.Translate(-4 * Time.deltaTime, 0, 0);
+            gameObject.transform.Translate(0, -4 * Time.deltaTime, 0);
         }
     }
 
