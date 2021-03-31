@@ -106,6 +106,7 @@ namespace GameManagement
                 Debug.Log("Offline game started");
                 var offlinePlayer = Instantiate(playerPrefab,  GameObject.FindWithTag("StartingPoint").transform.position, Quaternion.Euler(Vector3.forward));
                 offlinePlayer.GetComponentInChildren<GameManager>().isOfflineGame = true;
+                networkPlayers.Add(offlinePlayer);
                 StartGame();
             }
             
@@ -247,10 +248,10 @@ namespace GameManagement
         public void NextPlayerTurn()
         {
 
-            Debug.Log("Current player is"+ currentPlayer + " " + networkPlayers[currentPlayer]);
-            bool alwaysTrue = true;
+            
             if (!isOfflineGame && isHost)
             {
+                Debug.Log("Current player is"+ currentPlayer + " " + networkPlayers[currentPlayer]);
                 if (!networkPlayers[currentPlayer])
                 {
                     return;
@@ -270,23 +271,29 @@ namespace GameManagement
                 Debug.Log("Next player");
                
                     currentPlayer++;
-
+                    gameObject.GetComponent<ScoreManager>().currentPlayer = currentPlayer;
+                    
                     for (int i = 0; i < networkPlayers.Count; i++)
                     {
                         Debug.Log("Index: "+i+ " player: " +networkPlayers[i]);
                     }
                     
                 _scoreManager.currentPlayer++;
-                networkPlayers[currentPlayer].transform.position = GameObject.FindWithTag("StartingPoint").transform.position;;
-                foreach (var VARIABLE in networkPlayers[currentPlayer].GetComponentsInChildren<Rigidbody>())
+                if (!isOfflineGame)
                 {
-                    VARIABLE.isKinematic = false;
-                }
+                    networkPlayers[currentPlayer].transform.position =
+                        GameObject.FindWithTag("StartingPoint").transform.position;
+                    foreach (var VARIABLE in networkPlayers[currentPlayer].GetComponentsInChildren<Rigidbody>())
+                    {
+                        VARIABLE.isKinematic = false;
+                    }
+                
+
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("SetCurrentPlayerCamera", networkPlayers[currentPlayer].GetComponent<NetworkedObject>(), _scoreManager.playerScores[currentPlayer - 1]);
 
                 List<ulong> currentTarget = new List<ulong>();
                 currentTarget.Add(networkPlayers[currentPlayer].GetComponent<NetworkedObject>().OwnerClientId);
-                
+               } 
                 
                 for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
                 {
@@ -303,28 +310,43 @@ namespace GameManagement
             else
             {
                 Debug.Log("Last player, shutting down", gameObject);
-                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("StopAndDisconnect");
+                if (!isOfflineGame)
+                {
+                    SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("StopAndDisconnect");
+                }
+                else
+                {
+                    OfflineEndRound();
+                }
+                
             }
 
-            if (!isOfflineGame && isHost)
+            if (!isOfflineGame)
             {
-               // lookAtCamera.GetComponentInChildren<CinemachineVirtualCamera>().LookAt =
-                //    networkPlayers[currentPlayer].transform;
+                List<ulong> ids = new List<ulong>();
+
+                foreach (var VARIABLE in NetworkingManager.Singleton.ConnectedClientsList)
+                {
+                    if (VARIABLE.ClientId != SpawnManager.GetLocalPlayerObject().OwnerClientId)
+                    {
+                        ids.Add(VARIABLE.ClientId);
+                    }
+                }
+
+                SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>()
+                    .InvokeClientRpc("ClientGetNextPlayer", ids, currentPlayer);
             }
             
-            List<ulong> ids = new List<ulong>();
-
-            foreach (var VARIABLE in NetworkingManager.Singleton.ConnectedClientsList)
-            {
-                if (VARIABLE.ClientId != SpawnManager.GetLocalPlayerObject().OwnerClientId)
-                {
-                    ids.Add(VARIABLE.ClientId);
-                }
-            }
+            
                 
-            SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>().InvokeClientRpc("ClientGetNextPlayer", ids, currentPlayer);
+            
             
         }
-        
+
+        void OfflineEndRound()
+        {
+            //TODO tänne seuraavaan sceneen siirtymine ja sama onlineen
+            SceneManager.LoadScene(0);
+        }
     }
 }

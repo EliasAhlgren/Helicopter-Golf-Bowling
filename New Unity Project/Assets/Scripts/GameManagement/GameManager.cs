@@ -148,6 +148,8 @@ public class GameManager : MonoBehaviour
                 VARIABLE.GetComponent<TargetScript>().ResetTransform();
             }
 
+            GameObject.FindWithTag("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
+            
             isReseting = false;
         }
         else //Online game reset
@@ -217,8 +219,10 @@ public class GameManager : MonoBehaviour
                 mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
                 
-
                 mainFuselage.GetComponent<FuselageController>().ResetHealth();
+                
+                GameObject.FindWithTag("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
+
             }
             else //Online game destruction
             {

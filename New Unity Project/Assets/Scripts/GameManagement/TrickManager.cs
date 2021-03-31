@@ -13,6 +13,8 @@ namespace GameManagement
         
         private GameManager _gameManager;
 
+        public float mFloat;
+        
         private void Start()
         {
             _gameManager = transform.root.GetComponentInChildren<GameManager>();
@@ -20,7 +22,8 @@ namespace GameManagement
 
         private void OnGUI()
         {
-            GUI.Box (new Rect (0,0,100,50), rotationDone.ToString());
+            GUI.Box (new Rect (mFloat,0,100,50), Math.Round(rotationDone).ToString());
+            GUI.Box (new Rect (300,0,100,50), transform.rotation.eulerAngles.y.ToString());
         }
 
         private void OnCollisionEnter(Collision other)
@@ -36,8 +39,22 @@ namespace GameManagement
 
         private void FixedUpdate()
         {
-            rotationDone = Mathf.Abs(_lastRotation - transform.rotation.eulerAngles.y );
-            _lastRotation = transform.rotation.eulerAngles.x;
+            rotationDone += (_lastRotation - transform.rotation.eulerAngles.y );
+            _lastRotation = transform.rotation.eulerAngles.y;
+            if (rotationDone == _startRotationY + 360)
+            {
+                 ScoreManager _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
+                 _scoreManager.playerScores[_scoreManager.currentPlayer] += 5;
+                 rotationDone = 0;
+            }
+            
+            if (rotationDone > 0)
+            {
+                if (rotationDone >= 360)
+                {
+                   
+                }
+            }
         }
     }
 }

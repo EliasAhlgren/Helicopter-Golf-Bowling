@@ -52,11 +52,11 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/ClientUI.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/OfflineMenu.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Tests/PlayMode/OfflineMoveTest.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/RotorController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/TrickManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oFOjHGAWa6P96tjH0zciEaimoh" />
@@ -150,7 +150,7 @@
       <workItem from="1616930090973" duration="4664000" />
       <workItem from="1616997357309" duration="16601000" />
       <workItem from="1617082612426" duration="1365000" />
-      <workItem from="1617169140236" duration="1042000" />
+      <workItem from="1617169140236" duration="7086000" />
     </task>
     <servers />
   </component>
