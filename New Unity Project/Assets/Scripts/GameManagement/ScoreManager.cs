@@ -28,6 +28,13 @@ public class ScoreManager : MonoBehaviour
         isOfflineGame = gameObject.GetComponent<MultiplayerManager>().isOfflineGame;
     }
 
+    public void GetScoresFromServer()
+    {
+        float[] newScores;
+        GameObject.FindWithTag("ScoreHolder").GetComponent<ScoreHolder>().GetCurrentScores(out newScores);
+        SetScores(newScores);
+    }
+    
     public void SetScores(float[] newScores)
     {
         for (int i = 0; i < newScores.Length; i++)
