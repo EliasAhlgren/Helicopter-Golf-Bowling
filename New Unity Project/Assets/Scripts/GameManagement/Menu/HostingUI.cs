@@ -44,7 +44,7 @@ namespace GameManagement.Menu
                 capacity--;
             }
 
-            textMeshProUGUI.text = capacity + 1.ToString();
+            textMeshProUGUI.text = (capacity + 1).ToString();
         }
 
 
