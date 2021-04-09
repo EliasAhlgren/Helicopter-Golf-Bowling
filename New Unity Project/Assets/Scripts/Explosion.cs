@@ -37,25 +37,30 @@ public class Explosion : MonoBehaviour
 
     }
 
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Rigidbody>().velocity.x > 14.8f || other.GetComponent<Rigidbody>().velocity.x < -14.8f || other.GetComponent<Rigidbody>().velocity.y > 14.8f ||
-            other.GetComponent<Rigidbody>().velocity.y < -14.8f || other.GetComponent<Rigidbody>().velocity.z > 14.8f || other.GetComponent<Rigidbody>().velocity.x < -14.8f)
+        if (other.tag == "Helicopter")
         {
 
-            if (other.tag == "Helicopter")
-            {
-                explode();
-            }
-            else if (other.GetComponent<Rigidbody>().velocity.x > 54.8f || other.GetComponent<Rigidbody>().velocity.x < -54.8f || other.GetComponent<Rigidbody>().velocity.y > 54.8f ||
-            other.GetComponent<Rigidbody>().velocity.y < -54.8f || other.GetComponent<Rigidbody>().velocity.z > 54.8f || other.GetComponent<Rigidbody>().velocity.x < -54.8f)
-            {
-                explode();
-            }
 
+            if (other.GetComponent<Rigidbody>().velocity.x > 14.8f || other.GetComponent<Rigidbody>().velocity.x < -14.8f || other.GetComponent<Rigidbody>().velocity.y > 14.8f ||
+                other.GetComponent<Rigidbody>().velocity.y < -14.8f || other.GetComponent<Rigidbody>().velocity.z > 14.8f || other.GetComponent<Rigidbody>().velocity.x < -14.8f)
+            {
+
+                if (other.tag == "Helicopter")
+                {
+                    explode();
+                }
+                else if (other.GetComponent<Rigidbody>().velocity.x > 54.8f || other.GetComponent<Rigidbody>().velocity.x < -54.8f || other.GetComponent<Rigidbody>().velocity.y > 54.8f ||
+                other.GetComponent<Rigidbody>().velocity.y < -54.8f || other.GetComponent<Rigidbody>().velocity.z > 54.8f || other.GetComponent<Rigidbody>().velocity.x < -54.8f)
+                {
+                    explode();
+                }
+
+            }
         }
-    }
+    }*/
 
 
     void explode()

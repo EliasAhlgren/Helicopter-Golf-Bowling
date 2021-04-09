@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalLevel.unity
     guid: e62fa161a17dbca449affe560349b728
   - enabled: 1
-    path: Assets/Scenes/OnlineTestScene.unity
+    path: Assets/Scenes/Test scenes und other paskaa/OnlineTestScene.unity
     guid: 5069fab522e46c94c96c7be52693ae1f
   - enabled: 0
     path: 
