@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{b0b38f92-cb95-4432-866b-f7fddafcb58f}">
+		<property name="assetPath">
+			<value>ROCKET_LAUNCH.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.4399999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6b3970ef-a28d-48d2-9fbb-101fc8ec7bc0}</destination>
+		</relationship>
+	</object>
+</objects>
