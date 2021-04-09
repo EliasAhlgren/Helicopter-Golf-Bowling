@@ -21,6 +21,8 @@ public class ScoreManager : MonoBehaviour
 
     private bool isOfflineGame;
     
+    public string emptySlotName
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,17 @@ public class ScoreManager : MonoBehaviour
         float[] newScores;
         GameObject.FindWithTag("ScoreHolder").GetComponent<ScoreHolder>().GetCurrentScores(out newScores);
         SetScores(newScores);
+    }
+
+    public void RemoveEmptySlots()
+    {
+        foreach (var VARIABLE in scoresUguis)
+        {
+            if (VARIABLE.text == emptySlotName())
+            {
+                VARIABLE.enabled = false;
+            }
+        }
     }
     
     public void SetScores(float[] newScores)
