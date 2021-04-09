@@ -37,15 +37,15 @@ public class Explosion : MonoBehaviour
 
     }
 
-    /*
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Helicopter")
         {
 
 
-            if (other.GetComponent<Rigidbody>().velocity.x > 14.8f || other.GetComponent<Rigidbody>().velocity.x < -14.8f || other.GetComponent<Rigidbody>().velocity.y > 14.8f ||
-                other.GetComponent<Rigidbody>().velocity.y < -14.8f || other.GetComponent<Rigidbody>().velocity.z > 14.8f || other.GetComponent<Rigidbody>().velocity.x < -14.8f)
+            if (other.GetComponent<Rigidbody>().velocity.x > 10f || other.GetComponent<Rigidbody>().velocity.x < -10f || other.GetComponent<Rigidbody>().velocity.y > 10f ||
+                other.GetComponent<Rigidbody>().velocity.y < -10f || other.GetComponent<Rigidbody>().velocity.z > 10f || other.GetComponent<Rigidbody>().velocity.x < -10f)
             {
 
                 if (other.tag == "Helicopter")
@@ -60,7 +60,7 @@ public class Explosion : MonoBehaviour
 
             }
         }
-    }*/
+    }
 
 
     void explode()
