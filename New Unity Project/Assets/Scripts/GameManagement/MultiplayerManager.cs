@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Cinemachine;
 using UnityEngine;
@@ -49,9 +47,11 @@ namespace GameManagement
 
         public Camera lookAtCamera;
 
-        public Vector3 spawnPosition; 
+        public Vector3 spawnPosition;
+
+        private int nameIndex;
         
-        
+        private List<string> _playerNames;
         
         private void Awake()
         {
@@ -60,6 +60,8 @@ namespace GameManagement
 
         private void Start()
         {
+            _playerNames = new List<string>();
+            
             Boolean.TryParse(PlayerPrefs.GetString("IsOffline"), out isOfflineGame);
 
             if (!isOfflineGame)
@@ -82,7 +84,7 @@ namespace GameManagement
                 {
                     try
                     {
-                        //TODO tähän chekki onko validi ip
+                        
                         gameObject.GetComponent<UnetTransport>().ConnectAddress = PlayerPrefs.GetString("HostIp");
                         StartClient();
                     }
@@ -111,6 +113,26 @@ namespace GameManagement
             }
             
         }
+
+        public void SetName(string newName, GameObject sender)
+        {
+            foreach (var VARIABLE in _playerNames)
+            {
+                if (newName == VARIABLE)
+                {
+                    return;
+                }
+            }
+            nameIndex = 0;
+            _playerNames.Add(newName);
+            for (int i = 0; i < _playerNames.Count; i++)
+            {
+                Debug.Log("Server is sending name name" + newName);
+                sender.GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("GetNames", _playerNames[i], i);
+                nameIndex++;
+            }
+            
+        }
         
         public void StartHost()
         {
@@ -125,7 +147,8 @@ namespace GameManagement
             _gameManager.isOfflineGame = isOfflineGame;
             networkPlayers.Add(_gameManager.transform.root.gameObject); 
             networkPlayers[0].name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
-
+            networkPlayers[0].AddComponent<ScoreHolder>();
+            
             isHost = true;
             
             List<ulong> ids = new List<ulong> {SpawnManager.GetLocalPlayerObject().OwnerClientId};
@@ -147,7 +170,6 @@ namespace GameManagement
                     UnetTransport unetTransport = gameObject.GetComponent<UnetTransport>();
 
                     Debug.Log("Client " + obj + "Connected to: " + unetTransport.ConnectAddress + " rtt " + unetTransport.GetCurrentRtt(unetTransport.ServerClientId));
-
                     //GameObject jeff = GameObject.Find("Player(Clone)");
                     GameObject jeff = SpawnManager.SpawnedObjects[obj].gameObject;
                     jeff.name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
@@ -158,9 +180,7 @@ namespace GameManagement
                         Debug.Log("Host: Client spawned");
                         List<ulong> ids = new List<ulong> {jeff.GetComponent<NetworkedObject>().OwnerClientId};
                        
-                        SpawnManager.GetLocalPlayerObject()
-                            .GetComponent<NetworkedBehaviour>()
-                            .InvokeClientRpc("Testi", ids);
+                        
                         Debug.Log(networkPlayers.Count + " pelaajaa " + playerCount + " tarvitaan");
                         if (networkPlayers.Count == playerCount)
                         {
@@ -201,10 +221,14 @@ namespace GameManagement
             }
         }
         
-        public void StartClient()
+        public async void StartClient()
         {
             NetworkingManager.Singleton.StartClient();
-            
+            await Task.Delay(10000);
+            if (!GameObject.Find("GameManager"))
+            {
+                SceneManager.LoadScene(0);
+            }
         }
 
         public void StopClient()

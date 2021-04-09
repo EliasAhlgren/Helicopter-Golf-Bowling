@@ -26,13 +26,15 @@ public class ScoreManager : MonoBehaviour
     {
         scoreMultiplier = par;
         isOfflineGame = gameObject.GetComponent<MultiplayerManager>().isOfflineGame;
+        UpdateStatStrings();
     }
 
     public void GetScoresFromServer()
     {
         float[] newScores;
-        GameObject.FindWithTag("ScoreHolder").GetComponent<ScoreHolder>().GetCurrentScores(out newScores);
+        FindObjectOfType<ScoreHolder>().GetCurrentScores(out newScores);
         SetScores(newScores);
+        UpdateStatStrings();
     }
     
     private void SetScores(float[] newScores)
@@ -44,11 +46,11 @@ public class ScoreManager : MonoBehaviour
     }
     
     // Update is called once per frame
-    void Update()
+    void UpdateStatStrings()
     {
         for (int i = 0; i < playerScores.Length; i++)
         {
-            scoresUguis[i].text = "Player " + (i + 1) + ": " + playerScores[i];
+            //scoresUguis[i].text += " Score: " + playerScores[i];
         }    
     }
 }

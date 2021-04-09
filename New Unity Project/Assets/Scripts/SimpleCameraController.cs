@@ -164,7 +164,7 @@ namespace UnityTemplateProjects
             translation *= Mathf.Pow(2.0f, boost);
 
 #elif USE_INPUT_SYSTEM 
-            // TODO: make the new input system work
+           
 #endif
 
             m_TargetCameraState.Translate(translation);

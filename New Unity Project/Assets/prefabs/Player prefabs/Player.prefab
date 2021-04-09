@@ -33977,7 +33977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1152040506265421657
 Transform:
   m_ObjectHideFlags: 0
@@ -38990,6 +38990,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.34512496
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222205186357164644, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
+        type: 3}
+      propertyPath: m_XDamping
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222205186357164644, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
+        type: 3}
+      propertyPath: m_YDamping
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222205186357164644, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
+        type: 3}
+      propertyPath: m_ZDamping
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4222205186730084007, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
         type: 3}

@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
     {
         _topText = GameObject.Find("TopText").GetComponent<TextMeshProUGUI>();
         _middleText = GameObject.Find("MiddleText").GetComponent<TextMeshProUGUI>();
+        _middleText.enabled = false;
         _bottomText = GameObject.Find("BottomText").GetComponent<TextMeshProUGUI>();
         
         
@@ -125,7 +126,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Offline Reset from strike");
             
-            //TODO tää toimimaan
+            
             isReseting = true;
             StopCoroutine(relaseTimer(timeToRelase));
             deathEvent.Invoke();

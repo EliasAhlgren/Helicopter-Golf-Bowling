@@ -77,8 +77,9 @@ public class FuselageController : MonoBehaviour
                 framesOnGround++;
                 if (framesOnGround > 200)
                 {
-                    Debug.Log("No movement");
-                    StartCoroutine(gameManager.HelicopterDestroyed(3f));
+                    //TODO tässä joku kusee 
+                    Debug.Log("No movement " + other.gameObject);
+                    //StartCoroutine(gameManager.HelicopterDestroyed(3f));
                     gameManager.waitingForInput = true;
                 }
             }

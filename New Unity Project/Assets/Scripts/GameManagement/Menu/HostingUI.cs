@@ -13,7 +13,9 @@ namespace GameManagement.Menu
    /// PlayerPrefs are always reseted when menu scen starts
    /// </summary>
     public class HostingUI : MonoBehaviour
-    {
+   {
+       public TMP_InputField nameField;
+        
         float animationExitTimer = -1;
         public int capacity = 1;
 
@@ -24,6 +26,7 @@ namespace GameManagement.Menu
         {
             PlayerPrefs.DeleteAll();
             PlayerPrefs.SetInt("EasyMode", 0);
+            nameField.characterLimit = 10;
         }
 
         public void ChangeEasyMode(Toggle ugui)
@@ -66,6 +69,7 @@ namespace GameManagement.Menu
         {
             GameObject.Find("crashBuilding").transform.position = new Vector3(GameObject.Find("crashBuilding").transform.position.x, 0, GameObject.Find("crashBuilding").transform.position.z);
             animationExitTimer = 0;
+            PlayerPrefs.SetString("PlayerName", nameField.text);
             PlayerPrefs.SetString("IsOffline", "false");
             PlayerPrefs.SetInt("ShouldStartClient", 0);
             PlayerPrefs.SetInt("Capacity", capacity);

@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Cinemachine;
 using GameManagement;
 using MLAPI;
@@ -33,6 +35,8 @@ namespace HelicopterController
         // Start is called before the first frame update
         IEnumerator Start()
         {
+            Destroy(GameObject.Find("AttemptConnectionCanvas"));
+            
             _multiplayerManager = GameObject.FindWithTag("ScoreManager").GetComponent<MultiplayerManager>();
             
             yield return new  WaitForSeconds(2f);
@@ -50,6 +54,14 @@ namespace HelicopterController
                     VARIABLE.enabled = false;
                 }
             }
+            else
+            {
+                 string m_name = PlayerPrefs.GetString("PlayerName");
+                 InvokeServerRpc(SendName, m_name);
+            }
+
+           
+
         }
 
         private void OnGUI()
@@ -66,11 +78,25 @@ namespace HelicopterController
             Debug.Log("Host got the message, Next Player turn");
             _multiplayerManager.NextPlayerTurn();
         }
+
+         [ServerRPC(RequireOwnership = false)]
+         public void SendName(string _name)
+         {
+             Debug.Log("Sending a clients name to server " + _name);
+             _multiplayerManager.SetName(_name, gameObject);
+         }
         
         [ClientRPC]
-        public void Testi()
+        public void GetNames(string newName1, int index)
         {
+            Debug.Log("Getting name "+ index + " name is " + newName1);
+           
+                ScoreManager scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+                scoreManager.scoresUguis[index].text = newName1;
+            
         }
+        
+       
         
         [ClientRPC]
         public void SpawnHelicopter(Vector3 pos)
@@ -202,11 +228,12 @@ namespace HelicopterController
                     }
                     else
                     {
-                        variable.GetComponentInChildren<GameManager>().isCurrentPLayer = true;
-                        variable.GetComponentInChildren<GameManager>().currentUIstate = UIstate.Awaiting;
+
+                        variable.gameObject.GetComponentInChildren<GameManager>().isCurrentPLayer = true;
+                        variable.gameObject.GetComponentInChildren<GameManager>().currentUIstate = UIstate.Awaiting;
                         Debug.Log("found " + variable);
-                        variable.GetComponentInChildren<Camera>().enabled = true;
-                        variable.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
+                        variable.gameObject.GetComponentInChildren<Camera>().enabled = true;
+                        variable.gameObject.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
                         return;
                     }
                 }
