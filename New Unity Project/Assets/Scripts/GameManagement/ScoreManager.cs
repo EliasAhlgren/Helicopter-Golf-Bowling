@@ -20,8 +20,8 @@ public class ScoreManager : MonoBehaviour
     public GameObject playerTestObject;
 
     private bool isOfflineGame;
-    
-    public string emptySlotName
+
+    public string emptySlotName;
     
     // Start is called before the first frame update
     void Start()
@@ -41,7 +41,7 @@ public class ScoreManager : MonoBehaviour
     {
         foreach (var VARIABLE in scoresUguis)
         {
-            if (VARIABLE.text == emptySlotName())
+            if (VARIABLE.text == emptySlotName)
             {
                 VARIABLE.enabled = false;
             }
