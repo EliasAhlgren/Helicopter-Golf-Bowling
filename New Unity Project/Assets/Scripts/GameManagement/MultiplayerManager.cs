@@ -270,7 +270,7 @@ namespace GameManagement
        
         public void NextPlayerTurn()
         {
-
+            _scoreManager.scoreMultiplier = 1;
             
             if (!isOfflineGame && isHost)
             {

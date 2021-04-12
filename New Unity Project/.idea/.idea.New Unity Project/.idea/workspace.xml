@@ -55,6 +55,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/UIevent.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1oFOjHGAWa6P96tjH0zciEaimoh" />
@@ -157,6 +159,7 @@
       <workItem from="1617898210682" duration="2118000" />
       <workItem from="1617953367781" duration="3736000" />
       <workItem from="1618152366243" duration="590000" />
+      <workItem from="1618206585889" duration="3675000" />
     </task>
     <servers />
   </component>

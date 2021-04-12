@@ -86,12 +86,12 @@ public class GameManager : MonoBehaviour
 
     public void ResetFromPos(Vector3 pos, GameObject thisObject, Vector3 contact)
     {
+        FindObjectOfType<ScoreManager>().scoreMultiplier++;
+        
         if (isCurrentPLayer)
         {
             currentUIstate = UIstate.Awaiting;
         }
-        
-        
         if (!isOfflineGame)
         {
         }
