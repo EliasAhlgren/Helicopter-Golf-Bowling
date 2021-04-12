@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/Plugins/soundFiles/BIT1_HELICOPTER/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637535277454025706
+  lastModified: 637536550742002295
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -41,7 +41,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -368574447432201418}
+  - {fileID: 1713934195899429261}
   MinDistance: 0
   MaxDistance: 0
   Length: 3018
@@ -137,7 +137,7 @@ MonoBehaviour:
   - {fileID: 847657399774307982}
   StringsBanks:
   - {fileID: -8752880467501314044}
-  stringsBankWriteTime: 637535277454025706
+  stringsBankWriteTime: 637536550742002295
   cacheVersion: 6
 --- !u!114 &847657399774307982
 MonoBehaviour:
@@ -154,9 +154,29 @@ MonoBehaviour:
   Path: Assets/Plugins/soundFiles/BIT1_HELICOPTER/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637535277454005759
+  lastModified: 637536550741992296
   LoadResult: 0
   FileSizes: []
+  Exists: 1
+--- !u!114 &1713934195899429261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/HELICOPTER PROPELLER/BOOST
+  m_EditorClassIdentifier: 
+  Name: BOOST
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 129065424
+    data2: 1521889820
   Exists: 1
 --- !u!114 &3723845505286191549
 MonoBehaviour:

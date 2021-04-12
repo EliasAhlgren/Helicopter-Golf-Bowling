@@ -35668,6 +35668,7 @@ GameObject:
   - component: {fileID: 3281106933298893122}
   - component: {fileID: 3281106933298893126}
   - component: {fileID: 2712622322923498139}
+  - component: {fileID: 2877851700276273777}
   m_Layer: 8
   m_Name: rotorMain
   m_TagString: Untagged
@@ -35874,6 +35875,31 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2877851700276273777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3281106933298893132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/HELICOPTER/HELICOPTER PROPELLER
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: BOOST
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &3281106933423703448
 GameObject:
   m_ObjectHideFlags: 0
@@ -37161,6 +37187,7 @@ MonoBehaviour:
   yRotationControl: YRotation
   zRotationControl: Vertical
   physicalObject: {fileID: 0}
+  emitter: {fileID: 0}
 --- !u!1 &6963924622779847382
 GameObject:
   m_ObjectHideFlags: 0
@@ -37398,6 +37425,7 @@ MonoBehaviour:
   yRotationControl: YRotation
   zRotationControl: Vertical
   physicalObject: {fileID: 339755758981717475}
+  emitter: {fileID: 2877851700276273777}
 --- !u!114 &2118109396504063161
 MonoBehaviour:
   m_ObjectHideFlags: 0
