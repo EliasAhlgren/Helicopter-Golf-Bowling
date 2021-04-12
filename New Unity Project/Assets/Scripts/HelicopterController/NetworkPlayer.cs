@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using FMODUnity;
 using GameManagement;
 using MLAPI;
 using MLAPI.Messaging;
@@ -31,6 +32,7 @@ namespace HelicopterController
 
         public GameObject physicalObject;
 
+        public StudioEventEmitter emitter;
         
         // Start is called before the first frame update
         IEnumerator Start()
@@ -275,6 +277,9 @@ namespace HelicopterController
             xRotation = Input.GetAxisRaw(xRotationControl);
             yRotation = Input.GetAxisRaw(yRotationControl);
             zRotation = Input.GetAxisRaw(zRotationControl);
+
+            emitter.Params[0].Value = physicalObject.GetComponentInChildren<RotorController>().yVelocity / 100;
+
         }
     }
 }
