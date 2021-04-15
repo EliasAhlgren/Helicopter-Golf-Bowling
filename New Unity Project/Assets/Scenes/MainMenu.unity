@@ -8848,6 +8848,7 @@ GameObject:
   - component: {fileID: 645682744}
   - component: {fileID: 645682742}
   - component: {fileID: 645682743}
+  - component: {fileID: 645682746}
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -8951,6 +8952,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &645682746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645682741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9420f5aea32df7646ab1a75a6346d5df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matteColor: {r: 0.20784315, g: 0.050980397, b: 0, a: 1}
+  referenceMode: 0
+  x: 16
+  y: 9
+  width: 960
+  height: 540
+  onAwake: 1
+  onUpdate: 1
 --- !u!1 &651724361
 GameObject:
   m_ObjectHideFlags: 0
@@ -25522,7 +25543,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2f9d494115168954688eaf28ba997e97, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.451
+  m_Volume: 0.86
   m_Pitch: 1
   Loop: 0
   Mute: 0
