@@ -13,6 +13,7 @@ public class ScoreManager : MonoBehaviour
     
     public float[] playerScores;
     public TextMeshProUGUI[] scoresUguis;
+    public TextMeshProUGUI scoreMultiplierGUI;
     
     public float scoreMultiplier;
     public int par;
@@ -24,7 +25,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreMultiplier = par;
+        scoreMultiplier = par + 1;
         isOfflineGame = gameObject.GetComponent<MultiplayerManager>().isOfflineGame;
         UpdateStatStrings();
     }
@@ -44,13 +45,18 @@ public class ScoreManager : MonoBehaviour
             playerScores[i] = newScores[i];
         }
     }
-    
-    // Update is called once per frame
-    void UpdateStatStrings()
+
+    private void Update()
     {
-        for (int i = 0; i < playerScores.Length; i++)
+        scoreMultiplierGUI.text = "Score Multiplier = " + scoreMultiplier;
+    }
+
+    // Update is called once per frame
+    public void UpdateStatStrings()
+    {
+        for (int i = 0; i < scoresUguis.Length; i++)
         {
-            //scoresUguis[i].text += " Score: " + playerScores[i];
-        }    
+            scoresUguis[i].text = "Player " + (i + 1).ToString() + " " + playerScores[i];
+        }  
     }
 }

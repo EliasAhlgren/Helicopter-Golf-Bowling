@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public bool isCurrentPLayer;
     
-    public float timeToRelase = 5;
+    public float timeToRelase ;
 
     public UnityEvent relaseEvent;
 
@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI _topText;
     private TextMeshProUGUI _middleText;
     private TextMeshProUGUI _bottomText;
+
+    private Coroutine timerRoutine;
     
     private void Awake()
     {
@@ -86,7 +88,11 @@ public class GameManager : MonoBehaviour
 
     public void ResetFromPos(Vector3 pos, GameObject thisObject, Vector3 contact)
     {
-        FindObjectOfType<ScoreManager>().scoreMultiplier++;
+        float multiplier = FindObjectOfType<ScoreManager>().scoreMultiplier;
+        if (multiplier >= 2)
+        {
+            FindObjectOfType<ScoreManager>().scoreMultiplier--;
+        }
         
         if (isCurrentPLayer)
         {
@@ -102,10 +108,7 @@ public class GameManager : MonoBehaviour
         mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
         mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 
-        if (PlayerPrefs.GetInt("EasyMode") == 1)
-        {
-            thisObject.transform.up = contact;
-        }
+        thisObject.transform.up = contact;
         
         resetEvent.Invoke();
         waitingForInput = true;
@@ -124,13 +127,14 @@ public class GameManager : MonoBehaviour
         currentUIstate = UIstate.Strike;
         if (isOfflineGame) //offline game reset
         {
-            Debug.Log("Offline Reset from strike");
-            
-            
+            Debug.Log("Offline Reset from boom boom");
+
+            hasInvincibility = true;
             isReseting = true;
-            StopCoroutine(relaseTimer(timeToRelase));
+                
+            StopCoroutine(timerRoutine);
             deathEvent.Invoke();
-            
+                
 
             yield return new WaitForSeconds(delay);
             hasInvincibility = false;
@@ -143,6 +147,7 @@ public class GameManager : MonoBehaviour
             mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
             mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             
+            relaseEvent.Invoke();
 
             foreach (var VARIABLE in GameObject.FindGameObjectsWithTag("Pin"))
             {
@@ -151,13 +156,15 @@ public class GameManager : MonoBehaviour
 
             GameObject.FindWithTag("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
             
+            mainFuselage.GetComponent<FuselageController>().showGUI = false;
+            
             isReseting = false;
         }
         else //Online game reset
         {
             //start reset and wait
             isReseting = true;
-            StopCoroutine(relaseTimer(timeToRelase));
+            StopCoroutine(timerRoutine);
             
             yield return new WaitForSeconds(delay);
             hasInvincibility = false;
@@ -199,36 +206,53 @@ public class GameManager : MonoBehaviour
         
     }
     
+    
+    
     public IEnumerator HelicopterDestroyed(float delay)
     {
         currentUIstate = UIstate.Destroyed;
         if (!hasBeenDestroyed)
         {
-            if (isOfflineGame)
+            if (isOfflineGame) //offline
             {
-                Debug.Log("Destruction");
-                hasBeenDestroyed = true;
-                StopCoroutine(relaseTimer(timeToRelase));
+                Debug.Log("Offline Reset from boom boom");
+
+                hasInvincibility = true;
+                isReseting = true;
+                
+                StopCoroutine(timerRoutine);
                 deathEvent.Invoke();
+                
+
                 yield return new WaitForSeconds(delay);
                 hasInvincibility = false;
-                mainFuselage.transform.position = GameObject.FindWithTag("StartingPoint").transform.position;;
-                mainFuselage.transform.eulerAngles = Vector3.zero;
+                mainRotor.transform.position = GameObject.FindWithTag("StartingPoint").transform.position;
+                mainFuselage.transform.position = GameObject.FindWithTag("StartingPoint").transform.position;
+                mainFuselage.transform.rotation = GameObject.FindWithTag("StartingPoint").transform.rotation;
                 mainFuselage.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 mainFuselage.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
                 mainRotor.GetComponent<RotorController>().yVelocity = 0;
                 mainRotor.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 mainRotor.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-                
-                mainFuselage.GetComponent<FuselageController>().ResetHealth();
-                
+            
+                relaseEvent.Invoke();
+
+                foreach (var VARIABLE in GameObject.FindGameObjectsWithTag("Pin"))
+                {
+                    VARIABLE.GetComponent<TargetScript>().ResetTransform();
+                }
+
                 GameObject.FindWithTag("ScoreManager").GetComponent<MultiplayerManager>().NextPlayerTurn();
+            
+                mainFuselage.GetComponent<FuselageController>().showGUI = false;
+            
+                isReseting = false;
 
             }
             else //Online game destruction
             {
                 isReseting = true;
-            StopCoroutine(relaseTimer(timeToRelase));
+            StopCoroutine(timerRoutine);
             
             
             yield return new WaitForSeconds(delay);
@@ -284,7 +308,7 @@ public class GameManager : MonoBehaviour
         startEvent.Invoke();
         waitingForInput = false;
         timer = timeToRelase;
-        StartCoroutine(relaseTimer(timeToRelase));
+        timerRoutine = StartCoroutine(relaseTimer(timeToRelase));
     }
 
     public void logEvent(string Event)
@@ -313,7 +337,7 @@ public class GameManager : MonoBehaviour
                                 _bottomText.enabled = true;
                                 _bottomText.text = "Press any key";
                                 _topText.enabled = true;
-                                _topText.text = "Player In control";
+                                _topText.text = "Player " + "<color=red>" + (FindObjectOfType<MultiplayerManager>().currentPlayer + 1).ToString() + "</color>" +  " In control";
                             }
                             break;
                         case UIstate.Player:
@@ -323,7 +347,7 @@ public class GameManager : MonoBehaviour
                                 _bottomText.enabled = true;
                                 _bottomText.text = "Time left: " + Mathf.Round(timer);
                                 _topText.enabled = true;
-                                _topText.text = "Player In control";
+                                _topText.text = "Player " + "<color=red>" + (FindObjectOfType<MultiplayerManager>().currentPlayer + 1).ToString() + "</color>" +  " In control";
                             }
                             break;
                         case UIstate.LostControl:
@@ -368,7 +392,7 @@ public class GameManager : MonoBehaviour
                                 _bottomText.enabled = true;
                                 _bottomText.text = "Press any key";
                                 _topText.enabled = true;
-                                _topText.text = "Player In control";
+                                _topText.text = "Player " + "<color=red>" + (FindObjectOfType<MultiplayerManager>().currentPlayer + 1).ToString() + "</color>" +  " In control";
                             }
                             break;
                         case UIstate.Player:
@@ -378,7 +402,7 @@ public class GameManager : MonoBehaviour
                                 _bottomText.enabled = true;
                                 _bottomText.text = "Time left: " + Mathf.Round(timer);
                                 _topText.enabled = true;
-                                _topText.text = "Player In control";
+                                _topText.text = "Player " + "<color=red>" + (FindObjectOfType<MultiplayerManager>().currentPlayer + 1).ToString() + "</color>" +  " In control";
                             }
                             break;
                         case UIstate.LostControl:
@@ -430,7 +454,7 @@ public class GameManager : MonoBehaviour
                 if (Input.anyKeyDown)
                 {
                     StartFlight();
-                    
+                    Debug.Log("Start input received");
                 }
             }
         }

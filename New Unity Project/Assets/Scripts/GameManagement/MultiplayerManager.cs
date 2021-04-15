@@ -19,6 +19,7 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 */
 using Color = UnityEngine.Color;
+using Random = UnityEngine.Random;
 
 
 namespace GameManagement
@@ -106,11 +107,14 @@ namespace GameManagement
             {
                 isHost = true;
                 Debug.Log("Offline game started");
+                playerCount = PlayerPrefs.GetInt("Capacity");
                 var offlinePlayer = Instantiate(playerPrefab,  GameObject.FindWithTag("StartingPoint").transform.position, Quaternion.Euler(Vector3.forward));
                 offlinePlayer.GetComponentInChildren<GameManager>().isOfflineGame = true;
                 networkPlayers.Add(offlinePlayer);
                 StartGame();
             }
+            
+           
             
         }
 
@@ -239,7 +243,7 @@ namespace GameManagement
                 NetworkingManager.Singleton.StopHost();
                 networkPlayers = new List<GameObject>();
                 currentPlayer = 0;
-                spawnPosition =  GameObject.FindWithTag("StartingPoint").transform.position;;
+                spawnPosition =  GameObject.FindWithTag("StartingPoint").transform.position;
                 isHost = false;
                 lookAtCamera = null;
             }
@@ -288,12 +292,12 @@ namespace GameManagement
                 
             }
             
-            
             if (currentPlayer + 1 < playerCount)
             {
                 Debug.Log("Next player");
                
                     currentPlayer++;
+                    _scoreManager.currentPlayer++;
                     gameObject.GetComponent<ScoreManager>().currentPlayer = currentPlayer;
                     
                     for (int i = 0; i < networkPlayers.Count; i++)
@@ -301,7 +305,7 @@ namespace GameManagement
                         Debug.Log("Index: "+i+ " player: " +networkPlayers[i]);
                     }
                     
-                _scoreManager.currentPlayer++;
+                
                 if (!isOfflineGame)
                 {
                     networkPlayers[currentPlayer].transform.position =
@@ -320,7 +324,8 @@ namespace GameManagement
                     currentTarget.Add(networkPlayers[currentPlayer].GetComponent<NetworkedObject>().OwnerClientId);
                     
                     gameObject.GetComponent<ScoreManager>().GetScoresFromServer();
-                } 
+                }
+                
                 
                 for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
                 {
@@ -362,11 +367,21 @@ namespace GameManagement
 
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>()
                     .InvokeClientRpc("ClientGetNextPlayer", ids, currentPlayer);
+                
+            }
+
+            _scoreManager.scoreMultiplier = _scoreManager.par + 1;
+
+            if (isOfflineGame)
+            {
+                Color clr = Random.ColorHSV();
+                GameObject.Find("Body").GetComponent<MeshRenderer>().materials[1].SetColor("Color_6B51158F", clr);
             }
             
-            
-                
-            
+        }
+
+        private void OnGUI()
+        {
             
         }
 

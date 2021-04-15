@@ -58,10 +58,14 @@ public class FuselageController : MonoBehaviour
             {
                 gameManager.ResetFromPos(transform.position, gameObject, other.contacts[0].normal);
             }
-            else if (gameManager.hasInvincibility)
+
+            if (isPlayerControlled && other.gameObject.CompareTag("Enviroment") && !gameManager.hasInvincibility && !gameManager.waitingForInput)
             {
-                helicopterHealth -= other.relativeVelocity.magnitude * collisionDamageMultiplier;
+                gameManager.StartCoroutine(gameManager.HelicopterDestroyed(2f));
             }
+            
+            
+            
         }
     }
 
@@ -82,6 +86,10 @@ public class FuselageController : MonoBehaviour
                     showGUI = true;
                     Debug.Log("No movement " + other.gameObject);
                 }
+            }
+            else
+            {
+                transform.up = other.contacts[0].normal;
             }
         }
     }
@@ -105,13 +113,13 @@ public class FuselageController : MonoBehaviour
     void MouseRot()
     {
         Vector3 mouseFaceRot = new Vector3(0, Camera.main.transform.eulerAngles.y - 90f,0f);
-                    transform.eulerAngles = mouseFaceRot;
+        transform.eulerAngles = mouseFaceRot;
     }
     
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (showGUI && gameManager.waitingForInput)
+        if (showGUI && !gameManager.waitingForInput)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {

@@ -118,6 +118,8 @@ namespace HelicopterController
                     SetCurrentPlayerCamera(null);
                 }
                 Debug.Log("Helicopter spawned");
+                
+               
         }
     
         [ClientRPC]
@@ -181,11 +183,8 @@ namespace HelicopterController
                     scoreManager.scoresUguis[i].color = Color.white;
                 }
             }
-
             
             yield return new WaitForSeconds(2);
-
-            
 
             foreach (var variable in GameObject.FindGameObjectsWithTag("Pin"))
             {
@@ -226,7 +225,7 @@ namespace HelicopterController
                         Debug.Log("Not found " + variable);
                         variable.GetComponentInChildren<Camera>().enabled = false;
                         variable.GetComponentInChildren<CinemachineFreeLook>().enabled = false;
-
+                        variable.GetComponentInChildren<StudioListener>().enabled = false;
                     }
                     else
                     {
@@ -236,6 +235,7 @@ namespace HelicopterController
                         Debug.Log("found " + variable);
                         variable.gameObject.GetComponentInChildren<Camera>().enabled = true;
                         variable.gameObject.GetComponentInChildren<CinemachineFreeLook>().enabled = true;
+                        variable.GetComponentInChildren<StudioListener>().enabled = true;
                         return;
                     }
                 }
