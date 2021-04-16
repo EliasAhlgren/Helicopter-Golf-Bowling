@@ -32,6 +32,7 @@ public class ScoreManager : MonoBehaviour
 
     public void GetScoresFromServer()
     {
+        Debug.Log("Got Scores");
         float[] newScores;
         FindObjectOfType<ScoreHolder>().GetCurrentScores(out newScores);
         SetScores(newScores);
