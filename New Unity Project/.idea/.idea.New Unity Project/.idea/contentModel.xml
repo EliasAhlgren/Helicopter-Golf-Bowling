@@ -23,6 +23,20 @@
         <e p="Fantasy Skybox FREE" t="Include">
           <e p="README.txt" t="Include" />
         </e>
+        <e p="LetterBoxer" t="Include">
+          <e p="Demo" t="Include">
+            <e p="README.txt" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="PingPongMove.cs" t="Include" />
+              <e p="TrackMouse.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Editor" t="Include">
+            <e p="LetterBoxerEditor.cs" t="Include" />
+          </e>
+          <e p="LetterBoxer.cs" t="Include" />
+        </e>
+        <e p="LogoRotationScript.cs" t="Include" />
         <e p="MLAPI" t="Include">
           <e p="Lib" t="Include">
             <e p="MLAPI.xml" t="Include" />

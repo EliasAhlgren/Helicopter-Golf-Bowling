@@ -51,7 +51,7 @@ public class FuselageController : MonoBehaviour
     
     private void OnCollisionEnter(Collision other)
     {
-        if (gameManager.isCurrentPLayer)
+        if (gameManager.isCurrentPLayer && !gameManager.isReseting)
         {
             if (!isPlayerControlled && !gameManager.waitingForInput && other.gameObject.CompareTag("Enviroment") &&
                 !gameManager.hasInvincibility)
@@ -61,6 +61,7 @@ public class FuselageController : MonoBehaviour
 
             if (isPlayerControlled && other.gameObject.CompareTag("Enviroment") && !gameManager.hasInvincibility && !gameManager.waitingForInput)
             {
+                Debug.Log("Collision");
                 gameManager.StartCoroutine(gameManager.HelicopterDestroyed(2f));
             }
             

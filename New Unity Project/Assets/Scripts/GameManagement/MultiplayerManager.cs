@@ -157,7 +157,7 @@ namespace GameManagement
             
             List<ulong> ids = new List<ulong> {SpawnManager.GetLocalPlayerObject().OwnerClientId};
             
-            spawnPosition += Vector3.left * 10;
+            spawnPosition += Vector3.left * 3;
         }
 
         void Disconnected(ulong obj)
@@ -250,7 +250,7 @@ namespace GameManagement
             else
             {
                 NetworkingManager.Singleton.StopClient();
-                //gameObject.GetComponent<UnetTransport>().Shutdown();   
+                gameObject.GetComponent<UnetTransport>().Shutdown();   
             }
         }
 
