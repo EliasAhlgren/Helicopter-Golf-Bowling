@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD;
+using FMODUnity;
 
 public class menuCopterExplosion : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class menuCopterExplosion : MonoBehaviour
     {
         if (startMoving == true)
         {
-            gameObject.transform.Translate(-4 * Time.deltaTime, 0, 0);
+            gameObject.transform.Translate(0, -4 * Time.deltaTime, 0);
         }
     }
 
@@ -22,5 +24,10 @@ public class menuCopterExplosion : MonoBehaviour
         boomTown.Play();
         Destroy(boxCollider);
         startMoving = true;
+
+        GameObject.Find("fmodSoundBOOM").GetComponent<AudioSource>().Play();
+       
+        
+        
     }
 }

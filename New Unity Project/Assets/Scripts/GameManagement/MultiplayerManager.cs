@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Cinemachine;
 using UnityEngine;
@@ -21,6 +19,7 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 */
 using Color = UnityEngine.Color;
+using Random = UnityEngine.Random;
 
 
 namespace GameManagement
@@ -49,9 +48,11 @@ namespace GameManagement
 
         public Camera lookAtCamera;
 
-        public Vector3 spawnPosition; 
+        public Vector3 spawnPosition;
+
+        private int nameIndex;
         
-        
+        private List<string> _playerNames;
         
         private void Awake()
         {
@@ -60,6 +61,8 @@ namespace GameManagement
 
         private void Start()
         {
+            _playerNames = new List<string>();
+            
             Boolean.TryParse(PlayerPrefs.GetString("IsOffline"), out isOfflineGame);
 
             if (!isOfflineGame)
@@ -82,7 +85,7 @@ namespace GameManagement
                 {
                     try
                     {
-                        //TODO tähän chekki onko validi ip
+                        
                         gameObject.GetComponent<UnetTransport>().ConnectAddress = PlayerPrefs.GetString("HostIp");
                         StartClient();
                     }
@@ -104,10 +107,33 @@ namespace GameManagement
             {
                 isHost = true;
                 Debug.Log("Offline game started");
+                playerCount = PlayerPrefs.GetInt("Capacity");
                 var offlinePlayer = Instantiate(playerPrefab,  GameObject.FindWithTag("StartingPoint").transform.position, Quaternion.Euler(Vector3.forward));
                 offlinePlayer.GetComponentInChildren<GameManager>().isOfflineGame = true;
                 networkPlayers.Add(offlinePlayer);
                 StartGame();
+            }
+            
+           
+            
+        }
+
+        public void SetName(string newName, GameObject sender)
+        {
+            foreach (var VARIABLE in _playerNames)
+            {
+                if (newName == VARIABLE)
+                {
+                    return;
+                }
+            }
+            nameIndex = 0;
+            _playerNames.Add(newName);
+            for (int i = 0; i < _playerNames.Count; i++)
+            {
+                Debug.Log("Server is sending name name" + newName);
+                sender.GetComponent<NetworkPlayer>().InvokeClientRpcOnEveryone("GetNames", _playerNames[i], i);
+                nameIndex++;
             }
             
         }
@@ -125,12 +151,13 @@ namespace GameManagement
             _gameManager.isOfflineGame = isOfflineGame;
             networkPlayers.Add(_gameManager.transform.root.gameObject); 
             networkPlayers[0].name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
-
+            networkPlayers[0].AddComponent<ScoreHolder>();
+            
             isHost = true;
             
             List<ulong> ids = new List<ulong> {SpawnManager.GetLocalPlayerObject().OwnerClientId};
             
-            spawnPosition += Vector3.left * 10;
+            spawnPosition += Vector3.left * 3;
         }
 
         void Disconnected(ulong obj)
@@ -147,7 +174,6 @@ namespace GameManagement
                     UnetTransport unetTransport = gameObject.GetComponent<UnetTransport>();
 
                     Debug.Log("Client " + obj + "Connected to: " + unetTransport.ConnectAddress + " rtt " + unetTransport.GetCurrentRtt(unetTransport.ServerClientId));
-
                     //GameObject jeff = GameObject.Find("Player(Clone)");
                     GameObject jeff = SpawnManager.SpawnedObjects[obj].gameObject;
                     jeff.name = "Player " + NetworkingManager.Singleton.ConnectedClients.Count;
@@ -158,9 +184,7 @@ namespace GameManagement
                         Debug.Log("Host: Client spawned");
                         List<ulong> ids = new List<ulong> {jeff.GetComponent<NetworkedObject>().OwnerClientId};
                        
-                        SpawnManager.GetLocalPlayerObject()
-                            .GetComponent<NetworkedBehaviour>()
-                            .InvokeClientRpc("Testi", ids);
+                        
                         Debug.Log(networkPlayers.Count + " pelaajaa " + playerCount + " tarvitaan");
                         if (networkPlayers.Count == playerCount)
                         {
@@ -201,10 +225,14 @@ namespace GameManagement
             }
         }
         
-        public void StartClient()
+        public async void StartClient()
         {
             NetworkingManager.Singleton.StartClient();
-            
+            await Task.Delay(10000);
+            if (!GameObject.Find("GameManager"))
+            {
+                SceneManager.LoadScene(0);
+            }
         }
 
         public void StopClient()
@@ -215,27 +243,22 @@ namespace GameManagement
                 NetworkingManager.Singleton.StopHost();
                 networkPlayers = new List<GameObject>();
                 currentPlayer = 0;
-                spawnPosition =  GameObject.FindWithTag("StartingPoint").transform.position;;
+                spawnPosition =  GameObject.FindWithTag("StartingPoint").transform.position;
                 isHost = false;
                 lookAtCamera = null;
             }
             else
             {
                 NetworkingManager.Singleton.StopClient();
-                //gameObject.GetComponent<UnetTransport>().Shutdown();   
+                gameObject.GetComponent<UnetTransport>().Shutdown();   
             }
         }
 
 
-        private int testInt;
         private void Update()
         {
             LogOnChanged(currentPlayer);
-            if (Input.GetKeyDown(KeyCode.N))
-            {
-                GameObject.FindWithTag("ScoreHolder").GetComponent<ScoreHolder>().SetCurrentScores(testInt);
-                testInt++;
-            }
+            
         }
 
         private int previousBool;
@@ -251,7 +274,7 @@ namespace GameManagement
        
         public void NextPlayerTurn()
         {
-
+            _scoreManager.scoreMultiplier = 1;
             
             if (!isOfflineGame && isHost)
             {
@@ -269,12 +292,12 @@ namespace GameManagement
                 
             }
             
-            
             if (currentPlayer + 1 < playerCount)
             {
                 Debug.Log("Next player");
                
                     currentPlayer++;
+                    _scoreManager.currentPlayer++;
                     gameObject.GetComponent<ScoreManager>().currentPlayer = currentPlayer;
                     
                     for (int i = 0; i < networkPlayers.Count; i++)
@@ -282,7 +305,7 @@ namespace GameManagement
                         Debug.Log("Index: "+i+ " player: " +networkPlayers[i]);
                     }
                     
-                _scoreManager.currentPlayer++;
+                
                 if (!isOfflineGame)
                 {
                     networkPlayers[currentPlayer].transform.position =
@@ -299,7 +322,10 @@ namespace GameManagement
 
                     List<ulong> currentTarget = new List<ulong>();
                     currentTarget.Add(networkPlayers[currentPlayer].GetComponent<NetworkedObject>().OwnerClientId);
-               } 
+                    
+                    gameObject.GetComponent<ScoreManager>().GetScoresFromServer();
+                }
+                
                 
                 for (int i = 0; i < _scoreManager.scoresUguis.Length; i++)
                 {
@@ -341,11 +367,21 @@ namespace GameManagement
 
                 SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>()
                     .InvokeClientRpc("ClientGetNextPlayer", ids, currentPlayer);
+                
+            }
+
+            _scoreManager.scoreMultiplier = _scoreManager.par + 1;
+
+            if (isOfflineGame)
+            {
+                Color clr = Random.ColorHSV();
+                GameObject.Find("Body").GetComponent<MeshRenderer>().materials[1].SetColor("Color_6B51158F", clr);
             }
             
-            
-                
-            
+        }
+
+        private void OnGUI()
+        {
             
         }
 

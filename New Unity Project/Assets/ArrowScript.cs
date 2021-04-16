@@ -10,12 +10,13 @@ public class ArrowScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindGameObjectsWithTag("Pin")[GameObject.FindGameObjectsWithTag("Pin").Length / 2].transform;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        target = GameObject.FindGameObjectsWithTag("Pin")[GameObject.FindGameObjectsWithTag("Pin").Length / 2].transform;
         Vector3 arrowNewPos = new Vector3();
         arrowNewPos = parentObject.transform.position;
         arrowNewPos.y = parentObject.position.y + 1;

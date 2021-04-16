@@ -62,14 +62,15 @@ public class TargetScript : MonoBehaviour
         _gameManager.startEvent.AddListener(ResetTransform);
         _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
 
-        if (!hasFallen && _gameManager.isReseting == false)
+        if (!hasFallen)
         {
             Debug.Log("Adding score " + other.gameObject);
             _scoreManager.playerScores[_scoreManager.currentPlayer] += targetScore * _scoreManager.scoreMultiplier;
+            _scoreManager.UpdateStatStrings();
             hasFallen = true;
             other.transform.root.GetComponentInChildren<FuselageController>().helicopterHealth = 100f;
-            _gameManager.hasInvincibility = true;
-            _gameManager.StartCoroutine(_gameManager.Strike(2f));
+            StartCoroutine(_gameManager.HelicopterDestroyed(3f));
+            _gameManager.waitingForInput = true;
             //StartCoroutine(waitBeforeReset());
             //targetScore = 0;
         }

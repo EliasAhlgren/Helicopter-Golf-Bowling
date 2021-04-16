@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 2b0d917299c716540ac94bcbfe1e3c8d
   - enabled: 1
-    path: Assets/Scenes/OnlineTestScene.unity
-    guid: 5069fab522e46c94c96c7be52693ae1f
+    path: Assets/Scenes/FinalLevel.unity
+    guid: e62fa161a17dbca449affe560349b728
   - enabled: 1
-    path: Assets/Scenes/Level 1.unity
-    guid: 9335e14a0a19343a7a21dad34abf9df6
+    path: Assets/Scenes/Test scenes und other paskaa/OnlineTestScene.unity
+    guid: 5069fab522e46c94c96c7be52693ae1f
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

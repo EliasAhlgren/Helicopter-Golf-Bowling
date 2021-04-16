@@ -25,6 +25,8 @@ public class FuselageController : MonoBehaviour
     private NetworkPlayer _networkPlayer;
 
     public bool shouldMouseRot;
+
+    public bool showGUI;
     
     // Start is called before the first frame update
     void Start()
@@ -49,17 +51,22 @@ public class FuselageController : MonoBehaviour
     
     private void OnCollisionEnter(Collision other)
     {
-        if (gameManager.isCurrentPLayer)
+        if (gameManager.isCurrentPLayer && !gameManager.isReseting)
         {
             if (!isPlayerControlled && !gameManager.waitingForInput && other.gameObject.CompareTag("Enviroment") &&
                 !gameManager.hasInvincibility)
             {
                 gameManager.ResetFromPos(transform.position, gameObject, other.contacts[0].normal);
             }
-            else if (gameManager.hasInvincibility)
+
+            if (isPlayerControlled && other.gameObject.CompareTag("Enviroment") && !gameManager.hasInvincibility && !gameManager.waitingForInput)
             {
-                helicopterHealth -= other.relativeVelocity.magnitude * collisionDamageMultiplier;
+                Debug.Log("Collision");
+                gameManager.StartCoroutine(gameManager.HelicopterDestroyed(2f));
             }
+            
+            
+            
         }
     }
 
@@ -75,17 +82,30 @@ public class FuselageController : MonoBehaviour
             if (!gameManager.waitingForInput)
             {
                 framesOnGround++;
-                if (framesOnGround > 200)
+                if (framesOnGround > 300)
                 {
-                    Debug.Log("No movement");
-                    StartCoroutine(gameManager.HelicopterDestroyed(3f));
-                    gameManager.waitingForInput = true;
+                    showGUI = true;
+                    Debug.Log("No movement " + other.gameObject);
                 }
+            }
+            else
+            {
+                transform.up = other.contacts[0].normal;
             }
         }
     }
 
-    
+    private void OnGUI()
+    {
+        GUI.color = Color.red;
+        if (showGUI)
+        {
+            GUIStyle textstyle = new GUIStyle();
+            textstyle.richText = true;
+            GUI.Box (new Rect (Screen.width / 2 - 200,Screen.height / 2 - 50,200,50), "You appear to be stuck! Press 'R' to surrender to the spirits", textstyle);
+        }
+    }
+
     public void Relase()
     {
         isPlayerControlled = !isPlayerControlled;
@@ -94,13 +114,20 @@ public class FuselageController : MonoBehaviour
     void MouseRot()
     {
         Vector3 mouseFaceRot = new Vector3(0, Camera.main.transform.eulerAngles.y - 90f,0f);
-                    transform.eulerAngles = mouseFaceRot;
+        transform.eulerAngles = mouseFaceRot;
     }
     
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        if (showGUI && !gameManager.waitingForInput)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                StartCoroutine(gameManager.HelicopterDestroyed(3f));
+                gameManager.waitingForInput = true;
+            }
+        }
         
         if (gameManager.waitingForInput && shouldMouseRot)
         {

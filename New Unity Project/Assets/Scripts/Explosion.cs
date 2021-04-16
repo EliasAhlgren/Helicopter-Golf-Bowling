@@ -13,7 +13,7 @@ public class Explosion : MonoBehaviour
     public int fragmentsInRow = 5;
     public int fragmentsInCell= 5;
     public int fragmentsInWidth = 5;
-   
+
 
     GameObject parentPiece;
 
@@ -34,18 +34,42 @@ public class Explosion : MonoBehaviour
             lastVelocity = gameObject.GetComponent<Rigidbody>().velocity;
         }
 
+
     }
 
-    private void OnCollisionEnter(Collision collision)
+    
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Helicopter")
+        {
 
 
-        explode();
+            if (other.GetComponent<Rigidbody>().velocity.x > 10f || other.GetComponent<Rigidbody>().velocity.x < -10f || other.GetComponent<Rigidbody>().velocity.y > 10f ||
+                other.GetComponent<Rigidbody>().velocity.y < -10f || other.GetComponent<Rigidbody>().velocity.z > 10f || other.GetComponent<Rigidbody>().velocity.x < -10f)
+            {
+
+                if (other.tag == "Helicopter")
+                {
+                    explode();
+                }
+                else if (other.GetComponent<Rigidbody>().velocity.x > 54.8f || other.GetComponent<Rigidbody>().velocity.x < -54.8f || other.GetComponent<Rigidbody>().velocity.y > 54.8f ||
+                other.GetComponent<Rigidbody>().velocity.y < -54.8f || other.GetComponent<Rigidbody>().velocity.z > 54.8f || other.GetComponent<Rigidbody>().velocity.x < -54.8f)
+                {
+                    explode();
+                }
+
+            }
+        }
     }
 
 
     void explode()
     {
+        if (gameObject.transform.rotation.y == 0.1f)
+        {
+            gameObject.transform.rotation = new Quaternion(gameObject.transform.rotation.x, 0, gameObject.transform.rotation.z, gameObject.transform.rotation.w);
+        }
+
         gameObject.SetActive(false);
         parentPiece.transform.position = gameObject.transform.position;
         for (int x = 0; x < fragmentsInRow; x++)
@@ -65,8 +89,12 @@ public class Explosion : MonoBehaviour
         parentPiece.transform.rotation = gameObject.transform.rotation;
 
 
-        
+
     }
+
+
+
+    
 
     void createPieces(int x, int y, int z)
     {
@@ -79,6 +107,8 @@ public class Explosion : MonoBehaviour
         piece.AddComponent<Rigidbody>();
         piece.GetComponent<Rigidbody>().mass = fragmentSize;
         piece.GetComponent<MeshRenderer>().material = gameObject.GetComponent<MeshRenderer>().material;
+        piece.GetComponent<Rigidbody>().mass = 0.05f;
+        //piece.tag = "Helicopter";
 
         //Match same speed and direction as the parent object
         piece.GetComponent<Rigidbody>().velocity = lastVelocity;

@@ -33977,7 +33977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1152040506265421657
 Transform:
   m_ObjectHideFlags: 0
@@ -34773,6 +34773,7 @@ GameObject:
   - component: {fileID: 1188455962307236064}
   - component: {fileID: 2869327273453657925}
   - component: {fileID: 14938763916176271}
+  - component: {fileID: 4257315469977295973}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -34844,6 +34845,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &4257315469977295973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960735764982843994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/HELICOPTER/EXPLOSION
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &2161055603086425094
 GameObject:
   m_ObjectHideFlags: 0
@@ -35453,6 +35477,7 @@ MonoBehaviour:
   collisionDamageMultiplier: 2
   framesOnGround: 0
   shouldMouseRot: 0
+  showGUI: 0
 --- !u!82 &1074617833736233546
 AudioSource:
   m_ObjectHideFlags: 0
@@ -35668,6 +35693,7 @@ GameObject:
   - component: {fileID: 3281106933298893122}
   - component: {fileID: 3281106933298893126}
   - component: {fileID: 2712622322923498139}
+  - component: {fileID: 2877851700276273777}
   m_Layer: 8
   m_Name: rotorMain
   m_TagString: Untagged
@@ -35874,6 +35900,31 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2877851700276273777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3281106933298893132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/HELICOPTER/HELICOPTER PROPELLER
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: BOOST
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &3281106933423703448
 GameObject:
   m_ObjectHideFlags: 0
@@ -37140,6 +37191,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   raycastFadeSpeed: 10
+--- !u!114 &871196269869665347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6827114218234728563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!114 &7216597335516868048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37161,6 +37226,7 @@ MonoBehaviour:
   yRotationControl: YRotation
   zRotationControl: Vertical
   physicalObject: {fileID: 0}
+  emitter: {fileID: 0}
 --- !u!1 &6963924622779847382
 GameObject:
   m_ObjectHideFlags: 0
@@ -37398,6 +37464,7 @@ MonoBehaviour:
   yRotationControl: YRotation
   zRotationControl: Vertical
   physicalObject: {fileID: 339755758981717475}
+  emitter: {fileID: 2877851700276273777}
 --- !u!114 &2118109396504063161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38810,7 +38877,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3774fcbe3c74e964db6f2dc11c2ba836, type: 2}
+      objectReference: {fileID: 2100000, guid: 4f4b872d03c61654092eb540083f7391, type: 2}
     - target: {fileID: 919132149155446097, guid: 6459a224ef751c34491eac38b72d279d,
         type: 3}
       propertyPath: m_Name
@@ -38991,6 +39058,21 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.34512496
       objectReference: {fileID: 0}
+    - target: {fileID: 4222205186357164644, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
+        type: 3}
+      propertyPath: m_XDamping
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222205186357164644, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
+        type: 3}
+      propertyPath: m_YDamping
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222205186357164644, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
+        type: 3}
+      propertyPath: m_ZDamping
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4222205186730084007, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39063,15 +39145,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88d1ca8adfb44eb4b9dc49baa852098c, type: 3}
---- !u!4 &6827114218234728556 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4222205186202222015, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
-    type: 3}
-  m_PrefabInstance: {fileID: 7216597335516868051}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6827114218234728563 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4222205186202221984, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7216597335516868051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6827114218234728556 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4222205186202222015, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
     type: 3}
   m_PrefabInstance: {fileID: 7216597335516868051}
   m_PrefabAsset: {fileID: 0}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{0f4300b4-a5f1-447d-adf7-2456ca8a81b7}">
+		<property name="assetPath">
+			<value>ROCKET_FLY.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>26.852395833333333</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6b3970ef-a28d-48d2-9fbb-101fc8ec7bc0}</destination>
+		</relationship>
+	</object>
+</objects>

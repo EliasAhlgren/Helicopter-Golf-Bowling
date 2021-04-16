@@ -24,7 +24,7 @@ public class blackOut : MonoBehaviour
     void Update()
     {
         roundTImer2 += Time.deltaTime;
-        if(roundTImer2 >= 0.2)
+        if(roundTImer2 >= 0.1)
         {
             roundTImer += Time.deltaTime;
         }
@@ -34,7 +34,7 @@ public class blackOut : MonoBehaviour
         {
             roundTImer3 += Time.deltaTime;
         }
-        if(roundTImer3 >= 0.6f)
+        if(roundTImer3 >= 1.6f)
         {
             roundTImer4 += Time.deltaTime;
         }
