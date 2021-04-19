@@ -68,9 +68,20 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     public void UpdateStatStrings()
     {
-        for (int i = 0; i < scoresUguis.Length; i++)
+        if (GetComponent<MultiplayerManager>().isOfflineGame)
         {
-            scoresUguis[i].text = "Player " + (i + 1).ToString() + " " + playerScores[i];
-        }  
+            for (int i = 0; i < scoresUguis.Length; i++)
+            {
+                scoresUguis[i].text = "Player " + (i + 1).ToString() + " " + playerScores[i];
+            } 
+        }
+        else
+        {
+            for (int i = 0; i < scoresUguis.Length; i++)
+            {
+                scoresUguis[i].text = scoresUguis[i].text + " " + playerScores[i];
+            } 
+        }
+         
     }
 }
