@@ -100,6 +100,7 @@ namespace GameManagement
                 else
                 {
                     playerCount = PlayerPrefs.GetInt("Capacity");
+                    GetComponent<UnetTransport>().Init();
                     StartHost();
                 }
             }
@@ -227,6 +228,7 @@ namespace GameManagement
         
         public async void StartClient()
         {
+            GetComponent<UnetTransport>().Init();
             NetworkingManager.Singleton.StartClient();
             await Task.Delay(10000);
             if (!GameObject.Find("GameManager"))
@@ -241,6 +243,7 @@ namespace GameManagement
             if (isHost)
             {
                 NetworkingManager.Singleton.StopHost();
+                GetComponent<UnetTransport>().Shutdown();
                 networkPlayers = new List<GameObject>();
                 currentPlayer = 0;
                 spawnPosition =  GameObject.FindWithTag("StartingPoint").transform.position;

@@ -64,10 +64,14 @@ public class ScoreManager : MonoBehaviour
     
     private void SetScores(float[] newScores)
     {
-        for (int i = 0; i < newScores.Length; i++)
+        if (!GetComponent<MultiplayerManager>().isOfflineGame)
         {
-            playerScores[i] = newScores[i];
+            for (int i = 0; i < newScores.Length; i++)
+            {
+                playerScores[i] = newScores[i];
+            }
         }
+        
     }
 
     private void Update()
