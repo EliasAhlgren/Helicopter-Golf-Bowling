@@ -86,7 +86,7 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < GetComponent<MultiplayerManager>()._playerNames[i].Length; i++)
+            for (int i = 0; i < GetComponent<MultiplayerManager>()._playerNames.Count; i++)
             {
                 scoresUguis[i].text = GetComponent<MultiplayerManager>()._playerNames[i] + " " + playerScores[i];
             } 
