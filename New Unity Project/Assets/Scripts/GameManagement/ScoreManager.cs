@@ -46,6 +46,8 @@ public class ScoreManager : MonoBehaviour
         for (int i = 0; i < SpawnManager.SpawnedObjectsList.Count; i++)
         {
             playerScores[i] = SpawnManager.SpawnedObjectsList[i].GetComponent<NetworkPlayer>().myScoreFloat;
+            scoresUguis[i].text = GetComponent<MultiplayerManager>()._playerNames[i] + ": " +
+                                  SpawnManager.SpawnedObjectsList[i].GetComponent<NetworkPlayer>().myScoreFloat;
             Debug.Log("Got score for player " + i + " Score is " + SpawnManager.SpawnedObjectsList[i].GetComponent<NetworkPlayer>().myScoreFloat);
         }
         UpdateStatStrings();
