@@ -322,8 +322,11 @@ namespace GameManagement
 
                     List<ulong> currentTarget = new List<ulong>();
                     currentTarget.Add(networkPlayers[currentPlayer].GetComponent<NetworkedObject>().OwnerClientId);
-                    
-                    gameObject.GetComponent<ScoreManager>().GetScoresFromServer();
+
+                    SpawnManager.GetLocalPlayerObject().GetComponent<NetworkPlayer>()
+                        .InvokeClientRpcOnEveryone("ScoreManagerGetScore");
+
+                    //gameObject.GetComponent<ScoreManager>().GetScoresFromServer();
                 }
                 
                 

@@ -6,6 +6,7 @@ using MLAPI;
 using MLAPI.NetworkedVar;
 using TMPro;
 using UnityEngine;
+using NetworkPlayer = HelicopterController.NetworkPlayer;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -36,11 +37,18 @@ public class ScoreManager : MonoBehaviour
     {
         Debug.Log("Got Scores");
         float[] newScores;
-        FindObjectOfType<ScoreHolder>().GetCurrentScores(out newScores);
-        SetScores(newScores);
         UpdateStatStrings();
     }
 
+    public void FindScores()
+    {
+        for (int i = 0; i < GetComponent<MultiplayerManager>().playerCount; i++)
+        {
+            playerScores[i] = GetComponent<MultiplayerManager>().networkPlayers[i].GetComponent<NetworkPlayer>().myScore.Value;
+        }
+        UpdateStatStrings();
+    }
+    
     public void RemoveEmptySlots()
     {
         foreach (var VARIABLE in scoresUguis)

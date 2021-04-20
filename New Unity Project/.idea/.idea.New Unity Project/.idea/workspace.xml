@@ -29,42 +29,26 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/NetManagerHud.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TMP_InputValidator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/17AD9609-AE06-4F2C-9315-931FF97ADCF1/8a/e3990b07/Random.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/17AD9609-AE06-4F2C-9315-931FF97ADCF1/e5/06537599/UnityEvent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph@7.5.2/Editor/Data/Nodes/Procedural/Shape/RoundedRectangleNode.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/51/4404809a/SyncedVarAttribute.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ArrowScript.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/17AD9609-AE06-4F2C-9315-931FF97ADCF1/53/de6d1646/Screen.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/17AD9609-AE06-4F2C-9315-931FF97ADCF1/dc/0ceea6d1/ShimManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62FFEEB7-EC02-4BEA-B61E-5FBF8D44AC5B/b3/6cf418cd/IEquatable`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/62/d3a2ccb8/NetworkedBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/NetManagerHud.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TMP_InputValidator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.1.1/Scripts/Runtime/TMP_InputField.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/62/8adcecc3/RpcResponse`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/17AD9609-AE06-4F2C-9315-931FF97ADCF1/c8/fbb33b9c/AnimationCurve.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/19597F6E-D6A5-4F65-B071-432411566FD3/43/d52bbc2a/ServerRPCAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph@7.5.2/Editor/Data/Nodes/Procedural/Shape/RoundedRectangleNode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ArrowScript.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
-    <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Shaders/AwesomeToonHelper.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/OfflinePlayers.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/Menu/OfflineNameManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/UIevent.cs" />
-      <option value="$PROJECT_DIR$/Assets/ArrowScript.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/GameManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/TargetScript.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/ScoreManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/FuselageController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/LogoRotationScript.cs" />
-    </changedPaths>
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/ScoreHolder.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/ScoreManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManagement/MultiplayerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/HelicopterController/NetworkPlayer.cs" />
+      </list>
+    </option>
   </component>
   <component name="ProjectId" id="1oFOjHGAWa6P96tjH0zciEaimoh" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -98,7 +82,7 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="selectedOptions">
-        <list />
+        <set />
       </option>
       <method v="2" />
     </configuration>
@@ -107,7 +91,7 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="selectedOptions">
-        <list />
+        <set />
       </option>
       <method v="2" />
     </configuration>
@@ -174,6 +158,9 @@
       <workItem from="1618469012445" duration="13011000" />
       <workItem from="1618549743447" duration="3313000" />
       <workItem from="1618563869396" duration="5276000" />
+      <workItem from="1618813129315" duration="4930000" />
+      <workItem from="1618899927156" duration="614000" />
+      <workItem from="1618902094890" duration="837000" />
     </task>
     <servers />
   </component>
@@ -196,6 +183,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1618902454541">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1618902454541" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>

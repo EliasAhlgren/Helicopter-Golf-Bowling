@@ -6,6 +6,7 @@ using FMODUnity;
 using GameManagement;
 using MLAPI;
 using MLAPI.Messaging;
+using MLAPI.NetworkedVar;
 using MLAPI.Prototyping;
 using MLAPI.Spawning;
 using TMPro;
@@ -33,7 +34,9 @@ namespace HelicopterController
         public GameObject physicalObject;
 
         public StudioEventEmitter emitter;
-        
+
+        public NetworkedVar<float> myScore;
+
         // Start is called before the first frame update
         IEnumerator Start()
         {
@@ -242,6 +245,13 @@ namespace HelicopterController
             }
         }
 
+        [ClientRPC]
+        void ScoreManagerGetScore()
+        {
+            Debug.Log("Online score RPC v.69");
+            _multiplayerManager.GetComponent<ScoreManager>().FindScores();
+        }
+        
         [ClientRPC]
         void SetEasyMode()
         {
