@@ -37,6 +37,8 @@ namespace HelicopterController
 
         public NetworkedVar<float> myScore;
 
+        public float myScoreFloat;
+        
         // Start is called before the first frame update
         IEnumerator Start()
         {
@@ -289,6 +291,8 @@ namespace HelicopterController
             zRotation = Input.GetAxisRaw(zRotationControl);
 
             emitter.Params[0].Value = physicalObject.GetComponentInChildren<RotorController>().yVelocity / 100;
+
+            myScoreFloat = myScore.Value;
 
         }
     }
