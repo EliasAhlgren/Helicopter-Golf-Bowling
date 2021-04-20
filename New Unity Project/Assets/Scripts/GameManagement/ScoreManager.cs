@@ -43,7 +43,7 @@ public class ScoreManager : MonoBehaviour
 
     public void FindScores()
     {
-        for (int i = 0; i < GetComponent<MultiplayerManager>().playerCount; i++)
+        for (int i = 0; i < SpawnManager.SpawnedObjectsList.Count; i++)
         {
             playerScores[i] = SpawnManager.SpawnedObjectsList[i].GetComponent<NetworkPlayer>().myScore.Value;
         }
