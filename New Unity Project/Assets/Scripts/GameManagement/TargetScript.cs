@@ -69,9 +69,7 @@ public class TargetScript : MonoBehaviour
             _scoreManager.playerScores[_scoreManager.currentPlayer] += targetScore * _scoreManager.scoreMultiplier;
             if (!_scoreManager.GetComponent<MultiplayerManager>().isOfflineGame)
             {
-                _scoreManager.GetComponent<MultiplayerManager>()
-                    .networkPlayers[_scoreManager.GetComponent<MultiplayerManager>().currentPlayer]
-                    .GetComponent<NetworkPlayer>().myScore.Value += targetScore * _scoreManager.scoreMultiplier;
+               other.transform.root.GetComponent<NetworkPlayer>().myScore.Value += targetScore * _scoreManager.scoreMultiplier;
             }
             _scoreManager.UpdateStatStrings();
             hasFallen = true;

@@ -25,7 +25,7 @@ public class LogoRotationScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         timer += Time.deltaTime;
         _pos.y += Mathf.Sin(timer) * length;

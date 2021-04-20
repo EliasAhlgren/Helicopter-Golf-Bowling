@@ -52,7 +52,7 @@ namespace GameManagement
 
         private int nameIndex;
         
-        private List<string> _playerNames;
+        public List<string> _playerNames;
         
         private void Awake()
         {
