@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using GameManagement;
 using MLAPI;
 using MLAPI.NetworkedVar;
+using MLAPI.Spawning;
 using TMPro;
 using UnityEngine;
 using NetworkPlayer = HelicopterController.NetworkPlayer;
@@ -44,7 +45,7 @@ public class ScoreManager : MonoBehaviour
     {
         for (int i = 0; i < GetComponent<MultiplayerManager>().playerCount; i++)
         {
-            playerScores[i] = GetComponent<MultiplayerManager>().networkPlayers[i].GetComponent<NetworkPlayer>().myScore.Value;
+            playerScores[i] = SpawnManager.SpawnedObjectsList[i].GetComponent<NetworkPlayer>().myScore.Value;
         }
         UpdateStatStrings();
     }
