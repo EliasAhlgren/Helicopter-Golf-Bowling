@@ -6,6 +6,7 @@ using GameManagement;
 using MLAPI;
 using TMPro;
 using UnityEngine;
+using NetworkPlayer = HelicopterController.NetworkPlayer;
 
 public class TargetScript : MonoBehaviour
 {
@@ -66,6 +67,12 @@ public class TargetScript : MonoBehaviour
         {
             Debug.Log("Adding score " + other.gameObject);
             _scoreManager.playerScores[_scoreManager.currentPlayer] += targetScore * _scoreManager.scoreMultiplier;
+            if (!_scoreManager.GetComponent<MultiplayerManager>().isOfflineGame)
+            {
+                _scoreManager.GetComponent<MultiplayerManager>()
+                    .networkPlayers[_scoreManager.GetComponent<MultiplayerManager>().currentPlayer]
+                    .GetComponent<NetworkPlayer>().myScore.Value += targetScore * _scoreManager.scoreMultiplier;
+            }
             _scoreManager.UpdateStatStrings();
             hasFallen = true;
             other.transform.root.GetComponentInChildren<FuselageController>().helicopterHealth = 100f;
