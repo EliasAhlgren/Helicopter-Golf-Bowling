@@ -42,9 +42,12 @@ namespace HelicopterController
         // Start is called before the first frame update
         IEnumerator Start()
         {
-            myScore.Settings.ReadPermission = NetworkedVarPermission.Everyone;
-            myScore.Settings.WritePermission = NetworkedVarPermission.Everyone;
-            
+            if (!FindObjectOfType<MultiplayerManager>().isOfflineGame)
+            {
+                myScore.Settings.ReadPermission = NetworkedVarPermission.Everyone;
+                myScore.Settings.WritePermission = NetworkedVarPermission.Everyone;   
+            }
+
             Destroy(GameObject.Find("AttemptConnectionCanvas"));
             
             _multiplayerManager = GameObject.FindWithTag("ScoreManager").GetComponent<MultiplayerManager>();
@@ -295,6 +298,10 @@ namespace HelicopterController
 
             emitter.Params[0].Value = physicalObject.GetComponentInChildren<RotorController>().yVelocity / 100;
 
+            if (_multiplayerManager.isOfflineGame)
+            {
+                return;
+            }
             myScoreFloat = myScore.Value;
 
         }

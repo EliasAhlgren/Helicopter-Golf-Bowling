@@ -35281,6 +35281,17 @@ MonoBehaviour:
           m_StringArgument: Start
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2119960263672232163}
+        m_MethodName: SetStartingForward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   timer: 0
   waitingForInput: 1
   hasBeenDestroyed: 0
@@ -35403,10 +35414,10 @@ GameObject:
   - component: {fileID: 3281106932814537518}
   - component: {fileID: 3281106932814537513}
   - component: {fileID: 3281106932814537517}
-  - component: {fileID: 1074617833736233546}
   - component: {fileID: 1074617833736233549}
   - component: {fileID: 2216100347090141059}
   - component: {fileID: 2119960263672232163}
+  - component: {fileID: 4595991635312375040}
   m_Layer: 0
   m_Name: fuseFront
   m_TagString: Helicopter
@@ -35478,129 +35489,6 @@ MonoBehaviour:
   framesOnGround: 0
   shouldMouseRot: 0
   showGUI: 0
---- !u!82 &1074617833736233546
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3281106932814537512}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 0
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 2
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.002
-      value: 1
-      inSlope: -13.687351
-      outSlope: -13.687351
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.23714428
-    - serializedVersion: 3
-      time: 0.08051151
-      value: 0.112083435
-      inSlope: -1.6991463
-      outSlope: -1.6991463
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.7040623
-      outWeight: 1
-    - serializedVersion: 3
-      time: 0.256
-      value: 0.0078125
-      inSlope: -0.030529825
-      outSlope: -0.030529825
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.512
-      value: 0.00390625
-      inSlope: -0.0076324563
-      outSlope: -0.0076324563
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0.002
-      inSlope: -0.002000801
-      outSlope: -0.002000801
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.92
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &1074617833736233549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35676,8 +35564,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19697ff6fcdd421596b12c8043d4b1fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationDone: 0
-  mFloat: 0
+  startingDirection: {x: 0, y: 0, z: 0}
+  currentDirection: {x: 0, y: 0, z: 0}
+  checkingAxis: 1
+--- !u!114 &4595991635312375040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3281106932814537512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/HELICOPTER/HELICOPTER PROPELLER
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: BOOST
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &3281106933298893132
 GameObject:
   m_ObjectHideFlags: 0
@@ -35914,8 +35828,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollisionTag: 
   Event: event:/HELICOPTER/HELICOPTER PROPELLER
-  PlayEvent: 1
-  StopEvent: 2
+  PlayEvent: 0
+  StopEvent: 7
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -37227,6 +37141,7 @@ MonoBehaviour:
   zRotationControl: Vertical
   physicalObject: {fileID: 0}
   emitter: {fileID: 0}
+  myScoreFloat: 0
 --- !u!1 &6963924622779847382
 GameObject:
   m_ObjectHideFlags: 0
@@ -37465,6 +37380,7 @@ MonoBehaviour:
   zRotationControl: Vertical
   physicalObject: {fileID: 339755758981717475}
   emitter: {fileID: 2877851700276273777}
+  myScoreFloat: 0
 --- !u!114 &2118109396504063161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39145,15 +39061,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88d1ca8adfb44eb4b9dc49baa852098c, type: 3}
---- !u!1 &6827114218234728563 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4222205186202221984, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
-    type: 3}
-  m_PrefabInstance: {fileID: 7216597335516868051}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6827114218234728556 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4222205186202222015, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7216597335516868051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6827114218234728563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4222205186202221984, guid: 88d1ca8adfb44eb4b9dc49baa852098c,
     type: 3}
   m_PrefabInstance: {fileID: 7216597335516868051}
   m_PrefabAsset: {fileID: 0}

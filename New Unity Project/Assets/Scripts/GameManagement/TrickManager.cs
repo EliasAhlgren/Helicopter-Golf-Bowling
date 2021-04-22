@@ -3,58 +3,52 @@ using UnityEngine;
 
 namespace GameManagement
 {
+    public enum Axis
+    {
+        X,
+        Y,
+        Z
+    }
+    
     public class TrickManager : MonoBehaviour
     {
-        private float _startRotationY;
+        public Vector3 startingDirection;
 
-        public float rotationDone;
-
-        private float _lastRotation;
+        public Vector3 currentDirection;
         
-        private GameManager _gameManager;
+        private bool shouldCheckRotation;
 
-        public float mFloat;
+        public Axis checkingAxis;
         
-        private void Start()
+        public void SetStartingForward()
         {
-            _gameManager = transform.root.GetComponentInChildren<GameManager>();
-        }
-
-        private void OnGUI()
-        {
-            GUI.Box (new Rect (mFloat,0,100,50), Math.Round(rotationDone).ToString());
-            GUI.Box (new Rect (300,0,100,50), transform.rotation.eulerAngles.y.ToString());
-        }
-
-        private void OnCollisionEnter(Collision other)
-        {
-            rotationDone = 0;
-        }
-
-        private void OnCollisionExit(Collision other)
-        {
-            rotationDone = 0;
-            _startRotationY = transform.rotation.eulerAngles.y;
+            switch (checkingAxis)
+            {
+                case Axis.X:
+                    startingDirection = transform.up;
+                    break;
+                case Axis.Y:
+                    startingDirection = transform.forward;
+                    break;
+                case Axis.Z:
+                    startingDirection = transform.up;
+                    break;
+            }
         }
 
         private void FixedUpdate()
         {
-            rotationDone += (_lastRotation - transform.rotation.eulerAngles.y );
-            _lastRotation = transform.rotation.eulerAngles.y;
-            if (rotationDone == _startRotationY + 360)
+            switch (checkingAxis)
             {
-                 ScoreManager _scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
-                 _scoreManager.playerScores[_scoreManager.currentPlayer] += 5;
-                 rotationDone = 0;
-            }
-            
-            if (rotationDone > 0)
-            {
-                if (rotationDone >= 360)
-                {
-                   
-                }
-            }
-        }
+                case Axis.X:
+                    currentDirection = transform.up;
+                    break;
+                case Axis.Y:
+                    currentDirection = transform.forward;
+                    break;
+                case Axis.Z:
+                    currentDirection = transform.up;
+                    break;
+            }        }
     }
 }

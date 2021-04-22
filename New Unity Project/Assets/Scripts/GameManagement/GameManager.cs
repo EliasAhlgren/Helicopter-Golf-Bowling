@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         if (!isOfflineGame)
         {
         }
-        thisObject.transform.eulerAngles = Vector3.zero + Vector3.up * thisObject.transform.eulerAngles.y;
+        thisObject.transform.eulerAngles = new Vector3(0,thisObject.transform.eulerAngles.y, 0);
         thisObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         thisObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         mainRotor.GetComponent<RotorController>().yVelocity = 0;
@@ -303,6 +303,7 @@ public class GameManager : MonoBehaviour
 
     public void StartFlight()
     {
+        transform.root.GetComponent<NetworkPlayer>().emitter.Play();
         currentUIstate = UIstate.Player;
         hasBeenDestroyed = false;
         startEvent.Invoke();

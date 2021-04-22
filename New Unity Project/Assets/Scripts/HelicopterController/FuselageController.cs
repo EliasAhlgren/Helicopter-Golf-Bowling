@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using FMODUnity;
 using GameManagement;
 using MLAPI.Spawning;
 using UnityEngine;
@@ -49,7 +51,7 @@ public class FuselageController : MonoBehaviour
         helicopterHealth = 100f;
     }
     
-    private void OnCollisionEnter(Collision other)
+    private async void OnCollisionEnter(Collision other)
     {
         if (gameManager.isCurrentPLayer && !gameManager.isReseting)
         {
@@ -61,15 +63,20 @@ public class FuselageController : MonoBehaviour
 
             if (isPlayerControlled && other.gameObject.CompareTag("Enviroment") && !gameManager.hasInvincibility && !gameManager.waitingForInput)
             {
+                GetComponent<StudioEventEmitter>().Play();
                 Debug.Log("Collision");
                 gameManager.StartCoroutine(gameManager.HelicopterDestroyed(2f));
             }
-            
-            
-            
         }
-    }
+        
+        StudioEventEmitter emitter = gameObject.AddComponent<StudioEventEmitter>();
+        emitter.Event = "event:/UI/CLICK";
+        emitter.Play();
+        await Task.Delay(1);
+        Destroy(emitter);
 
+    }
+    
     private void OnCollisionExit(Collision other)
     {
         framesOnGround = 0;
@@ -129,7 +136,7 @@ public class FuselageController : MonoBehaviour
             }
         }
         
-        if (gameManager.waitingForInput && shouldMouseRot)
+        if (gameManager.waitingForInput /*&& shouldMouseRot*/)
         {
             MouseRot();
         }
