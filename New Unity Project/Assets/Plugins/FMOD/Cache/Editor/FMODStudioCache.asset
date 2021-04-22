@@ -21,6 +21,29 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1016
   Exists: 1
+--- !u!114 &-8440307949446482700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ROCKET/ROCKET LAUNCH
+  m_EditorClassIdentifier: 
+  Path: event:/ROCKET/ROCKET LAUNCH
+  guid: fc3b06951b763c4f9eb9ca9fbbfc7809
+  Banks:
+  - {fileID: 6905996712660212282}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1440
 --- !u!114 &-7251940445634897658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +111,27 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 1
+--- !u!114 &-5380796099722694044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Plugins/soundFiles/BIT1_HELICOPTER/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637541787220000000
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1016
+  Exists: 1
 --- !u!114 &-5254765646714734107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +175,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1440
+--- !u!114 &-3098660354831476999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ROCKET/ROCKET FLY
+  m_EditorClassIdentifier: 
+  Path: event:/ROCKET/ROCKET FLY
+  guid: b06c4aca4fa3464bbc01a4c78bc9460c
+  Banks:
+  - {fileID: 6905996712660212282}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 26852
 --- !u!114 &-2145569559920123712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,20 +251,20 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -8752880467501314044}
-  - {fileID: 847657399774307982}
+  - {fileID: -5380796099722694044}
+  - {fileID: 6905996712660212282}
   EditorEvents:
-  - {fileID: 4711548586167786053}
-  - {fileID: -7251940445634897658}
-  - {fileID: -6791068400184779559}
-  - {fileID: 3723845505286191549}
-  - {fileID: -3203444765657643041}
+  - {fileID: 3338257813057878316}
+  - {fileID: 3436213848479125342}
+  - {fileID: 7116252722761715297}
+  - {fileID: -3098660354831476999}
+  - {fileID: -8440307949446482700}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 847657399774307982}
+  - {fileID: 6905996712660212282}
   StringsBanks:
-  - {fileID: -8752880467501314044}
-  stringsBankWriteTime: 637542072547473344
+  - {fileID: -5380796099722694044}
+  stringsBankWriteTime: 637541787220000000
   cacheVersion: 6
 --- !u!114 &847657399774307982
 MonoBehaviour:
@@ -238,6 +305,53 @@ MonoBehaviour:
     data1: 129065424
     data2: 1521889820
   Exists: 1
+--- !u!114 &3338257813057878316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/HELICOPTER/EXPLOSION
+  m_EditorClassIdentifier: 
+  Path: event:/HELICOPTER/EXPLOSION
+  guid: 48ea49a839dbbb4bb918e6f4aeaa0979
+  Banks:
+  - {fileID: 6905996712660212282}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2496
+--- !u!114 &3436213848479125342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/HELICOPTER/HELICOPTER PROPELLER
+  m_EditorClassIdentifier: 
+  Path: event:/HELICOPTER/HELICOPTER PROPELLER
+  guid: 561e2dd5f249d340af0bee253248f7d3
+  Banks:
+  - {fileID: 6905996712660212282}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 4150531347909264097}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3018
 --- !u!114 &3723845505286191549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,6 +375,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 26852
+--- !u!114 &4150531347909264097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/HELICOPTER PROPELLER/BOOST
+  m_EditorClassIdentifier: 
+  Name: BOOST
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 129065424
+    data2: 1521889820
+  Exists: 1
 --- !u!114 &4711548586167786053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,3 +418,45 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2496
+--- !u!114 &6905996712660212282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Plugins/soundFiles/BIT1_HELICOPTER/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637541787220000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &7116252722761715297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/CLICK
+  m_EditorClassIdentifier: 
+  Path: event:/UI/CLICK
+  guid: 77b411d974d25e4ba7bee0cd7e0d0164
+  Banks:
+  - {fileID: 6905996712660212282}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 61
